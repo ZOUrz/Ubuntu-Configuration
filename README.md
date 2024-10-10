@@ -26,3 +26,5 @@ UltralSO官网：https://filehippo.com/download_ultra-iso/
 
 · 在 UltraISO 中打开之前下载好的 Ubuntu 镜像(我这里是放在 D 盘中了, 在下侧的窗口中找到 Ubuntu 镜像文件, 然后双击, 上侧的窗口就会自动更新)
 
+![MakeInstaller](/Screenshot/MakeInstaller.png)
+
