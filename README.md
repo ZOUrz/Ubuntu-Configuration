@@ -11,3 +11,10 @@ This project serves as a personal reference for building a SLAM system from scra
 Ubuntu18.04iso下载地址：https://releases.ubuntu.com/18.04/
 
 ![Ubuntu18.04](/Screenshot/Ubuntu18.04iso.png)
+
+## 2. Mount the hard drive (挂载硬盘)
+
+参考链接1: https://blog.csdn.net/u011895157/article/details/130559749
+
+参考链接2: https://blog.csdn.net/qq_36357820/article/details/78421242
+
