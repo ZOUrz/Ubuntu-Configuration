@@ -7,4 +7,4 @@ This project serves as a personal reference for building a SLAM system from scra
 
 Ubuntu18.04下载地址：https://releases.ubuntu.com/18.04/
 
-![Ubuntu18.04](/Screenshot/Ubuntu18.04iso下载.png)
+![Ubuntu18.04](/Screenshot/Ubuntu18.04iso.png)
