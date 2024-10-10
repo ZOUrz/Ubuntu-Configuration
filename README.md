@@ -21,3 +21,8 @@ Ubuntu18.04下载地址：https://releases.ubuntu.com/18.04/
 UltralSO官网：https://filehippo.com/download_ultra-iso/
 
 ![UltraISO](/Screenshot/UltraISO.png)
+
+· 准备一个空U盘(最好不要放重要文件, 会被格式化)
+
+· 在 UltraISO 中打开之前下载好的 Ubuntu 镜像(我这里是放在 D 盘中了, 在下侧的窗口中找到 Ubuntu 镜像文件, 然后双击, 上侧的窗口就会自动更新)
+
