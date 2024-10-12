@@ -18,3 +18,11 @@ Ubuntu18.04iso下载地址：https://releases.ubuntu.com/18.04/
 
 参考链接2: https://blog.csdn.net/qq_36357820/article/details/78421242
 
+## 3. Download datasets (下载数据集)
+
+TUM: https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download
+
+EuRoC: https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets
+
+KITTI: 
+
