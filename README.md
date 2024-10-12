@@ -22,9 +22,9 @@ Ubuntu18.04iso下载地址：https://releases.ubuntu.com/18.04/
 
 TUM: https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download
 
-![TUM1](/Screenshot/Ubuntu18.04iso.png)
+![TUM1](/Screenshot/TUM1.png)
 
-![TUM2](/Screenshot/Ubuntu18.04iso.png)
+![TUM2](/Screenshot/TUM2.png)
 
 EuRoC: https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets
 
