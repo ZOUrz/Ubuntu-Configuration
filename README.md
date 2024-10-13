@@ -42,7 +42,7 @@ Baidu link: https://pan.baidu.com/s/1oXqNR_yd4MkgfABDa9FGSw?pwd=lsdb Extraction 
 
 ## 4. Use Clash client for internet access with proxy (使用Clash科学上网)
 
-### (1) Install Clash client (下载Clash客户端)
+### (1) Install Clash client (安装Clash客户端)
 
 Download link: https://github.com/lantongxue/clash_for_windows_pkg/releases
 
@@ -51,6 +51,20 @@ Download link: https://github.com/lantongxue/clash_for_windows_pkg/releases
 下载Clash.for.Windows-0.20.39-x64-linux.tar.gz
 
 ![Download Clash](/Screenshot/DownloadClash.png)
+
+Unzip (解压缩):
+
+'''
+tar -zxvf Clash.for.Windows-0.20.39-x64-linux.tar.gz
+'''
+
+Launch the client (启动客户端)
+
+'''
+mv Clash\ for\ Windows-0.20.39-x64-linux clash
+cd clash/
+./cfw
+'''
 
 ## 5. Build and install CMake from source code (从源代码编译安装CMake)
 
