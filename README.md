@@ -54,19 +54,19 @@ Download link: https://github.com/lantongxue/clash_for_windows_pkg/releases
 
 **!!!最好先连接手机热点进行下载!!!**
 
-下载Clash.for.Windows-0.20.39-x64-linux.tar.gz
+a. 下载Clash.for.Windows-0.20.39-x64-linux.tar.gz
 
 
 ![Download Clash](/Screenshot/DownloadClash.png)
 
 
-Unzip (解压缩):
+b. Unzip (解压缩):
 
 ```
 tar -zxvf Clash.for.Windows-0.20.39-x64-linux.tar.gz
 ```
 
-Launch the client (启动客户端)
+c. Launch the client (启动客户端)
 
 ```
 mv Clash\ for\ Windows-0.20.39-x64-linux clash
@@ -83,31 +83,31 @@ cd clash/
 
 CuteCloud link: https://dh.cutecloud.link/
 
-进入后注册登录(最好使用手机热点), 然后购买套餐后便可在主页一键复制Clash订阅
+a. 进入后注册登录(最好使用手机热点), 然后购买套餐后便可在主页一键复制Clash订阅
 
 
 ![CuteCloud](/Screenshot/CuteCloud.png)
 
 
-回到Clash客户端, 点击Profiles, 复制订阅链接到输入框中, 点击Download下载节点
+b. 回到Clash客户端, 点击Profiles, 复制订阅链接到输入框中, 点击Download下载节点
 
 
 ![ImportNodes](/Screenshot/ImportNodes.png)
 
 
-注意这里的端口号是7890
+c. 注意这里的端口号是7890
 
 
 ![Port](/Screenshot/Port.png)
 
 
-然后在Firefox浏览器上设置代理
+d. 然后在Firefox浏览器上设置代理
 
 
 ![SetProxy](/Screenshot/SetProxy.png)
 
 
-确定后便大功告成! Enjoy!
+e. 确定后便大功告成! Enjoy!
 
 
 ![Google](/Screenshot/Google.png)
