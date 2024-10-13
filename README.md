@@ -24,7 +24,7 @@ Reference link 2: https://blog.csdn.net/qq_36357820/article/details/78421242
 
 **No need to download everything, just download as shown.**
 
-不需要全部下载，只需要下载如同所示的即可
+不需要全部下载，只需要下载如图所示的即可
 
 ![TUM1](/Screenshot/TUM1.png)
 
@@ -74,7 +74,8 @@ CuteCloud link: https://dh.cutecloud.link/
 
 进入后注册登录(最好使用手机热点), 然后购买套餐后便可在主页一键复制Clash订阅
 
-然后点击Profiles, 复制订阅链接到输入框中, 点击Download下载节点
+回到Clash客户端, 点击Profiles, 复制订阅链接到输入框中, 点击Download下载节点
+
 
 
 ## 5. Build and install CMake from source code (从源代码编译安装CMake)
