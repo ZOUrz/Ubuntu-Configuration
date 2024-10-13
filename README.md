@@ -22,6 +22,9 @@ Ubuntu18.04iso下载地址：https://releases.ubuntu.com/18.04/
 
 TUM: https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download
 
+**No need to download everything, just download as shown.**
+不需要全部下载，只需要下载如同所示的即可
+
 ![TUM1](/Screenshot/TUM1.png)
 
 ![TUM2](/Screenshot/TUM2.png)
