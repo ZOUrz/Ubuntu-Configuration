@@ -20,7 +20,7 @@ Reference link 2: https://blog.csdn.net/qq_36357820/article/details/78421242
 
 ## 3. Download datasets (下载数据集)
 
-TUM: https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download
+**TUM:** https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download
 
 **No need to download everything, just download as shown.**
 
@@ -30,9 +30,11 @@ TUM: https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download
 
 ![TUM2](/Screenshot/TUM2.png)
 
-EuRoC: https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets
+**EuRoC:** https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets
 
 ![EuRoC](/Screenshot/EuRoC.png)
 
-KITTI: 链接：https://pan.baidu.com/s/1oXqNR_yd4MkgfABDa9FGSw?pwd=lsdb 提取码：lsdb
+**KITTI:** 
+      Official link: https://www.cvlibs.net/datasets/kitti/eval_odometry.php
+      Baidu link: https://pan.baidu.com/s/1oXqNR_yd4MkgfABDa9FGSw?pwd=lsdb Extraction code：lsdb
 
