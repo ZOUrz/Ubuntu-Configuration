@@ -153,7 +153,11 @@ sudo apt-get install git
 
 参考链接的博客, 下载安装各种前置库, Pangolin, OpenCV, Eigen3, DBoW2, g2o, ROS
 
-Reference link:: https://blog.csdn.net/weixin_43013761/article/details/123093639
+Reference link: https://blog.csdn.net/weixin_43013761/article/details/123093639
+
+**Then install and compile ORB-SLAM2**
+
+然后安装编译ORB-SLAM2
 
 
 
