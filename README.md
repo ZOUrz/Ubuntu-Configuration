@@ -142,4 +142,18 @@ d. 验证安装
 ```
 cmake --version
 ```
+## 6. Install Git (安装Git)
+
+```
+sudo apt-get install git
+```
+## 7. Install ORB-SLAM2 (安装ORB-SLAM2)
+
+**Refer to the blog link to download and install various prerequisite libraries, including Pangolin, OpenCV, Eigen3, DBoW2, g2o, and ROS**
+
+参考链接的博客, 下载安装各种前置库, Pangolin, OpenCV, Eigen3, DBoW2, g2o, ROS
+
+Reference link:: https://blog.csdn.net/weixin_43013761/article/details/123093639
+
+
 
