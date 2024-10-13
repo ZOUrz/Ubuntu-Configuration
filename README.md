@@ -42,6 +42,8 @@ Baidu link: https://pan.baidu.com/s/1oXqNR_yd4MkgfABDa9FGSw?pwd=lsdb Extraction 
 
 ## 4. Use Clash client for internet access with proxy (使用Clash科学上网)
 
+### (1) Install Clash client (下载Clash客户端)
+
 **!!!最好先连接手机热点进行下载!!!**
 
 Download link: https://github.com/lantongxue/clash_for_windows_pkg/releases
