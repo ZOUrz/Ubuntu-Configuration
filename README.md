@@ -44,9 +44,11 @@ Baidu link: https://pan.baidu.com/s/1oXqNR_yd4MkgfABDa9FGSw?pwd=lsdb Extraction 
 
 ### (1) Install Clash client (下载Clash客户端)
 
+Download link: https://github.com/lantongxue/clash_for_windows_pkg/releases
+
 **!!!最好先连接手机热点进行下载!!!**
 
-Download link: https://github.com/lantongxue/clash_for_windows_pkg/releases
+下载Clash.for.Windows-0.20.39-x64-linux.tar.gz 
 
 ## 5. Build and install CMake from source code (从源代码编译安装CMake)
 
