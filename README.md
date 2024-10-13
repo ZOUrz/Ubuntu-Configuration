@@ -40,3 +40,7 @@ Official link: https://www.cvlibs.net/datasets/kitti/eval_odometry.php
       
 Baidu link: https://pan.baidu.com/s/1oXqNR_yd4MkgfABDa9FGSw?pwd=lsdb Extraction code：lsdb
 
+## 4. Build and install CMake from source code (从源代码编译安装CMake)
+
+Reference link: https://blog.csdn.net/suiyingy/article/details/136552895
+
