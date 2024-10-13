@@ -10,7 +10,9 @@ Reference link: https://zhuanlan.zhihu.com/p/667673008
 
 Ubuntu18.04iso download link：https://releases.ubuntu.com/18.04/
 
+
 ![Ubuntu18.04](/Screenshot/Ubuntu18.04iso.png)
+
 
 ## 2. Mount the hard drive (挂载硬盘)
 
@@ -26,13 +28,17 @@ Reference link 2: https://blog.csdn.net/qq_36357820/article/details/78421242
 
 不需要全部下载，只需要下载如图所示的即可
 
+
 ![TUM1](/Screenshot/TUM1.png)
 
 ![TUM2](/Screenshot/TUM2.png)
 
+
 **EuRoC:** https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets
 
+
 ![EuRoC](/Screenshot/EuRoC.png)
+
 
 **KITTI:** 
 
@@ -50,7 +56,9 @@ Download link: https://github.com/lantongxue/clash_for_windows_pkg/releases
 
 下载Clash.for.Windows-0.20.39-x64-linux.tar.gz
 
+
 ![Download Clash](/Screenshot/DownloadClash.png)
+
 
 Unzip (解压缩):
 
@@ -65,7 +73,9 @@ mv Clash\ for\ Windows-0.20.39-x64-linux clash
 cd clash/
 ./cfw
 ```
+
 ![ClashClient](/Screenshot/ClashClient.png)
+
 
 ### (2) Import nodes and set proxy (导入节点并设置代理)
 
@@ -75,23 +85,33 @@ CuteCloud link: https://dh.cutecloud.link/
 
 进入后注册登录(最好使用手机热点), 然后购买套餐后便可在主页一键复制Clash订阅
 
+
 ![CuteCloud](/Screenshot/CuteCloud.png)
+
 
 回到Clash客户端, 点击Profiles, 复制订阅链接到输入框中, 点击Download下载节点
 
+
 ![ImportNodes](/Screenshot/ImportNodes.png)
+
 
 注意这里的端口号是7890
 
+
 ![Port](/Screenshot/Port.png)
+
 
 然后在Firefox浏览器上设置代理
 
+
 ![SetProxy](/Screenshot/SetProxy.png)
+
 
 确定后便大功告成! Enjoy!
 
+
 ![Google](/Screenshot/Google.png)
+
 
 ## 5. Build and install CMake from source code (从源代码编译安装CMake)
 
