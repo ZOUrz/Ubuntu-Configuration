@@ -76,6 +76,12 @@ CuteCloud link: https://dh.cutecloud.link/
 
 回到Clash客户端, 点击Profiles, 复制订阅链接到输入框中, 点击Download下载节点
 
+注意这里的端口号是7890
+
+然后在Firefox浏览器上设置代理
+
+确定后便大功告成! Enjoy!
+
 
 
 ## 5. Build and install CMake from source code (从源代码编译安装CMake)
