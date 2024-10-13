@@ -40,7 +40,13 @@ Official link: https://www.cvlibs.net/datasets/kitti/eval_odometry.php
       
 Baidu link: https://pan.baidu.com/s/1oXqNR_yd4MkgfABDa9FGSw?pwd=lsdb Extraction code：lsdb
 
-## 4. Build and install CMake from source code (从源代码编译安装CMake)
+## 4. Use Clash client for internet access with proxy (使用Clash科学上网)
+
+**!!!最好先连接手机热点进行下载!!!**
+
+Download link: https://github.com/lantongxue/clash_for_windows_pkg/releases
+
+## 5. Build and install CMake from source code (从源代码编译安装CMake)
 
 Reference link: https://blog.csdn.net/suiyingy/article/details/136552895
 
