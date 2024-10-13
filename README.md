@@ -117,7 +117,29 @@ e. 确定后便大功告成! Enjoy!
 
 Reference link: https://blog.csdn.net/suiyingy/article/details/136552895
 
+a. 从官网直接下载cmake的3.28.1版本
+
 ```
 wget https://cmake.org/files/v3.28/cmake-3.28.1.tar.gz
+```
+
+b. 解压缩下载的文件
+
+```
+tar -zxvf cmake-3.28.1.tar.gz
+cd cmake-3.28.1
+```
+
+c .编译并安装Cmake
+
+```
+./bootstrap
+make
+sudo make install
+```
+d. 验证安装
+
+```
+cmake --version
 ```
 
