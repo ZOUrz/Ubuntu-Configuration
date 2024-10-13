@@ -50,7 +50,7 @@ Download link: https://github.com/lantongxue/clash_for_windows_pkg/releases
 
 下载Clash.for.Windows-0.20.39-x64-linux.tar.gz
 
-![Download Clash](/Screenshot/Download Clash.png)
+![Download Clash](/Screenshot/DownloadClash.png)
 
 ## 5. Build and install CMake from source code (从源代码编译安装CMake)
 
