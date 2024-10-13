@@ -42,7 +42,7 @@ Baidu link: https://pan.baidu.com/s/1oXqNR_yd4MkgfABDa9FGSw?pwd=lsdb Extraction 
 
 ## 4. Use Clash client for internet access with proxy (使用Clash科学上网)
 
-### (1) Install Clash client (安装Clash客户端)
+### (1) Install Clash client (安装Clash for Windows客户端)
 
 Download link: https://github.com/lantongxue/clash_for_windows_pkg/releases
 
@@ -65,6 +65,17 @@ mv Clash\ for\ Windows-0.20.39-x64-linux clash
 cd clash/
 ./cfw
 ```
+
+### (2) Import nodes and set proxy (导入节点并设置代理)
+
+**注: 可以选择其他的方式获取Clash订阅的链接,  这里分享的是作者本人使用的CuteCloud(不一定最好)**
+
+CuteCloud link: https://dh.cutecloud.link/
+
+进入后注册登录(最好使用手机热点), 然后购买套餐后便可在主页一键复制Clash订阅
+
+然后点击Profiles, 复制订阅链接到输入框中, 点击Download下载节点
+
 
 ## 5. Build and install CMake from source code (从源代码编译安装CMake)
 
