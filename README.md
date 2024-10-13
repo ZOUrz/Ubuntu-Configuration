@@ -117,3 +117,7 @@ e. 确定后便大功告成! Enjoy!
 
 Reference link: https://blog.csdn.net/suiyingy/article/details/136552895
 
+```
+wget https://cmake.org/files/v3.28/cmake-3.28.1.tar.gz
+```
+
