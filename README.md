@@ -32,5 +32,7 @@ TUM: https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download
 
 EuRoC: https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets
 
+![EuRoC](/Screenshot/EuRoC.png)
+
 KITTI: 链接：https://pan.baidu.com/s/1oXqNR_yd4MkgfABDa9FGSw?pwd=lsdb 提取码：lsdb
 
