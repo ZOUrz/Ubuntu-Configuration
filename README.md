@@ -161,6 +161,14 @@ Reference link: https://blog.csdn.net/weixin_43013761/article/details/123093639
 
 **注: 安装ROS时, 有几个选项跟参考的链接不一样, 参考下图所选的即可**
 
+
+![ROS1](/Screenshot/ROS1.png)
+
+![ROS2](/Screenshot/ROS2.png)
+
+![ROS3](/Screenshot/ROS3.png)
+
+
 **在安装rosdpe时, 不要使用参考链接的方式进行安装!!!, 应当使用如下方式进行安装:**
 
 
