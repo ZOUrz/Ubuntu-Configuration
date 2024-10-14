@@ -159,6 +159,8 @@ Reference link: https://blog.csdn.net/weixin_43013761/article/details/123093639
 
 然后安装编译ORB-SLAM2
 
+### (1) Note: During the installation of ROS, some options may differ from the reference link. Please refer to the selections shown in the image below.
+
 **注: 安装ROS时, 有几个选项跟参考的链接不一样, 参考下图所选的即可**
 
 
@@ -168,6 +170,8 @@ Reference link: https://blog.csdn.net/weixin_43013761/article/details/123093639
 
 ![ROS3](/Screenshot/ROS3.png)
 
+
+### (2) When installing rosdep, do not follow the method in the reference link! You should use the following method for installation:
 
 **在安装rosdpe时, 不要使用参考链接的方式进行安装!!!, 应当使用如下方式进行安装:**
 
