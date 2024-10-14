@@ -1,6 +1,6 @@
-# **This project aims to provide the author with a reference record to ensure that critical steps are not overlooked.**
+# This project aims to provide the author with a reference record to ensure that critical steps are not overlooked.
 
-## 本项目旨在为作者提供一份参考记录, 以确保关键步骤不被遗漏
+本项目旨在为作者提供一份参考记录, 以确保关键步骤不被遗漏
 
 # Ubuntu System Configuration
 
