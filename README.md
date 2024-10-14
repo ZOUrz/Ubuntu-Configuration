@@ -171,9 +171,14 @@ Reference link: https://blog.csdn.net/weixin_43013761/article/details/123093639
 
 **在安装rosdpe时, 不要使用参考链接的方式进行安装!!!, 应当使用如下方式进行安装:**
 
+```
+wget http://fishros.com/install -O fishros && . fishros
+```
 
 
+![ROSdepc](/Screenshot/ROSdepc.png)
 
 
-
-
+```
+rosdepc update
+```
