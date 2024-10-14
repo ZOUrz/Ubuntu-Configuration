@@ -1,8 +1,8 @@
 # Ubuntu System Configuration
 
-**This project serves as a personal reference for building a SLAM system from scratch on Ubuntu, documenting the process to ensure that key steps are not forgotten.**
+**The content of this file is to configure the Ubuntu system from scratch, making it suitable for learning and testing SLAM. It serves as a personal reference to ensure that critical steps are not forgotten.**
 
-本项目旨在为在Ubuntu系统上从头构建SLAM系统提供个人参考，并记录整个过程，以确保关键步骤不会被遗忘
+本文件的内容是配置全新的Ubuntu系统, 使其适合学习和测试SLAM. 它可以作为个人参考, 确保不会忘记关键步骤.
 
 ## 1. Reinstall Ubuntu 18.04 (重装Ubuntu18.04系统)
 
