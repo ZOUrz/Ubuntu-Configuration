@@ -1,8 +1,8 @@
-# Ubuntu System Configuration
-
 **This project aims to provide the author with a reference record to ensure that critical steps are not overlooked.**
 
 本项目旨在为作者提供一份参考记录, 以确保关键步骤不被遗漏
+
+# Ubuntu System Configuration
 
 **The content of this document outlines the process of configuring the Ubuntu system from scratch to facilitate learning and testing of SLAM.**
 
