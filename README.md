@@ -190,3 +190,6 @@ wget http://fishros.com/install -O fishros && . fishros
 ```
 rosdepc update
 ```
+## 8. Install Anaconda (安装Anaconda)
+
+Reference link: https://blog.csdn.net/qq_64671439/article/details/135293643
