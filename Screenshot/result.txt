@@ -1,68 +1,77 @@
-python eval_odom.py --result result/example_0 --align 7dof
-Evaluate result in result/example_0? [y/n]y
-Sequence: 0
-Translational error (%):  0.6319912819933697
-Rotational error (deg/100m):  0.2529308896715871
-ATE (m):  0.9121574828944304
-RPE (m):  0.01902529415719678
-RPE (deg):  0.059274874720065006
-Sequence: 1
-Translational error (%):  0.9622853132947106
-Rotational error (deg/100m):  0.20332514425378442
-ATE (m):  5.641988624079996
-RPE (m):  0.044493309480002186
-RPE (deg):  0.03617107249851503
-Sequence: 2
-Translational error (%):  0.8057026089021252
-Rotational error (deg/100m):  0.2322954061554053
-ATE (m):  4.880350058774761
-RPE (m):  0.023407583665892927
-RPE (deg):  0.050705930521331134
-Sequence: 3
-Translational error (%):  0.6439122383622536
-Rotational error (deg/100m):  0.18879794648070589
-ATE (m):  0.32913300494014835
-RPE (m):  0.014862238307176572
-RPE (deg):  0.04223885744042996
-Sequence: 4
-Translational error (%):  0.46850044190670653
-Rotational error (deg/100m):  0.1640836705223764
-ATE (m):  0.16123107904237913
-RPE (m):  0.01824976419743733
-RPE (deg):  0.03492231234633299
-Sequence: 5
-Translational error (%):  0.3174695640124089
-Rotational error (deg/100m):  0.15724737942293554
-ATE (m):  0.41217736716083264
-RPE (m):  0.01278280985699639
-RPE (deg):  0.04230600837937943
-Sequence: 6
-Translational error (%):  0.47233201540219755
-Rotational error (deg/100m):  0.1592988040054928
-ATE (m):  0.6069919709993574
-RPE (m):  0.014088667960696813
-RPE (deg):  0.03517676857503612
-Sequence: 7
-Translational error (%):  0.5160491481425674
-Rotational error (deg/100m):  0.29331667876540707
-ATE (m):  0.48690377657662026
-RPE (m):  0.013786007615104843
-RPE (deg):  0.03866795307461219
-Sequence: 8
-Translational error (%):  1.042620697875644
-Rotational error (deg/100m):  0.3064380047046322
-ATE (m):  3.028224610125218
-RPE (m):  0.02534426819917038
-RPE (deg):  0.04453702602331494
-Sequence: 9
-Translational error (%):  0.8390225568274935
-Rotational error (deg/100m):  0.258146404308533
-ATE (m):  3.455247213040996
-RPE (m):  0.01859818384687422
-RPE (deg):  0.04631000907450375
-Sequence: 10
-Translational error (%):  0.5404897357841407
-Rotational error (deg/100m):  0.2607366832141227
-ATE (m):  0.9162294012300883
-RPE (m):  0.015106185290692936
-RPE (deg):  0.050839631960222356
+Sequence: 	 0 
+Trans. err. (%): 	 0.632 
+Rot. err. (deg/100m): 	 0.253 
+ATE (m): 	 0.912 
+RPE (m): 	 0.019 
+RPE (deg): 	 0.059 
+
+Sequence: 	 1 
+Trans. err. (%): 	 0.962 
+Rot. err. (deg/100m): 	 0.203 
+ATE (m): 	 5.642 
+RPE (m): 	 0.044 
+RPE (deg): 	 0.036 
+
+Sequence: 	 2 
+Trans. err. (%): 	 0.806 
+Rot. err. (deg/100m): 	 0.232 
+ATE (m): 	 4.880 
+RPE (m): 	 0.023 
+RPE (deg): 	 0.051 
+
+Sequence: 	 3 
+Trans. err. (%): 	 0.644 
+Rot. err. (deg/100m): 	 0.189 
+ATE (m): 	 0.329 
+RPE (m): 	 0.015 
+RPE (deg): 	 0.042 
+
+Sequence: 	 4 
+Trans. err. (%): 	 0.469 
+Rot. err. (deg/100m): 	 0.164 
+ATE (m): 	 0.161 
+RPE (m): 	 0.018 
+RPE (deg): 	 0.035 
+
+Sequence: 	 5 
+Trans. err. (%): 	 0.317 
+Rot. err. (deg/100m): 	 0.157 
+ATE (m): 	 0.412 
+RPE (m): 	 0.013 
+RPE (deg): 	 0.042 
+
+Sequence: 	 6 
+Trans. err. (%): 	 0.472 
+Rot. err. (deg/100m): 	 0.159 
+ATE (m): 	 0.607 
+RPE (m): 	 0.014 
+RPE (deg): 	 0.035 
+
+Sequence: 	 7 
+Trans. err. (%): 	 0.516 
+Rot. err. (deg/100m): 	 0.293 
+ATE (m): 	 0.487 
+RPE (m): 	 0.014 
+RPE (deg): 	 0.039 
+
+Sequence: 	 8 
+Trans. err. (%): 	 1.043 
+Rot. err. (deg/100m): 	 0.306 
+ATE (m): 	 3.028 
+RPE (m): 	 0.025 
+RPE (deg): 	 0.045 
+
+Sequence: 	 9 
+Trans. err. (%): 	 0.839 
+Rot. err. (deg/100m): 	 0.258 
+ATE (m): 	 3.455 
+RPE (m): 	 0.019 
+RPE (deg): 	 0.046 
+
+Sequence: 	 10 
+Trans. err. (%): 	 0.540 
+Rot. err. (deg/100m): 	 0.261 
+ATE (m): 	 0.916 
+RPE (m): 	 0.015 
+RPE (deg): 	 0.051 
+
