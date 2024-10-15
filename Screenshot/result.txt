@@ -33,6 +33,13 @@ ATE (m): 	 0.195
 RPE (m): 	 0.018 
 RPE (deg): 	 0.034 
 
+Sequence: 	 5 
+Trans. err. (%): 	 0.300 
+Rot. err. (deg/100m): 	 0.154 
+ATE (m): 	 0.354 
+RPE (m): 	 0.013 
+RPE (deg): 	 0.042 
+
 Sequence: 	 6 
 Trans. err. (%): 	 0.523 
 Rot. err. (deg/100m): 	 0.163 
