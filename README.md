@@ -206,4 +206,8 @@ conda config --set show_channel_urls yes
 
 ## 8. Install VSCode (安装VSCode)
 
-download link: https://code.visualstudio.com/Download
+**注: 要下载较低版本的VSCode, 否则会因为ubuntu18.04的库太旧导致报错!**
+
+此处, 本人下载的是1.73版本的VSCode
+
+download link: https://code.visualstudio.com/updates/v1_73
