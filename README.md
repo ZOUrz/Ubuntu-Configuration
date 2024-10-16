@@ -212,4 +212,6 @@ conda config --set show_channel_urls yes
 
 download link: https://code.visualstudio.com/updates/v1_73
 
-Reference link: https://www.bilibili.com/video/BV14D4y1h7sn
+```
+sudo dpkg -i code_1.78.2-1683731010_amd64.deb
+```
