@@ -204,5 +204,6 @@ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/pytorch/
 conda config --set show_channel_urls yes
 ```
 
-## 8. Install Pycharm (安装Pycharm)
-Reference link: https://blog.csdn.net/weixin_39450145/article/details/130022227
+## 8. Install VSCode (安装VSCode)
+
+download link: https://code.visualstudio.com/Download
