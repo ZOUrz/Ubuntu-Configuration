@@ -213,5 +213,5 @@ conda config --set show_channel_urls yes
 download link: https://code.visualstudio.com/updates/v1_73
 
 ```
-sudo dpkg -i code_1.78.2-1683731010_amd64.deb
+sudo dpkg -i code_1.73.1-1667967334_amd64.deb
 ```
