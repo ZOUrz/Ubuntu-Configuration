@@ -215,3 +215,9 @@ download link: https://code.visualstudio.com/updates/v1_73
 ```
 sudo dpkg -i code_1.73.1-1667967334_amd64.deb
 ```
+### (1) 安装扩展
+
+
+### (2) 设置字体
+
+Reference link: https://miracle.blog.csdn.net/article/details/130294351
