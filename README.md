@@ -10,9 +10,9 @@
 
 ## 1. Reinstall Ubuntu 18.04 (重装Ubuntu18.04系统)
 
-Reference link: [https://zhuanlan.zhihu.com/p/667673008](https://zhuanlan.zhihu.com/p/667673008)
+Reference link: https://zhuanlan.zhihu.com/p/667673008
 
-Ubuntu18.04iso download link：[https://releases.ubuntu.com/18.04/](https://releases.ubuntu.com/18.04/)
+Ubuntu18.04iso download link：https://releases.ubuntu.com/18.04/
 
 
 ![Ubuntu18.04](/Screenshot/Ubuntu18.04iso.png)
@@ -26,11 +26,13 @@ Reference link 2: https://blog.csdn.net/qq_36357820/article/details/78421242
 
 ## 3. Download datasets (下载数据集)
 
-**TUM:** https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download
+### TUM
 
-**No need to download everything, just download as shown.**
+Download link: https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download
 
-不需要全部下载，只需要下载如图所示的即可
+- No need to download everything, just download as shown.
+
+- 不需要全部下载，只需要下载如图所示的即可
 
 
 ![TUM1](/Screenshot/TUM1.png)
@@ -38,17 +40,19 @@ Reference link 2: https://blog.csdn.net/qq_36357820/article/details/78421242
 ![TUM2](/Screenshot/TUM2.png)
 
 
-**EuRoC:** https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets
+### EuRoC: 
+
+Download link: https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets
 
 
 ![EuRoC](/Screenshot/EuRoC.png)
 
 
-**KITTI:** 
+### KITTI: 
 
-Official link: https://www.cvlibs.net/datasets/kitti/eval_odometry.php
+Official download link: https://www.cvlibs.net/datasets/kitti/eval_odometry.php
       
-Baidu link: https://pan.baidu.com/s/1oXqNR_yd4MkgfABDa9FGSw?pwd=lsdb Extraction code：lsdb
+BaiduYun download link: https://pan.baidu.com/s/1oXqNR_yd4MkgfABDa9FGSw?pwd=lsdb Extraction code：lsdb
 
 ## 4. Use Clash client for internet access with proxy (使用Clash科学上网)
 
