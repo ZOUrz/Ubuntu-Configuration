@@ -226,3 +226,13 @@ Chinese (Simplified) Language Pack for Visual Studio Code, C/C++, C/C++ Extensio
 ### (2) 设置字体
 
 Reference link: https://miracle.blog.csdn.net/article/details/130294351
+
+## 10. Install Nivida Driver (安装英伟达显卡驱动)
+
+Reference link: https://blog.csdn.net/mao_hui_fei/article/details/121140152
+
+
+![NvidiaDriver](/Screenshot/NvidiaDriver.png)
+
+
+
