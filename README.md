@@ -228,7 +228,15 @@ Reference link: https://blog.csdn.net/coolsmartboy/article/details/120532547
 
 ## 10. Install CUDA 10.2 and CUDNN 8.2.2 (安装CUDA10.2和CUDNN8.2.2)
 
-https://developer.nvidia.com/cuda-10.2-download-archive
+Download link: https://developer.nvidia.com/cuda-10.2-download-archive
+
+- Select as shown in the figure
+
+- 按如图所示进行选择
+
+
+![CUDA1](/Screenshot/CUDA1.png)
+
 
 运行下载命令进行下载
 
