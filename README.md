@@ -2,17 +2,17 @@
 
 本项目旨在为作者提供一份参考记录, 以确保关键步骤不被遗漏
 
-# Ubuntu System Configuration
+# Ubuntu System Configuration (Ubuntu系统配置)
 
-**The content of this document outlines the process of configuring the Ubuntu system from scratch to facilitate learning and testing of SLAM.**
+- The content of this document outlines the process of configuring the Ubuntu system from scratch to facilitate learning and testing of SLAM.
 
-本文档的内容概述了从头配置Ubuntu系统的过程, 以便于学习和测试SLAM
+- 本文档的内容概述了从头配置Ubuntu系统的过程, 以便于学习和测试SLAM
 
 ## 1. Reinstall Ubuntu 18.04 (重装Ubuntu18.04系统)
 
-Reference link: https://zhuanlan.zhihu.com/p/667673008
+Reference link: [https://zhuanlan.zhihu.com/p/667673008](https://zhuanlan.zhihu.com/p/667673008)
 
-Ubuntu18.04iso download link：https://releases.ubuntu.com/18.04/
+Ubuntu18.04iso download link：[https://releases.ubuntu.com/18.04/](https://releases.ubuntu.com/18.04/)
 
 
 ![Ubuntu18.04](/Screenshot/Ubuntu18.04iso.png)
