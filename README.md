@@ -235,4 +235,6 @@ Reference link: https://blog.csdn.net/mao_hui_fei/article/details/121140152
 ![NvidiaDriver](/Screenshot/NvidiaDriver.png)
 
 
+## 11. Install CUDA 10.2 and CUDNN 8.2.2 (安装CUDA10.2和CUDNN8.2.2)
 
+Reference link: https://blog.csdn.net/mao_hui_fei/article/details/121140152
