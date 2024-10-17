@@ -259,11 +259,11 @@ sudo sh cuda_10.2.89_440.33.01_linux.run
 - 按如图所示进行选择
 
 
+![CUDA4](/Screenshot/CUDA4.png)
+
 ![CUDA2](/Screenshot/CUDA2.png)
 
 ![CUDA3](/Screenshot/CUDA3.png)
-
-![CUDA4](/Screenshot/CUDA4.png)
 
 
 ```
