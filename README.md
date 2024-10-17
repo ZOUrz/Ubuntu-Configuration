@@ -179,6 +179,12 @@ conda config --set show_channel_urls yes
 
 Reference link: https://blog.csdn.net/xiaowenshen/article/details/118761466
 
+在 工具 --> 创建桌面条目 可以创建CLion的快捷方式
+
+Tools --> Create Command-line Launcher 桌面快捷方式
+
+Tools --> Desktop Entry 任务栏快捷方式
+
 Reference link: https://blog.csdn.net/weixin_39450145/article/details/130022227
 
 ## 9. Install Nivida Driver (安装英伟达显卡驱动)
