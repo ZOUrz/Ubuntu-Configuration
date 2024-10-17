@@ -238,17 +238,33 @@ Download link: https://developer.nvidia.com/cuda-10.2-download-archive
 ![CUDA1](/Screenshot/CUDA1.png)
 
 
-运行下载命令进行下载
+- Run the download command to download
+
+- 运行下载命令进行下载
 
 ```
 wget https://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda_10.2.89_440.33.01_linux.run
 ```
 
-运行安装命令
+- Run the installation command
+
+- 运行安装命令
 
 ```
 sudo sh cuda_10.2.89_440.33.01_linux.run
 ```
+
+- Select as shown in the figure
+
+- 按如图所示进行选择
+
+
+![CUDA2](/Screenshot/CUDA2.png)
+
+![CUDA3](/Screenshot/CUDA3.png)
+
+![CUDA4](/Screenshot/CUDA4.png)
+
 
 ```
 gedit ~/.bashrc
