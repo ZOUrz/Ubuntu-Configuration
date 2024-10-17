@@ -237,4 +237,6 @@ Reference link: https://blog.csdn.net/coolsmartboy/article/details/120532547
 
 ## 11. Install CUDA 10.2 and CUDNN 8.2.2 (安装CUDA10.2和CUDNN8.2.2)
 
-Reference link: https://blog.csdn.net/mao_hui_fei/article/details/121140152
+Reference link 1: https://blog.csdn.net/mao_hui_fei/article/details/121140152
+
+Reference link 2: https://blog.csdn.net/coolsmartboy/article/details/120532547
