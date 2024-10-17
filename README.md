@@ -228,6 +228,8 @@ Reference link: https://blog.csdn.net/coolsmartboy/article/details/120532547
 
 ## 10. Install CUDA 10.2 and CUDNN 8.2.2 (安装CUDA10.2和CUDNN8.2.2)
 
+### (1) Install CUDA 10.2
+
 Download link: https://developer.nvidia.com/cuda-10.2-download-archive
 
 - Select as shown in the figure
@@ -274,14 +276,29 @@ sudo sh cuda_10.2.89_440.33.01_linux.run
 gedit ~/.bashrc
 ```
 
-在文件末尾添加以下语句:
+- Add the following statements at the end of the file
+
+- 在文件末尾添加以下语句
 
 ```
 export CUDA_HOME=$CUDA_HOME:/usr/local/cuda-10.2
 export PATH=$PATH:/usr/local/cuda-10.2/bin
 export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+```
+
+- Apply the changes to the environment configuration
+
+-  使更改的环境配置生效
+
+```
 source ~/.bashrc
 ```
+
+### (2) Install CUDNN 8.2.2 
+
+Download link: https://developer.nvidia.com/rdp/cudnn-archive
+
+- Download "cuDNN Library for Linux (x86)"
 
 ```
 sudo cp cuda/include/* -R /usr/local/cuda/include/ 
