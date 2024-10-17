@@ -117,41 +117,12 @@ e. 确定后便大功告成! Enjoy!
 ![Google](/Screenshot/Google.png)
 
 
-## 5. Build and install CMake from source code (从源代码编译安装CMake)
-
-Reference link: https://blog.csdn.net/suiyingy/article/details/136552895
-
-a. Directly download version 3.28.1 of CMake from the official website (从官网直接下载cmake的3.28.1版本)
-
-```
-wget https://cmake.org/files/v3.28/cmake-3.28.1.tar.gz
-```
-
-b. Decompress the downloaded file (解压缩下载的文件)
-
-```
-tar -zxvf cmake-3.28.1.tar.gz
-cd cmake-3.28.1
-```
-
-c. Compile and install CMake (编译并安装Cmake)
-
-```
-./bootstrap
-make
-sudo make install
-```
-d. Verify the installation (验证安装)
-
-```
-cmake --version
-```
-## 6. Install Git (安装Git)
+## 5. Install Git (安装Git)
 
 ```
 sudo apt-get install git
 ```
-## 7. Install ORB-SLAM2 (安装ORB-SLAM2)
+## 6. Install ORB-SLAM2 (安装ORB-SLAM2)
 
 **Refer to the blog link to download and install various prerequisite libraries, including Pangolin, OpenCV, Eigen3, DBoW2, g2o, and ROS**
 
@@ -190,7 +161,7 @@ wget http://fishros.com/install -O fishros && . fishros
 ```
 rosdepc update
 ```
-## 8. Install Anaconda (安装Anaconda)
+## 7. Install Anaconda (安装Anaconda)
 
 Reference link: https://blog.csdn.net/qq_64671439/article/details/135293643
 
@@ -204,13 +175,13 @@ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/pytorch/
 conda config --set show_channel_urls yes
 ```
 
-## 9. Install Clion and Pycharm (安装CLion和Pycharm)
+## 8. Install Clion and Pycharm (安装CLion和Pycharm)
 
 Reference link: https://blog.csdn.net/xiaowenshen/article/details/118761466
 
 Reference link: https://blog.csdn.net/weixin_39450145/article/details/130022227
 
-## 10. Install Nivida Driver (安装英伟达显卡驱动)
+## 9. Install Nivida Driver (安装英伟达显卡驱动)
 
 Reference link: https://blog.csdn.net/coolsmartboy/article/details/120532547
 
@@ -218,13 +189,13 @@ Reference link: https://blog.csdn.net/coolsmartboy/article/details/120532547
 ![NvidiaDriver](/Screenshot/NvidiaDriver.png)
 
 
-## 11. Install CUDA 10.2 and CUDNN 8.2.2 (安装CUDA10.2和CUDNN8.2.2)
+## 10. Install CUDA 10.2 and CUDNN 8.2.2 (安装CUDA10.2和CUDNN8.2.2)
 
 Reference link 1: https://blog.csdn.net/mao_hui_fei/article/details/121140152
 
 Reference link 2: https://blog.csdn.net/coolsmartboy/article/details/120532547
 
-## 12. Install libtorch (安装libtorch)
+## 11. Install libtorch (安装libtorch)
 
 **The official PyTorch website only provides the latest version of libtorch. You can download previous versions of libtorch from the following link.**
 
