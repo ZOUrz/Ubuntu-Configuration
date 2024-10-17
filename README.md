@@ -197,17 +197,25 @@ conda config --set show_channel_urls yes
 
 ## 8. Install CLion and Pycharm (安装CLion和Pycharm)
 
-### (1) CLion用于C++
+### (1) CLion for C++ (CLion用于C++)
 
 Reference link: https://blog.csdn.net/xiaowenshen/article/details/118761466
 
-在 工具 --> 创建桌面条目 可以创建CLion的快捷方式
-
-Tools --> Create Command-line Launcher 桌面快捷方式
-
-Tools --> Desktop Entry 任务栏快捷方式
+### (2) Pycharm for Python (Pycharm用于Python)
 
 Reference link: https://blog.csdn.net/weixin_39450145/article/details/130022227
+
+### (3) Set shortcut (设置快捷方式)
+
+- Tools --> Create Command-line Launcher (Desktop Shortcut)
+
+- 工具 --> 创建桌面条目 (桌面快捷方式)
+
+- Tools --> Desktop Entry (Taskbar Shortcut)
+
+- 工具 --> 创建命令行启动器 (任务栏快捷方式)
+
+
 
 ## 9. Install Nivida Driver (安装英伟达显卡驱动)
 
@@ -215,6 +223,7 @@ Reference link: https://blog.csdn.net/coolsmartboy/article/details/120532547
 
 
 ![NvidiaDriver](/Screenshot/NvidiaDriver.png)
+
 
 
 ## 10. Install CUDA 10.2 and CUDNN 8.2.2 (安装CUDA10.2和CUDNN8.2.2)
