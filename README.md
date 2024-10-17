@@ -211,6 +211,14 @@ wget https://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installe
 sudo sh cuda_10.2.89_440.33.01_linux.run
 ```
 
+```
+gedit ~/.bashrc
+export CUDA_HOME=$CUDA_HOME:/usr/local/cuda-10.2
+export PATH=$PATH:/usr/local/cuda-10.2/bin
+export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+source ~/.bashrc
+```
+
 Reference link 1: https://blog.csdn.net/mao_hui_fei/article/details/121140152
 
 Reference link 2: https://blog.csdn.net/coolsmartboy/article/details/120532547
