@@ -221,6 +221,7 @@ sudo dpkg -i code_1.73.1-1667967334_amd64.deb
 ```
 ### (1) 安装扩展
 
+Chinese (Simplified), Language Pack for Visual Studio Code, C/C++, C/C++ Extension Pack, C/C++ Themes, CMake, CMake Tools, ROS, ROS Snippets
 
 ### (2) 设置字体
 
