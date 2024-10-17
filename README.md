@@ -204,7 +204,7 @@ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/pytorch/
 conda config --set show_channel_urls yes
 ```
 
-## 9. Install Clion and Pycharm (安装Clion和Pycharm)
+## 9. Install Clion and Pycharm (安装CLion和Pycharm)
 
 Reference link: https://blog.csdn.net/xiaowenshen/article/details/118761466
 
