@@ -226,6 +226,10 @@ sudo chmod a+r /usr/local/cuda/include/cudnn.h
 sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
 ```
 
+```
+cat /usr/local/cuda/include/cudnn_version.h | grep CUDNN_MAJOR -A 2
+```
+
 Reference link 1: https://blog.csdn.net/mao_hui_fei/article/details/121140152
 
 Reference link 2: https://blog.csdn.net/coolsmartboy/article/details/120532547
