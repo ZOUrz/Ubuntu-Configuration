@@ -328,3 +328,5 @@ Reference link: https://blog.csdn.net/weixin_43742643/article/details/114156298
 **Here, I downloaded version 1.8.1 of libtorch.**
 
 这里我下载的是1.8.1版本的libtorch
+
+![TestLibtorch](/Screenshot/TestLibtorch.png)
