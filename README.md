@@ -204,9 +204,11 @@ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/pytorch/
 conda config --set show_channel_urls yes
 ```
 
-## 9. Install Clion (安装Clion)
+## 9. Install Clion and Pycharm (安装Clion和Pycharm)
 
 Reference link: https://blog.csdn.net/xiaowenshen/article/details/118761466
+
+Reference link: https://blog.csdn.net/weixin_39450145/article/details/130022227
 
 ## 10. Install Nivida Driver (安装英伟达显卡驱动)
 
