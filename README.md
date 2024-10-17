@@ -240,3 +240,15 @@ Reference link: https://blog.csdn.net/coolsmartboy/article/details/120532547
 Reference link 1: https://blog.csdn.net/mao_hui_fei/article/details/121140152
 
 Reference link 2: https://blog.csdn.net/coolsmartboy/article/details/120532547
+
+## 12. Install libtorch (安装libtorch)
+
+**The official PyTorch website only provides the latest version of libtorch. You can download previous versions of libtorch from the following link.**
+
+Pytorch官网只提供最新版本的libtorch, 参考以下链接可以下载到libtorch以往版本
+
+Reference link: https://blog.csdn.net/weixin_43742643/article/details/114156298
+
+**Here, I downloaded version 1.8.1 of libtorch.**
+
+这里本人下载的是1.8.1版本的libtorch
