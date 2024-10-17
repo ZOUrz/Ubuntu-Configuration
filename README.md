@@ -266,8 +266,17 @@ sudo sh cuda_10.2.89_440.33.01_linux.run
 ![CUDA3](/Screenshot/CUDA3.png)
 
 
+- Configure CUDA into the environment variables
+
+- 将CUDA配置到环境变量
+
 ```
 gedit ~/.bashrc
+```
+
+在文件末尾添加以下语句:
+
+```
 export CUDA_HOME=$CUDA_HOME:/usr/local/cuda-10.2
 export PATH=$PATH:/usr/local/cuda-10.2/bin
 export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
