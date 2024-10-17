@@ -204,28 +204,9 @@ conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/pytorch/
 conda config --set show_channel_urls yes
 ```
 
-## 9. Install VSCode (安装VSCode)
+## 9. Install Clion (安装Clion)
 
-**Note: It is recommended to download an earlier version of VSCode, as newer versions may produce errors due to outdated libraries on Ubuntu 18.04!**
-
-注: 要下载较低版本的VSCode, 否则会因为ubuntu18.04的库太旧导致报错!
-
-**In this case, I downloaded version 1.73 of VSCode.**
-
-此处, 本人下载的是1.73版本的VSCode
-
-download link: https://code.visualstudio.com/updates/v1_73
-
-```
-sudo dpkg -i code_1.73.1-1667967334_amd64.deb
-```
-### (1) 安装扩展
-
-Chinese (Simplified) Language Pack for Visual Studio Code, C/C++, C/C++ Extension Pack, C/C++ Themes, CMake, CMake Tools, ROS, ROS Snippets
-
-### (2) 设置字体
-
-Reference link: https://miracle.blog.csdn.net/article/details/130294351
+Reference link: https://blog.csdn.net/xiaowenshen/article/details/118761466
 
 ## 10. Install Nivida Driver (安装英伟达显卡驱动)
 
