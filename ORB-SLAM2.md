@@ -25,5 +25,12 @@ Change `SEQUENCE_NUMBER` to 00, 01, 02,.., 10.
 Reference link: https://github.com/Huangying-Zhan/kitti-odom-eval/tree/master
 
 
+对于最顶上的金字塔图层
+
+图像尺寸346 × 105, padding后的图像尺寸384 × 143, 其中padding=19
+
+提取特征点时, 又要预留3个像素的宽度出来给FAST角点, 所以用于特征点提取的尺寸为352 × 111
+
+
 
 
