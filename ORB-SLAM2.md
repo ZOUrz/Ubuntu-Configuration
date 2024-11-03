@@ -69,6 +69,15 @@ puts markdown.to_html
 MESSAGE("Build type: " ${CMAKE_BUILD_TYPE})
 ```
 
+```gcc
+#ifndef ORBEXTRACTOR_H
+#define ORBEXTRACTOR_H
+
+#include <vector>
+#include <list>
+#include <opencv/cv.h>
+```
+
 
 
 
