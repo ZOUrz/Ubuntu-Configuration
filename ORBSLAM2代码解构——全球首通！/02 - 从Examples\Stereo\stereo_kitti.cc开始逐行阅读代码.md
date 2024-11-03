@@ -97,10 +97,10 @@ int main(int argc, char **argv)
 ```c++
     // Step 2 加载SLAM系统
     // Create SLAM system. It initializes all system threads and gets ready to process frames.
-    // ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::STEREO,true);
+    ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::STEREO,true);
 ```
 
-这个构造函数是在 System.cc 文件内定义的, 所以我们现在要跳转到 System.cc 这个文件内了, stereo_kitti.cc的阅读先告一段落
+这个构造函数是在 System.cc 文件内定义的, 所以我们现在要跳转到 System.cc 这个文件了, stereo_kitti.cc的阅读先告一段落
 
 ## 4. 不完整代码
 
