@@ -1,6 +1,6 @@
 # CMakeLists.txt的详细注释版本
 
-### 对CMakeLists.txt的每一行语句进行了注释, 解释了其含义和作用, 有助于理清ORBSLAM2整体的项目文件框架和结构, 有助于后续对ORBSLAM2的代码进行更改
+**对CMakeLists.txt的每一行语句进行了注释, 解释了其含义和作用, 有助于理清ORBSLAM2整体的项目文件框架和结构, 有助于后续对ORBSLAM2的代码进行更改**
 
 ```cmake
 # 指定 CMake 的最低版本要求为2.8
