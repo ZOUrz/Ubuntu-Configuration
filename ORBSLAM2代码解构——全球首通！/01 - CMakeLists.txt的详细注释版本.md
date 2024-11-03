@@ -10,7 +10,7 @@ project(ORB_SLAM2)
 
 # 检查CMAKE_BUILD_TYPE是否被定义, 如果没有, 则将其设置为Release
 # 因此该项目默认构建为发布模式
-# * ---------------------------------------- *
+# * -------------------- *
 # 以下是一些常见的构建类型及其区别:
 # - Release
 #   - 特点: 开启优化, 去除调试信息
@@ -24,7 +24,6 @@ project(ORB_SLAM2)
 # - MinSieRel (Minimum Size Release)
 #   - 特点: 优化代码以减小可执行文件的大小, 而不是最大化性能
 #   - 用途: 适用于对可执行文件大小敏感的场合, 如嵌入式系统或存储受限的设备
-# * ---------------------------------------- *
 IF(NOT CMAKE_BUILD_TYPE)
   SET(CMAKE_BUILD_TYPE Release)
 ENDIF()
@@ -83,10 +82,10 @@ find_package(Pangolin REQUIRED)
 # 这些目录的路径会被添加到编译器的搜索路径中, 当编译器遇到#include指令时, 会在这些目录中查找所需的头文件
 # 指定要包含的头文件目录:
 include_directories(
-${PROJECT_SOURCE_DIR}  # 项目的根目录
-${PROJECT_SOURCE_DIR}/include  # 项目的include目录, 通常用于存放公共头文件
-${EIGEN3_INCLUDE_DIR}  # Eigen3库的头文件目录
-${Pangolin_INCLUDE_DIRS}  # Pangolin库的头文件目录
+        ${PROJECT_SOURCE_DIR}  # 项目的根目录
+        ${PROJECT_SOURCE_DIR}/include  # 项目的include目录, 通常用于存放公共头文件
+        ${EIGEN3_INCLUDE_DIR}  # Eigen3库的头文件目录
+        ${Pangolin_INCLUDE_DIRS}  # Pangolin库的头文件目录
 )
 
 # 设置库文件的输出目录为${PROJECT_SOURCE_DIR}/lib, 即编译生成的共享库将存放在该目录中
@@ -94,35 +93,35 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 
 # 创建一个名为${PROJECT_SOURCE_DIR}的共享库(SHARED表示生成动态链接库), 并将指定的源文件添加到库中
 add_library(${PROJECT_NAME} SHARED
-src/System.cc
-src/Tracking.cc
-src/LocalMapping.cc
-src/LoopClosing.cc
-src/ORBextractor.cc
-src/ORBmatcher.cc
-src/FrameDrawer.cc
-src/Converter.cc
-src/MapPoint.cc
-src/KeyFrame.cc
-src/Map.cc
-src/MapDrawer.cc
-src/Optimizer.cc
-src/PnPsolver.cc
-src/Frame.cc
-src/KeyFrameDatabase.cc
-src/Sim3Solver.cc
-src/Initializer.cc
-src/Viewer.cc
+        src/System.cc
+        src/Tracking.cc
+        src/LocalMapping.cc
+        src/LoopClosing.cc
+        src/ORBextractor.cc
+        src/ORBmatcher.cc
+        src/FrameDrawer.cc
+        src/Converter.cc
+        src/MapPoint.cc
+        src/KeyFrame.cc
+        src/Map.cc
+        src/MapDrawer.cc
+        src/Optimizer.cc
+        src/PnPsolver.cc
+        src/Frame.cc
+        src/KeyFrameDatabase.cc
+        src/Sim3Solver.cc
+        src/Initializer.cc
+        src/Viewer.cc
 )
 
 # 指定${PROJECT_SOURCE_DIR}库链接的其他库
 target_link_libraries(${PROJECT_NAME}
-${OpenCV_LIBS}  # OpenCV库
-${EIGEN3_LIBS}  # Eigen3库
-${Pangolin_LIBRARIES}  # Pangolin库
-# 还链接了位于Thirdparty/DBoW2和Thirdparty/g2o的第三方库
-${PROJECT_SOURCE_DIR}/Thirdparty/DBoW2/lib/libDBoW2.so
-${PROJECT_SOURCE_DIR}/Thirdparty/g2o/lib/libg2o.so
+        ${OpenCV_LIBS}  # OpenCV库
+        ${EIGEN3_LIBS}  # Eigen3库
+        ${Pangolin_LIBRARIES}  # Pangolin库
+        # 还链接了位于Thirdparty/DBoW2和Thirdparty/g2o的第三方库
+        ${PROJECT_SOURCE_DIR}/Thirdparty/DBoW2/lib/libDBoW2.so
+        ${PROJECT_SOURCE_DIR}/Thirdparty/g2o/lib/libg2o.so
 )
 
 # Build examples
@@ -148,6 +147,4 @@ add_executable(mono_kitti Examples/Monocular/mono_kitti.cc)
 target_link_libraries(mono_kitti ${PROJECT_NAME})
 add_executable(mono_euroc Examples/Monocular/mono_euroc.cc)
 target_link_libraries(mono_euroc ${PROJECT_NAME})
-
-
 ```
