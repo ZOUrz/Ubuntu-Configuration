@@ -59,6 +59,11 @@ Reference link: https://github.com/Huangying-Zhan/kitti-odom-eval/tree/master
 
 为什么要这么烧脑？ 因为这里说的像素点坐标是指这个像素点的位置, 是要考虑这个点是否被包含在所选定的范围之内的, 可以认为是有物理体积的, 而不是数学上可被认为体积不计的点, 数学上是只考虑边界的, 一条边长是没有宽度的
 
+```ruby
+require 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+```
 
 
 
