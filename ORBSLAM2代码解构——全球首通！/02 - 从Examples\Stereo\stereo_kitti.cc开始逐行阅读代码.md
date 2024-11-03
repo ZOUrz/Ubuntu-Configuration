@@ -61,7 +61,11 @@ void LoadImages(const string &strPathToSequence, vector<string> &vstrImageLeft,
 
 进入 main() 函数后, 首先进行终端输入参数的检查, 然后根据输入的数据集路径加载图像
 
-终端命令行输入的指令标准形式为: ./stereo_kitti 词典路径 配置文件路径 数据集图像序列路径
+终端命令行输入的指令标准形式为: 
+
+```
+./stereo_kitti 词典路径 配置文件路径 数据集图像序列路径
+```
 
 ```c++
 int main(int argc, char **argv)
