@@ -10,7 +10,7 @@ project(ORB_SLAM2)
 
 # 检查CMAKE_BUILD_TYPE是否被定义, 如果没有, 则将其设置为Release
 # 因此该项目默认构建为发布模式
-# * -------------------- *
+# * ---------------------------------------- *
 # 以下是一些常见的构建类型及其区别:
 # - Release
 #   - 特点: 开启优化, 去除调试信息
@@ -24,6 +24,7 @@ project(ORB_SLAM2)
 # - MinSieRel (Minimum Size Release)
 #   - 特点: 优化代码以减小可执行文件的大小, 而不是最大化性能
 #   - 用途: 适用于对可执行文件大小敏感的场合, 如嵌入式系统或存储受限的设备
+# * ---------------------------------------- *
 IF(NOT CMAKE_BUILD_TYPE)
   SET(CMAKE_BUILD_TYPE Release)
 ENDIF()
