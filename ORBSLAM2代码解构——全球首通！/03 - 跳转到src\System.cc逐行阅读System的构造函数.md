@@ -247,6 +247,8 @@ namespace ORB_SLAM2
 
 ```
 
+### include/Viewer.h
+
 ```c++
 #ifndef VIEWER_H
 #define VIEWER_H
@@ -265,8 +267,6 @@ class Viewer
 #endif //VIEWER_H
 
 ```
-
-### include/Viewer.h
 
 ```c++
     // 系统的构造函数, 将会启动其他的线程
