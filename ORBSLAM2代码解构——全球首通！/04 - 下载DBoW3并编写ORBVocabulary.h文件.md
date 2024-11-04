@@ -92,4 +92,26 @@ target_link_libraries(DBoW3 ${OpenCV_LIBS})
 
 ```
 
+然后编写 build.sh 文件
+
+```shell
+echo "Configuring and buildding Thirdparty/FBoW ..."
+
+cd Thirdparty/DBoW3
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make -j
+
+cd ../../../
+
+echo "Configuring and building ORB_SLAM2 ..."
+
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make -j
+
+```
+
 
