@@ -220,7 +220,11 @@
         mTrackingState = 0;
 ```
 
-### 4. 
+### 4. 设置进程间的指针
+
+目的是为了使各个进程之间能够互相访问和交互
+
+* 设置 mpTracker, mpLocalMapper 和 mpLoopCloser 三个进程之间的指针
 
 ```c++
         // 设置进程间的指针, 使它们能够相互访问和交互
@@ -236,6 +240,8 @@
         mpLoopCloser->SetTracker(mpTracker);
         mpLoopCloser->SetLocalMapper(mpLocalMapper);
 ```
+
+* 同理 在初始化可视化器 Viewer 部分的代码中, 也有类似的操作, 目的是为了让 mpTracker 能够调用 mpViewer 中的函数或使用其数据
 
 ```c++
             // 设置追踪器的 Viewer
