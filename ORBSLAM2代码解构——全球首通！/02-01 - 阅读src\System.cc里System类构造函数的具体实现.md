@@ -190,6 +190,7 @@
         std::thread* mptViewer;
 ```
 
+
 ```c++
         // 追踪状态标志
         // Tracking state
@@ -200,3 +201,7 @@
         std::mutex mMutexState;
 ```
 
+```c++
+        // 初始化 mTrackingState 的值, 直接设置为0, 只是为了避免CLion的警告提示
+        mTrackingState = 0;
+```
