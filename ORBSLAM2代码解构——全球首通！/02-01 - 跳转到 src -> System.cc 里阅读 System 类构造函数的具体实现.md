@@ -223,7 +223,9 @@
 ### 4. 
 
 ```c++
-        // 设置进程间的指针
+        // 设置进程间的指针, 使它们能够相互访问和交互
+        // 举例来说, mpTracker 需要访问 mpLocalMapper, 因此需要设置 mpTracker 对象的内部指针, 指向 mpLocalMapper
+        // 从而使得 mpTracker 可以调用 mpLocalMapper 中的函数或使用其数据
         // Set pointers between threads
         mpTracker->SetLocalMapper(mpLocalMapper);
         mpTracker->SetLoopClosing(mpLoopCloser);
@@ -233,6 +235,59 @@
 
         mpLoopCloser->SetTracker(mpTracker);
         mpLoopCloser->SetLocalMapper(mpLocalMapper);
+```
+
+```c++
+            // 设置追踪器的 Viewer
+            mpTracker->SetViewer(mpViewer);
+```
+
+``c++
+    void SetLocalMapper(LocalMapping* pLocalMapper);
+    void SetLoopClosing(LoopClosing* pLoopClosing);
+    void SetViewer(Viewer* pViewer);
+    
+void Tracking::SetViewer(Viewer *pViewer)
+{
+    mpViewer=pViewer;
+}
+void Tracking::SetLocalMapper(LocalMapping *pLocalMapper)
+{
+    mpLocalMapper=pLocalMapper;
+}
+void Tracking::SetLoopClosing(LoopClosing *pLoopClosing)
+{
+    mpLoopClosing=pLoopClosing;
+}
+
+
+    void SetLoopCloser(LoopClosing* pLoopCloser);
+
+    void SetTracker(Tracking* pTracker);
+    
+void LocalMapping::SetLoopCloser(LoopClosing* pLoopCloser)
+{
+    mpLoopCloser = pLoopCloser;
+}
+
+void LocalMapping::SetTracker(Tracking *pTracker)
+{
+    mpTracker=pTracker;
+}
+
+
+    void SetTracker(Tracking* pTracker);
+
+    void SetLocalMapper(LocalMapping* pLocalMapper);
+void LoopClosing::SetTracker(Tracking *pTracker)
+{
+    mpTracker=pTracker;
+}
+
+void LoopClosing::SetLocalMapper(LocalMapping *pLocalMapper)
+{
+    mpLocalMapper=pLocalMapper;
+}
 ```
 
 
