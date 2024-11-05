@@ -205,7 +205,10 @@ void LoadImages(const string &strPathToSequence, vector<string> &vstrImageFilena
 因此我们关注的重点是在这个文件内, 调用了哪些在其他文件内的函数, 以及这些函数构造以及具体实现是哪些文件写的
 
 
-## 在 moni_kitti.cc 中, 所调用的来自其他文件的函数
+## 需要进行跳转阅读的位置
+
+
+在 moni_kitti.cc 中, 所调用的来自其他文件的函数
 
 
 ### 1. 初始化 SLAM 系统
