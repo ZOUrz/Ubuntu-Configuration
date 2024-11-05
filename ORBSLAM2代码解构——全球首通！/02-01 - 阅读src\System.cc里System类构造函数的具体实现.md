@@ -37,7 +37,15 @@
         mbActivateLocalizationMode(false), mbDeactivateLocalizationMode(false)
 ```
 
-其中, mSensor, mpViewer, mbReset, mbActivateLocalizationMode, mbDeactivateLocalizationMode 是 System 类的成员变量
+其中, 变量
+
+* mSensor
+* mpViewer
+* mbReset
+* mbActivateLocalizationMode
+* mbDeactivateLocalizationMode
+
+是 System 类的成员变量
 
 上述提到的部分成员变量是在 include/System.h中定义的
 
