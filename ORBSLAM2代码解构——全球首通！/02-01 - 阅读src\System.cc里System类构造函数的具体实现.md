@@ -134,7 +134,21 @@
         }
 ```
 
-其中, mpVocabulary, mpKeyFrameDatabase, mpMap, mpFrameDrawer, mpMapDrawer, mpTracker, mpLocalMapper, mptLocalMapping, mpLoopCloser, mptLoopClosing 和 mptViewer 是在 include/System.h 中定义的
+其中, 变量
+
+* mpVocabulary
+* mpKeyFrameDatabase
+* mpMap
+* mpFrameDrawer
+* mpMapDrawer
+* mpTracker
+* mpLocalMapper
+* mptLocalMapping
+* mpLoopCloser
+* mptLoopClosing
+* mptViewer
+
+是在 include/System.h 中定义的
 
 ```c++
         // 一个指向ORB字典的指针
