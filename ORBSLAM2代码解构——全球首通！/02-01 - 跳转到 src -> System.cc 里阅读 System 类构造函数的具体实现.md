@@ -248,11 +248,31 @@
             mpTracker->SetViewer(mpViewer);
 ```
 
-``c++
+上述的函数可以在各自的头文件中中找到它们的声明
+
+  * include/Tracking.h
+```c++
     void SetLocalMapper(LocalMapping* pLocalMapper);
     void SetLoopClosing(LoopClosing* pLoopClosing);
     void SetViewer(Viewer* pViewer);
-    
+```
+  * include/LocalMapping.h
+```c++
+    void SetLoopCloser(LoopClosing* pLoopCloser);
+
+    void SetTracker(Tracking* pTracker);
+```
+  * include/LoopClosing.h
+```c++
+    void SetTracker(Tracking* pTracker);
+
+    void SetLocalMapper(LocalMapping* pLocalMapper);
+```
+
+可以在各自的源文件中找到它们的具体实现
+
+  * src/Tracking.cc
+```c++
 void Tracking::SetViewer(Viewer *pViewer)
 {
     mpViewer=pViewer;
@@ -265,12 +285,9 @@ void Tracking::SetLoopClosing(LoopClosing *pLoopClosing)
 {
     mpLoopClosing=pLoopClosing;
 }
-
-
-    void SetLoopCloser(LoopClosing* pLoopCloser);
-
-    void SetTracker(Tracking* pTracker);
-    
+```
+  * src/LocalMapping.cc
+```c++
 void LocalMapping::SetLoopCloser(LoopClosing* pLoopCloser)
 {
     mpLoopCloser = pLoopCloser;
@@ -280,11 +297,9 @@ void LocalMapping::SetTracker(Tracking *pTracker)
 {
     mpTracker=pTracker;
 }
-
-
-    void SetTracker(Tracking* pTracker);
-
-    void SetLocalMapper(LocalMapping* pLocalMapper);
+```
+  * src/LoopClosing.cc
+```c++
 void LoopClosing::SetTracker(Tracking *pTracker)
 {
     mpTracker=pTracker;
@@ -295,6 +310,8 @@ void LoopClosing::SetLocalMapper(LocalMapping *pLocalMapper)
     mpLocalMapper=pLocalMapper;
 }
 ```
+
+中找到它们的具体实现
 
 
 ## 构造函数的完整代码
