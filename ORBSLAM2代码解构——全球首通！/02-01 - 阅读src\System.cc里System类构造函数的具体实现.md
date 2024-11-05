@@ -190,3 +190,13 @@
         std::thread* mptViewer;
 ```
 
+```c++
+        // 追踪状态标志
+        // Tracking state
+        int mTrackingState;
+        
+        std::vector<MapPoint*> mTrackedMapPoints;
+        std::vector<cv::KeyPoint> mTrackedKeyPointsUn;
+        std::mutex mMutexState;
+```
+
