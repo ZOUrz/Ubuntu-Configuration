@@ -70,6 +70,7 @@ int main(int argc, char **argv)
 
     // Step 2 加载 SLAM 系统
     // Create SLAM system. It initializes all system threads and gets ready to process frames.
+    // 输入的参数如下: 词典文件路径, 配置文件路径, 传感器类型, 是否使用可视化界面
     ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true);
 
     // Step 3 运行前准备
@@ -212,6 +213,7 @@ void LoadImages(const string &strPathToSequence, vector<string> &vstrImageFilena
 ```c++
     // Step 2 加载 SLAM 系统
     // Create SLAM system. It initializes all system threads and gets ready to process frames.
+    // 输入的参数如下: 词典文件路径, 配置文件路径, 传感器类型, 是否使用可视化界面
     ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true);
 ```
 
