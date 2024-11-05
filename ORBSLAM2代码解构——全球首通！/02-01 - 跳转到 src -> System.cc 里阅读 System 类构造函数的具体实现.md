@@ -220,6 +220,21 @@
         mTrackingState = 0;
 ```
 
+### 4. 
+
+```c++
+        // 设置进程间的指针
+        // Set pointers between threads
+        mpTracker->SetLocalMapper(mpLocalMapper);
+        mpTracker->SetLoopClosing(mpLoopCloser);
+
+        mpLocalMapper->SetTracker(mpTracker);
+        mpLocalMapper->SetLoopCloser(mpLoopCloser);
+
+        mpLoopCloser->SetTracker(mpTracker);
+        mpLoopCloser->SetLocalMapper(mpLocalMapper);
+```
+
 
 ## 构造函数的完整代码
 
