@@ -326,30 +326,98 @@ System::System(const string &strVocFile, const string &strSettingsFile,
 
 ### 1. ORB 字典
 
+```c++
+        // 建立一个新的 ORB 字典
+        mpVocabulary = new ORBVocabulary();
+```
+
 
 ### 2. 关键帧数据库
+
+```c++
+        // Create KeyFrame Database
+        mpKeyFrameDatabase = new KeyFrameDatabase(*mpVocabulary);
+```
 
 
 ### 3. 地图(数据库)
 
+```c++
+        // Create the Map
+        mpMap = new Map();
+```
+
 
 ### 4. 帧绘制器
+
+```c++
+        // 这里的帧绘制器和地图绘制器将会被可视化的 Viewer 所使用
+        // Create Drawers. These are used by the Viewer
+        mpFrameDrawer = new FrameDrawer(mpMap);
+        mpMapDrawer = new MapDrawer(mpMap, strSettingsFile);
+```
 
 
 ### 5. 地图绘制器
 
+```c++
+        // 这里的帧绘制器和地图绘制器将会被可视化的 Viewer 所使用
+        // Create Drawers. These are used by the Viewer
+        mpFrameDrawer = new FrameDrawer(mpMap);
+        mpMapDrawer = new MapDrawer(mpMap, strSettingsFile);
+```
+
 
 ### 6. 追踪器
+
+```c++
+        // 在本主进程中初始化追踪器
+        // Initialize the Tracking thread
+        // (it will live in the main thread of execution, the one that called this constructor)
+        // Tracking 类的构造函数输入的参数如下: this, 字典, 帧绘制器, 地图绘制器, 地图, 关键帧地图, 配置文件路径, 传感器类型
+        // this 代表 System 类的当前对象指针
+        // 其作用为, Tracking 类的构造函数中的 pSys 参数会接收到 this，也就是当前 System 对象的指针
+        // 通过将 this 作为参数传递给 Tracking，能获得 System 类实例的指针，从而可以在 Tracking 类的内部使用它
+        mpTracker = new Tracking(this, mpVocabulary, mpFrameDrawer, mpMapDrawer,
+                                 mpMap, mpKeyFrameDatabase, strSettingsFile, mSensor);
+```
 
 
 ### 7. 局部建图器
 
+```c++
+        // 初始化局部建图器并运行局部建图线程
+        // Initialize the Local Mapping thread and launch
+        mpLocalMapper = new LocalMapping(mpMap, mSensor==MONOCULAR);
+        mptLocalMapping = new thread(&ORB_SLAM2::LocalMapping::Run,mpLocalMapper);
+```
+
 
 ### 8. 回环检测器
+
+```c++
+        // 初始化回环检测器并运行回环检测线程
+        // Initialize the Loop Closing thread and launch
+        // LoopClosing 类的构造函数输入的参数如下: 地图, 关键帧数据库, ORB 字典, 当前的传感器是否是单目
+        mpLoopCloser = new LoopClosing(mpMap, mpKeyFrameDatabase, mpVocabulary, mSensor!=MONOCULAR);
+        mptLoopClosing = new thread(&ORB_SLAM2::LoopClosing::Run, mpLoopCloser);
+```
 
 
 ### 9. 可视化器
 
-
+```c++
+        // Initialize the Viewer thread and launch
+        // 如果指定需要进行可视化, 则运行可视化部分
+        if(bUseViewer)
+        {
+            // 初始化 Viewer 并运行 Viewer线程
+            // Viewer 类的构造函数输入的参数如下: this, 帧绘制器, 地图绘制器, 追踪器, 配置文件路径
+            mpViewer = new Viewer(this, mpFrameDrawer, mpMapDrawer, mpTracker, strSettingsFile);
+            mptViewer = new thread(&Viewer::Run, mpViewer);
+            // 设置追踪器的 Viewer
+            mpTracker->SetViewer(mpViewer);
+        }
+```
 
 
