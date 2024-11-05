@@ -3,9 +3,7 @@
 主要阅读该文件中 **System 类的构造函数**
 
 
-## 重点代码解析
-
-### 1. 部分成员变量的初始化
+##  部分成员变量的初始化
 
 ```c++
     // 系统的构造函数, 将会启动其他线程
@@ -22,7 +20,7 @@
 其中, mSensor, mpViewer, mbReset, mbActivateLocalizationMode, mbDeactivateLocalizationMode 是 System 类的成员变量
 
 
-#### ORBSLAM2中变量遵循的命名规则
+### ORBSLAM2中变量遵循的命名规则
 
 遵循的命名规则也被称作**匈牙利命名法**
 
