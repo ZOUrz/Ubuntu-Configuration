@@ -190,6 +190,16 @@
         std::thread* mptViewer;
 ```
 
+### 3. 余下没有初始化的成员变量
+
+在 include/System.h 中还有
+
+* mTrackingState
+* mTrackedMapPoints
+* mTrackedKeyPointsUn
+* mMutexState
+* 
+这四个成员变量没有在构造函数中进行初始化, 后续用到它们的时候会再提一下
 
 ```c++
         // 追踪状态标志
@@ -200,6 +210,10 @@
         std::vector<cv::KeyPoint> mTrackedKeyPointsUn;
         std::mutex mMutexState;
 ```
+
+不过在CLion中会出现警告 System 类的构造函数中没有初始化 mTrackingState 的提示, 这个成员变量代表追踪器的状态, 输出的值为 2 (目前不知道数值的具体意义)
+
+如果不想出现这个警告, 可以在构造函数最后加上以下代码, 不会影响代码正常运行
 
 ```c++
         // 初始化 mTrackingState 的值, 直接设置为0, 只是为了避免CLion的警告提示
