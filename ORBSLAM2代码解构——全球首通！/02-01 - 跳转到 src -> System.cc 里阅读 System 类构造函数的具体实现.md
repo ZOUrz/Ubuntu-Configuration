@@ -317,3 +317,10 @@ System::System(const string &strVocFile, const string &strSettingsFile,
 
 }
 ```
+
+
+## 需要进行跳转阅读的位置
+
+在 System.cc 文件的 System 类构造函数中, 所调用的来自其他文件所定义的类
+
+### 1.
