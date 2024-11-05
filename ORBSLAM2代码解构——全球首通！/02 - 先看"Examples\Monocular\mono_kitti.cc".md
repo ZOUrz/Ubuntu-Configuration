@@ -219,8 +219,8 @@ void LoadImages(const string &strPathToSequence, vector<string> &vstrImageFilena
 
 ```c++
         // 构造函数, 用来初始化整个系统
-        // 第一个System是类名, 表示这是ORB_SLAM2::System类的构造函数
-        // 第二个System是构造函数的名称, 必须与类名相同
+        // 第一个 System 是类名, 表示这是 ORB_SLAM2::System 类的构造函数
+        // 第二个 System 是构造函数的名称, 必须与类名相同
         // 构造函数的参数如下: 词典文件路径, 配置文件路径, 传感器类型, 是否使用可视化界面
         // Initialize the SLAM system. It launches the Local Mapping, Loop Closing and Viewer threads.
         System(const string &strVocFile, const string &strSettingsFile,
