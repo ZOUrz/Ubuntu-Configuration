@@ -259,13 +259,11 @@
   * include/LocalMapping.h
 ```c++
     void SetLoopCloser(LoopClosing* pLoopCloser);
-
     void SetTracker(Tracking* pTracker);
 ```
   * include/LoopClosing.h
 ```c++
     void SetTracker(Tracking* pTracker);
-
     void SetLocalMapper(LocalMapping* pLocalMapper);
 ```
 
@@ -292,7 +290,6 @@ void LocalMapping::SetLoopCloser(LoopClosing* pLoopCloser)
 {
     mpLoopCloser = pLoopCloser;
 }
-
 void LocalMapping::SetTracker(Tracking *pTracker)
 {
     mpTracker=pTracker;
@@ -304,7 +301,6 @@ void LoopClosing::SetTracker(Tracking *pTracker)
 {
     mpTracker=pTracker;
 }
-
 void LoopClosing::SetLocalMapper(LocalMapping *pLocalMapper)
 {
     mpLocalMapper=pLocalMapper;
