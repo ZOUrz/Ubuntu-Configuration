@@ -75,7 +75,7 @@
 ### 2. 构造函数体内的部分成员变量初始化
 
 ```c++
-      // 建立一个新的ORB字典
+      // 建立一个新的 ORB 字典
         mpVocabulary = new ORBVocabulary();
         /**
         bool bVocLoad = mpVocabulary->loadFromTextFile(strVocFile);
@@ -103,7 +103,7 @@
         // 在本主进程中初始化追踪器
         // Initialize the Tracking thread
         // (it will live in the main thread of execution, the one that called this constructor)
-        // Tracking类的构造函数输入的参数如下: this, 字典, 帧绘制器, 地图绘制器, 地图, 关键帧地图, 配置文件路径, 传感器类型
+        // Tracking 类的构造函数输入的参数如下: this, 字典, 帧绘制器, 地图绘制器, 地图, 关键帧地图, 配置文件路径, 传感器类型
         // this 代表 System 类的当前对象指针
         // 其作用为, Tracking 类的构造函数中的 pSys 参数会接收到 this，也就是当前 System 对象的指针
         // 通过将 this 作为参数传递给 Tracking，能获得 System 类实例的指针，从而可以在 Tracking 类的内部使用它
@@ -117,7 +117,7 @@
 
         // 初始化回环检测器并运行回环检测线程
         // Initialize the Loop Closing thread and launch
-        // LoopClosing类的构造函数输入的参数如下: 地图, 关键帧数据库, ORB字典, 当前的传感器是否是单目
+        // LoopClosing 类的构造函数输入的参数如下: 地图, 关键帧数据库, ORB 字典, 当前的传感器是否是单目
         mpLoopCloser = new LoopClosing(mpMap, mpKeyFrameDatabase, mpVocabulary, mSensor!=MONOCULAR);
         mptLoopClosing = new thread(&ORB_SLAM2::LoopClosing::Run, mpLoopCloser);
 
@@ -126,7 +126,7 @@
         if(bUseViewer)
         {
             // 初始化 Viewer 并运行 Viewer线程
-            // Viewer类的构造函数输入的参数如下: this, 帧绘制器, 地图绘制器, 追踪器, 配置文件路径
+            // Viewer 类的构造函数输入的参数如下: this, 帧绘制器, 地图绘制器, 追踪器, 配置文件路径
             mpViewer = new Viewer(this, mpFrameDrawer, mpMapDrawer, mpTracker, strSettingsFile);
             mptViewer = new thread(&Viewer::Run, mpViewer);
             // 设置追踪器的 Viewer
@@ -151,7 +151,7 @@
 是在 include/System.h 中定义的
 
 ```c++
-        // 一个指向ORB字典的指针
+        // 一个指向 ORB 字典的指针
         // ORB vocabulary used for place recognition and feature matching.
         ORBVocabulary* mpVocabulary;
 
@@ -323,4 +323,33 @@ System::System(const string &strVocFile, const string &strSettingsFile,
 
 在 System.cc 文件的 System 类构造函数中, 所调用的来自其他文件所定义的类
 
-### 1.
+
+### 1. ORB 字典
+
+
+### 2. 关键帧数据库
+
+
+### 3. 地图(数据库)
+
+
+### 4. 帧绘制器
+
+
+### 5. 地图绘制器
+
+
+### 6. 追踪器
+
+
+### 7. 局部建图器
+
+
+### 8. 回环检测器
+
+
+### 9. 可视化器
+
+
+
+
