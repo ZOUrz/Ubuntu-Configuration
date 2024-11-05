@@ -1,20 +1,10 @@
 # Examples/Monocular/mono_kitti.cc
 
+
 该文件是 **SuperPoint+ORBSLAM2** 系统在 **KITTI** 数据集上使用单目传感器进行定位的整体流程
 
-整个文件内的代码比较简单, 因为这只是一个将 SLAM 系统进行定位的步骤串起来的流程文件
 
-因此我们关注的重点是在这个文件内, 调用了哪些在其他文件内的函数, 以及这些函数构造以及具体实现是哪些文件写的
-
-### 1. 初始化SLAM系统
-
-```c++
-    // Step 2 加载 SLAM 系统
-    // Create SLAM system. It initializes all system threads and gets ready to process frames.
-    ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true);
-```
-
-
+## 完整代码
 
 ```c++
 /**
@@ -207,4 +197,61 @@ void LoadImages(const string &strPathToSequence, vector<string> &vstrImageFilena
     }
 }
 
+```
+
+整个文件内的代码比较简单, 因为这只是一个将 SLAM 系统进行定位的步骤串起来的流程文件
+
+因此我们关注的重点是在这个文件内, 调用了哪些在其他文件内的函数, 以及这些函数构造以及具体实现是哪些文件写的
+
+
+## 所调用的其他文件里的函数
+
+
+### 1. 初始化 SLAM 系统
+
+```c++
+    // Step 2 加载 SLAM 系统
+    // Create SLAM system. It initializes all system threads and gets ready to process frames.
+    ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true);
+```
+
+该 System 类的构造函数是在 **include/System.h** 里声明的
+
+```c++
+        // 构造函数, 用来初始化整个系统
+        // 第一个System是类名, 表示这是ORB_SLAM2::System类的构造函数
+        // 第二个System是构造函数的名称, 必须与类名相同
+        // 构造函数的参数如下: 词典文件路径, 配置文件路径, 传感器类型, 是否使用可视化界面
+        // Initialize the SLAM system. It launches the Local Mapping, Loop Closing and Viewer threads.
+        System(const string &strVocFile, const string &strSettingsFile,
+               eSensor sensor, bool bUseViewer = true);
+```
+
+具体实现是在 **src/System.cc** 里, 所以需要去到该文件里面看看 System 类的构造函数的具体实现
+
+
+### 2.  对每一帧图像进行追踪
+
+```c++
+        // Step 4.4 追踪当前图像
+        // Pass the image to the SLAM system
+        SLAM.TrackMonocular(im,tframe);
+```
+
+
+### 3.  终止 SLAM 系统
+
+```c++
+    // Step 5 如果所有图像都追踪完毕, 就终止当前的 SLAM 系统
+    // Stop all threads
+    SLAM.Shutdown();
+```
+
+
+### 4. 保存轨迹
+
+```c++
+    // Step 7 保存 TUM 格式的相机轨迹
+    // Save camera trajectory
+    SLAM.SaveKeyFrameTrajectoryTUM("KeyFrameTrajectory.txt"); 
 ```
