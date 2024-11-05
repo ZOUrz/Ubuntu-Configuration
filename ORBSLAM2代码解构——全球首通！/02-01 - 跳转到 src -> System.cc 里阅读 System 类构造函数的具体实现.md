@@ -219,3 +219,10 @@
         // 初始化 mTrackingState 的值, 直接设置为0, 只是为了避免CLion的警告提示
         mTrackingState = 0;
 ```
+
+
+## 构造函数的完整代码
+
+仅包含了 System 类的构造函数的具体实现代码, 在 System.cc 里面还有很多代码待我们后续SLAM的工作流程走到后再进行阅读
+
+
