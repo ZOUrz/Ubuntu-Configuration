@@ -198,7 +198,7 @@
 * mTrackedMapPoints
 * mTrackedKeyPointsUn
 * mMutexState
-* 
+   
 这四个成员变量没有在构造函数中进行初始化, 后续用到它们的时候会再提一下
 
 ```c++
