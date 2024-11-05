@@ -126,5 +126,5 @@
         }
 ```
 
-
+其中, mpVocabulary, mpKeyFrameDatabase, mpMap, mpFrameDrawer, mpMapDrawer, mpTracker, mpLocalMapper, mptLocalMapping, mpLoopCloser, mptLoopClosing 和 mptViewer 是在 include/System.h 中定义的
 
