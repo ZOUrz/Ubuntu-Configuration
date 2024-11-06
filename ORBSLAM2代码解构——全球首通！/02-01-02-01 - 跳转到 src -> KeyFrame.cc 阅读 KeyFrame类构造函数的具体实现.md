@@ -1,6 +1,14 @@
 # src/KeyFrame.cc
 
-同样地
+与 src/KeyFrameDatabase.cc类似, KeyFrame 类构造函数的代码比较简单, 重点是其成员变量的初始化列表中使用了大量来自其他文件的类
+
+
+## 重点代码逐行解析
+
+
+### src/KeyFrame.cc代码
+
+无需多言
 
 ```c++
 KeyFrame::KeyFrame(Frame &F, Map *pMap, KeyFrameDatabase *pKFDB):
@@ -37,6 +45,11 @@ KeyFrame::KeyFrame(Frame &F, Map *pMap, KeyFrameDatabase *pKFDB):
         SetPose(F.mTcw);
     }
 ```
+
+
+### include/KeyFrame.h
+
+上面所出现的成员变量均在 include/KeyFrame.h 中定义
 
 ```c++
 // 关键帧类
@@ -168,3 +181,9 @@ KeyFrame::KeyFrame(Frame &F, Map *pMap, KeyFrameDatabase *pKFDB):
 
     };
 ```
+
+## 需要进行跳转阅读的位置
+
+### 1. Frame 类构造函数
+
+
