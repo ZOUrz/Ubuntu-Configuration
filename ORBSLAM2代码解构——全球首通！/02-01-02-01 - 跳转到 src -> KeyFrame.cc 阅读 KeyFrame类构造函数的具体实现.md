@@ -188,6 +188,8 @@
 
 ### 1. Frame 类构造函数
 
+位于 Frame.cc 内
+
 ```c++
     KeyFrame::KeyFrame(Frame &F, Map *pMap, KeyFrameDatabase *pKFDB):
 ```
@@ -195,12 +197,16 @@
 
 ### 2. Map 类构造函数
 
+位于 Frame.cc 内
+
 ```c++
     KeyFrame::KeyFrame(Frame &F, Map *pMap, KeyFrameDatabase *pKFDB):
 ```
 
 
 ### 3. MapPoint 类构造函数
+
+位于 Frame.h 内
 
 ```c++
         // MapPoints associated to keypoints
