@@ -13,3 +13,29 @@
 总结：
 private：仅允许类内部访问。
 protected：允许类内部和派生类访问，但不允许外部访问。
+
+```c++
+    // 构造函数
+    KeyFrameDatabase::KeyFrameDatabase (const ORBVocabulary &voc):
+        mpVoc(&voc)
+    {
+        // 数据库的主要内容
+        mvInvertedFile.resize(voc.size());
+    }
+```
+
+```c++
+        // 构造函数
+        explicit KeyFrameDatabase(const ORBVocabulary &voc);
+```
+
+```c++
+        // 预先训练好的词典
+        // Associated vocabulary
+        const ORBVocabulary* mpVoc;
+
+        // 倒排索引, mvInvertedFile[i] 表示包含了第 i 个 word id 的所有关键帧
+        // Inverted file
+        std::vector<std::list<KeyFrame*> > mvInvertedFile;
+```
+
