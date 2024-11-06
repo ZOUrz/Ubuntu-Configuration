@@ -20,8 +20,11 @@ KeyFrame::KeyFrame(Frame &F, Map *pMap, KeyFrameDatabase *pKFDB):
         mpORBvocabulary(F.mpORBvocabulary), mbFirstConnection(true), mpParent(nullptr), mbNotErase(false),
         mbToBeErased(false), mbBad(false), mHalfBaseline(F.mb/2), mpMap(pMap)
     {
+        // 获取 ID
         mnId=nNextId++;
 
+        // 根据指定的普通帧, 初始化用于加速匹配的网格对象信息
+        // 其实就是把每个网格中有的特征点的索引复制过来
         mGrid.resize(mnGridCols);
         for(int i=0; i<mnGridCols;i++)
         {
@@ -30,6 +33,7 @@ KeyFrame::KeyFrame(Frame &F, Map *pMap, KeyFrameDatabase *pKFDB):
                 mGrid[i][j] = F.mGrid[i][j];
         }
 
+        // 设置当前关键帧的位姿
         SetPose(F.mTcw);
     }
 ```
