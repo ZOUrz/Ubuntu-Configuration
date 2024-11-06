@@ -1,18 +1,9 @@
 # src/KeyFrameDatabase
 
-在C++中，protected和private是访问控制修饰符，用来控制类成员（变量、函数等）对外部代码的可访问性。它们的区别如下：
+KeyFrameDatabase 类的构造函数就几行代码, 难点在于其使用的成员变量 mvInvertedFile 的数据类型是来由其他文件中定义的
 
-1. private（私有成员）
-访问限制：private成员只能在类的内部被访问，无法在类的外部或继承类中访问。
-用途：通常用来封装类的内部实现，避免外部直接访问和修改，确保数据的安全性和完整性。
 
-2. protected（受保护成员）
-访问限制：protected成员只能在类的内部和派生类中访问，但无法在类的外部直接访问。
-用途：允许派生类访问基类的成员，适用于那些派生类可能需要访问的内部数据，但不希望外部直接访问。
-
-总结：
-private：仅允许类内部访问。
-protected：允许类内部和派生类访问，但不允许外部访问。
+## 重点代码逐行解析
 
 ```c++
     // 构造函数
@@ -23,6 +14,8 @@ protected：允许类内部和派生类访问，但不允许外部访问。
         mvInvertedFile.resize(voc.size());
     }
 ```
+
+其中, 构造函数以及其成员变量是在 include/KeyFrameDatabase.h 中定义的
 
 ```c++
         // 构造函数
@@ -36,6 +29,27 @@ protected：允许类内部和派生类访问，但不允许外部访问。
 
         // 倒排索引, mvInvertedFile[i] 表示包含了第 i 个 word id 的所有关键帧
         // Inverted file
+        std::vector<std::list<KeyFrame*>> mvInvertedFile;
+```
+
+在 KeyFrameDatabase.h 中, 其成员变量被设为 protected, 以下是 protected 和 private的区别:
+
+* 在 C++ 中，protected 和 private 是访问控制修饰符，用来控制类成员(变量, 函数等)对外部代码的可访问性, 它们的区别如下：
+
+    * 1. private (私有成员)
+        * 访问限制: private 成员只能在类的内部被访问, 无法在类的外部或继承类中访问
+    * 2. protected(受保护成员)
+        * 访问限制: protected成员只能在类的内部和派生类中访问, 但无法在类的外部直接访问
+
+
+## 需要进行跳转阅读的位置
+
+### 1. mvInvertedFile[i]
+
+```c++
+        // 倒排索引, mvInvertedFile[i] 表示包含了第 i 个 word id 的所有关键帧
+        // Inverted file
         std::vector<std::list<KeyFrame*> > mvInvertedFile;
 ```
 
+其中, std::vector<std::list<KeyFrame*>> 是一个 vector 容器, 其每个元素都是一个 list, 而这个 list 存储的是指向 KeyFrame 类型对象的指针
