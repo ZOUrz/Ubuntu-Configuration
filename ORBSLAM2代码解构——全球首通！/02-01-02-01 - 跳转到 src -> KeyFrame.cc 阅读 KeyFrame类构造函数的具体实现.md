@@ -182,8 +182,29 @@
     };
 ```
 
+
 ## 需要进行跳转阅读的位置
 
+
 ### 1. Frame 类构造函数
+
+```c++
+    KeyFrame::KeyFrame(Frame &F, Map *pMap, KeyFrameDatabase *pKFDB):
+```
+
+
+### 2. Map 类构造函数
+
+```c++
+    KeyFrame::KeyFrame(Frame &F, Map *pMap, KeyFrameDatabase *pKFDB):
+```
+
+
+### 3. MapPoint 类构造函数
+
+```c++
+        // MapPoints associated to keypoints
+        std::vector<MapPoint*> mvpMapPoints;
+```
 
 
