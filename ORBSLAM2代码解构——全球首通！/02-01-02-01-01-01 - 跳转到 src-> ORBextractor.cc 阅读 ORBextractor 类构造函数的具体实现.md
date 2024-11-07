@@ -1,5 +1,14 @@
+# src/ORBextractor.cc
+
+ORBextractor 类的构造函数比较简单, 主要是为提取特征点前做的准备工作, 包括计算金字塔的缩放系数, 金字塔每层应当分配的特征点, 以及用于计算特征点方向的圆等等
 
 
+## 重点代码逐行解析
+
+
+### src/ORBextractor.cc
+
+无需多言
 
 ```c++
     // 特征点提取器的构造函数
@@ -105,6 +114,11 @@
         }
     }
 ```
+
+
+### include/ORBextractor.h
+
+上面出现的成员变量均在 include/ORBextractor.h 中定义
 
 ```c++
     // ORB特征点提取器
