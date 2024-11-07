@@ -44,6 +44,29 @@
         // 设置当前关键帧的位姿
         SetPose(F.mTcw);
     }
+
+
+    // 设置当前关键帧的位姿
+    void KeyFrame::SetPose(const cv::Mat &Tcw_)
+    {
+        std::unique_lock<std::mutex> lock(mMutexPose);
+        Tcw_.copyTo(Tcw);
+        cv::Mat Rcw = Tcw.rowRange(0,3).colRange(0,3);
+        cv::Mat tcw = Tcw.rowRange(0,3).col(3);
+        cv::Mat Rwc = Rcw.t();
+        // 和普通帧中进行的操作相同
+        Ow = -Rwc*tcw;
+        // 计算当前位姿的逆
+        Twc = cv::Mat::eye(4,4,Tcw.type());
+        Rwc.copyTo(Twc.rowRange(0,3).colRange(0,3));
+        Ow.copyTo(Twc.rowRange(0,3).col(3));
+        // center 为相机坐标系(左目)下, 立体相机中心的坐标
+        // 立体相机中心点坐标与左目相机坐标之间只是在 x 轴上相差 mHalfBaseline
+        // 因此可以看出, 立体相机中两个摄像头的连线为 x 轴, 正方向为左目相机指向右目相机(齐次坐标)
+        cv::Mat center = (cv::Mat_<float>(4,1) << mHalfBaseline, 0 , 0, 1);
+        // 世界坐标系下, 左目相机中心到立体相机中心的向量, 方向由左目相机指向立体相机中心
+        Cw = Twc*center;
+    }
 ```
 
 
@@ -52,12 +75,17 @@
 上面所出现的成员变量均在 include/KeyFrame.h 中定义
 
 ```c++
-// 关键帧类
+    // 关键帧类
     class KeyFrame
     {
     public:
         // 构造函数
         KeyFrame(Frame &F, Map* pMap, KeyFrameDatabase* pKFDB);
+
+        // Pose functions
+        // 这里的 set, get 需要用到锁
+        // 设置当前关键帧的位姿
+        void SetPose(const cv::Mat &Tcw);
 
 
         // The following variables are accessed from only 1 thread or never change (no mutex needed).
@@ -136,8 +164,6 @@
         // NodeId 表示节点 id, std::vector<unsigned int> 中实际存的是该节点 id 下所有特征点在图像中的索引
         DBoW3::FeatureVector mFeatVec;
 
-        // Grid over the image to speed up feature matching
-        std::vector< std::vector <std::vector<size_t>>> mGrid;  // 可以认为是二维的, 第三维的 vector 中保存这个网格内特征点的索引
 
         // Scale
         const int mnScaleLevels;
@@ -157,6 +183,12 @@
 
     // The following variables need to be accessed through a mutex to be thread safe.
     protected:
+        // SE3 Pose and camera center
+        cv::Mat Tcw;  // 当前相机的位姿, 世界坐标系到相机坐标系
+        cv::Mat Twc;  // 当前相机位姿的逆
+        cv::Mat Ow;  // 相机光心(左目)在世界坐标系下的坐标, 这里和普通帧中的定义是一样的
+
+        cv::Mat Cw; // Stereo middel point. Only for visualization
 
         // MapPoints associated to keypoints
         std::vector<MapPoint*> mvpMapPoints;
@@ -166,9 +198,16 @@
         // 词袋对象
         ORBVocabulary* mpORBvocabulary;
 
+        // Grid over the image to speed up feature matching
+        std::vector< std::vector <std::vector<size_t>>> mGrid;  // 可以认为是二维的, 第三维的 vector 中保存这个网格内特征点的索引
+
+
         // Spanning Tree and Loop Edges
         bool mbFirstConnection;  // 是否是第一次生成树
         KeyFrame* mpParent;  // 当前关键帧的父关键帧(共视程度最高的)
+        // std::set 是集合, 相比 vector, 进行插入数据这样的操作时会自动排序
+        std::set<KeyFrame*> mspChildrens;
+        std::set<KeyFrame*> mspLoopEdges;
 
         // Bad flags
         bool mbNotErase;  // 当前关键帧已经和其他的关键帧形成了回环关系, 因此在各种优化的过程中不应该被删除
@@ -179,6 +218,8 @@
 
         Map* mpMap;
 
+        // 在对位姿进行操作时相关的互斥锁
+        std::mutex mMutexPose;
     };
 ```
 
