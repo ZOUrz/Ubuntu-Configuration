@@ -188,11 +188,7 @@
      
         ```c++
                 // Step 5.5 追踪完成, 停止当前帧的图像计时, 并计算追踪耗时
-                #ifdef COMPILEDWITHC14
                 std::chrono::steady_clock::time_point t2 = std::chrono::steady_clock::now();
-                #else
-                std::chrono::monotonic_clock::time_point t2 = std::chrono::monotonic_clock::now();
-                #endif
         
                 double ttrack= std::chrono::duration_cast<std::chrono::duration<double> >(t2 - t1).count();
         
