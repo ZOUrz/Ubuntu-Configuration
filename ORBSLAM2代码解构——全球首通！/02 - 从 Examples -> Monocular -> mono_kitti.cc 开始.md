@@ -321,9 +321,9 @@
 
 ## 重头开始构建 ORBSLAM2
 
-如果需要从零开始构建 `ORBSLAM2` 系统, 就先写到"加载 `SLAM` 系统那一步即可" 
+如果需要从零开始构建 `ORBSLAM2` 系统, 就先写到 **"加载 `SLAM` 系统那一步即可"** 
 
-- ### mono_kitti.cc (build from scratch)
+- ### mono_kitti.cc (Build from scratch)
 
 ```c++
     // Step 5 如果所有图像都追踪完毕, 就终止当前的 SLAM 系统
