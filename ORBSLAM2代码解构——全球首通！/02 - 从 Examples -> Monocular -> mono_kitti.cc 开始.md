@@ -5,6 +5,61 @@
 我们先从这个文件开始阅读
 
 
+## 重点代码逐行解析
+
+
+### 1. LoadImages
+
+获取图像序列中每一张图像的路径和时间戳
+
+```c++
+// 获取图像序列中每一张图像的路径和时间戳
+void LoadImages(const string &strPathToSequence, vector<string> &vstrImageFilenames, vector<double> &vTimestamps);
+```
+
+这行代码是 LoadImages 函数的声明, 因此这个函数的具体实现在文件最后面, 所以需要在文件开头进行函数的声明, 否则 main 函数里无法调用
+
+LoadImages 函数的具体实现:
+
+```
+// 获取图像序列中每一张图像的路径和时间戳
+void LoadImages(const string &strPathToSequence, vector<string> &vstrImageFilenames, vector<double> &vTimestamps)
+{
+    // Step 1 读取时间戳文件
+    ifstream fTimes;
+    string strPathTimeFile = strPathToSequence + "/times.txt";
+    fTimes.open(strPathTimeFile.c_str());
+    while(!fTimes.eof())
+    {
+        string s;
+        getline(fTimes,s);
+        // 当该行不为空时执行
+        if(!s.empty())
+        {
+            stringstream ss;
+            ss << s;
+            double t;
+            ss >> t;
+            // 保存时间戳
+            vTimestamps.push_back(t);
+        }
+    }
+
+    // Step 2 使用左目图像, 生成左目图像序列中每一张图像的文件名
+    string strPrefixLeft = strPathToSequence + "/image_0/";
+
+    //const int nTimes = vTimestamps.size();
+    const int nTimes = static_cast<int>(vTimestamps.size());
+    vstrImageFilenames.resize(nTimes);
+
+    for(int i=0; i<nTimes; i++)
+    {
+        stringstream ss;
+        ss << setfill('0') << setw(6) << i;
+        vstrImageFilenames[i] = strPrefixLeft + ss.str() + ".png";
+    }
+}
+```
 
 整个文件内的代码比较简单, 因为这只是一个将 SLAM 系统进行定位的步骤串起来的流程文件
 
