@@ -713,8 +713,88 @@
 
   - 完整代码
 
-```c++
-
-```
+  ```c++
+  
+  #include <fstream>
+  #include <iomanip>
+  #include <iostream>
+  #include <opencv2/core/core.hpp>
+  
+  #include "System.h"
+  
+  using namespace std;
+  
+  
+  // 获取图像序列中每一张图像的路径和时间戳
+  void LoadImages (const string &strPathToSequence, vector<string> &vstrImageFilenames, vector<double> &vTimestamps);
+  
+  
+  int main(int argc, char **argv)
+  {
+      // Step 1 检查输入参数个数是否足够
+      if(argc != 4)
+      {
+          cerr << endl << "Usage: ./mono_kitti path_to_vocabulary path_to_settings path_to_sequence" << endl;
+          return 1;
+      }
+  
+      // Step 2 加载图像
+      // Retrieve paths to images
+      // 图像序列的文件名, 字符串序列
+      vector<string> vstrImageFilenames;
+      // 时间戳
+      vector<double> vTimestamps;
+      LoadImages(string(argv[3]), vstrImageFilenames, vTimestamps);
+  
+      // 当前图像序列的图片数目
+      // int nImages = vstrImageFilenames.size();
+      int nImages = static_cast<int>(vstrImageFilenames.size());
+  
+      // Step 3 加载 SLAM 系统
+      // Create SLAM system. It initializes all system threads and gets ready to process frames.
+      // 输入的参数如下: 词典文件路径, 配置文件路径, 传感器类型, 是否使用可视化界面
+      ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true);
+  }
+  
+  
+  // 获取图像序列中每一张图像的路径和时间戳
+  void LoadImages(const string &strPathToSequence, vector<string> &vstrImageFilenames, vector<double> &vTimestamps)
+  {
+      // Step 1 读取时间戳文件
+      ifstream fTimes;
+      string strPathTimeFile = strPathToSequence + "/times.txt";
+      fTimes.open(strPathTimeFile.c_str());
+      while(!fTimes.eof())
+      {
+          string s;
+          getline(fTimes,s);
+          // 当该行不为空时执行
+          if(!s.empty())
+          {
+              stringstream ss;
+              ss << s;
+              double t;
+              ss >> t;
+              // 保存时间戳
+              vTimestamps.push_back(t);
+          }
+      }
+  
+      // Step 2 使用左目图像, 生成左目图像序列中每一张图像的文件名
+      string strPrefixLeft = strPathToSequence + "/image_0/";
+  
+      //const int nTimes = vTimestamps.size();
+      const int nTimes = static_cast<int>(vTimestamps.size());
+      vstrImageFilenames.resize(nTimes);
+  
+      for(int i=0; i<nTimes; i++)
+      {
+          stringstream ss;
+          ss << setfill('0') << setw(6) << i;
+          vstrImageFilenames[i] = strPrefixLeft + ss.str() + ".png";
+      }
+  }
+  
+  ```
 
 
