@@ -68,7 +68,40 @@
           bool mbDeactivateLocalizationMode;
   ```
 
-### 2. 构造函数体内的部分成员变量初始化
+- ### 2. 输出当前传感器类型
+
+  ```c++
+      cout << "Input sensor was set to: ";
+  
+      if(mSensor==MONOCULAR)
+          cout << "Monocular" << endl;
+      else if(mSensor==STEREO)
+          cout << "Stereo" << endl;
+      else if(mSensor==RGBD)
+          cout << "RGB-D" << endl;
+  ```
+
+- ### 3. 读取配置文件
+
+  - 先将配置文件的路径转换成字符串, 然后以只读的方式打开
+
+```c++
+    // Check settings file
+    // 先将配置文件的路径转换成字符串, 然后以只读的方式打开
+    cv::FileStorage fsSettings(strSettingsFile.c_str(), cv::FileStorage::READ);
+    // 如果打开失败, 则输出调试信息
+    if(!fsSettings.isOpened())
+    {
+      cerr << "Failed to open settings file at: " << strSettingsFile << endl;
+      // 然后退出
+      exit(-1);
+    }
+```
+
+
+
+
+
 
 ```c++
       // 建立一个新的 ORB 字典
