@@ -21,45 +21,45 @@
 
     - `LoadImages` 函数的具体实现:
 
-```c++
-// 获取图像序列中每一张图像的路径和时间戳
-void LoadImages(const string &strPathToSequence, vector<string> &vstrImageFilenames, vector<double> &vTimestamps)
-{
-    // Step 1 读取时间戳文件
-    ifstream fTimes;
-    string strPathTimeFile = strPathToSequence + "/times.txt";
-    fTimes.open(strPathTimeFile.c_str());
-    while(!fTimes.eof())
+    ```c++
+    // 获取图像序列中每一张图像的路径和时间戳
+    void LoadImages(const string &strPathToSequence, vector<string> &vstrImageFilenames, vector<double> &vTimestamps)
     {
-        string s;
-        getline(fTimes,s);
-        // 当该行不为空时执行
-        if(!s.empty())
+        // Step 1 读取时间戳文件
+        ifstream fTimes;
+        string strPathTimeFile = strPathToSequence + "/times.txt";
+        fTimes.open(strPathTimeFile.c_str());
+        while(!fTimes.eof())
+        {
+            string s;
+            getline(fTimes,s);
+            // 当该行不为空时执行
+            if(!s.empty())
+            {
+                stringstream ss;
+                ss << s;
+                double t;
+                ss >> t;
+                // 保存时间戳
+                vTimestamps.push_back(t);
+            }
+        }
+    
+        // Step 2 使用左目图像, 生成左目图像序列中每一张图像的文件名
+        string strPrefixLeft = strPathToSequence + "/image_0/";
+    
+        //const int nTimes = vTimestamps.size();
+        const int nTimes = static_cast<int>(vTimestamps.size());
+        vstrImageFilenames.resize(nTimes);
+    
+        for(int i=0; i<nTimes; i++)
         {
             stringstream ss;
-            ss << s;
-            double t;
-            ss >> t;
-            // 保存时间戳
-            vTimestamps.push_back(t);
+            ss << setfill('0') << setw(6) << i;
+            vstrImageFilenames[i] = strPrefixLeft + ss.str() + ".png";
         }
     }
-
-    // Step 2 使用左目图像, 生成左目图像序列中每一张图像的文件名
-    string strPrefixLeft = strPathToSequence + "/image_0/";
-
-    //const int nTimes = vTimestamps.size();
-    const int nTimes = static_cast<int>(vTimestamps.size());
-    vstrImageFilenames.resize(nTimes);
-
-    for(int i=0; i<nTimes; i++)
-    {
-        stringstream ss;
-        ss << setfill('0') << setw(6) << i;
-        vstrImageFilenames[i] = strPrefixLeft + ss.str() + ".png";
-    }
-}
-```
+    ```
 
 
 - ### 2. 输入参数检查
