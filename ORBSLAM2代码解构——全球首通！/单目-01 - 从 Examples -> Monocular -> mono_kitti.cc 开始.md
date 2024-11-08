@@ -496,9 +496,9 @@ include_directories(
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 
 # 创建一个名为${PROJECT_SOURCE_DIR}的共享库(SHARED表示生成动态链接库), 并将指定的源文件添加到库中
-add_library(${PROJECT_NAME} SHARED
-        src/System.cpp
-        src/KeyFrameDatabase.cpp
+# add_library(${PROJECT_NAME} SHARED
+        #src/System.cpp
+        #src/KeyFrameDatabase.cpp
         #src/Frame.cpp
         #src/ORBextractor.cpp
         #src/Tracking.cc
@@ -519,17 +519,17 @@ add_library(${PROJECT_NAME} SHARED
         #src/Sim3Solver.cc
         #src/Initializer.cc
         #src/Viewer.cc
-)
+#)
 
 # 指定${PROJECT_SOURCE_DIR}库链接的其他库
-target_link_libraries(${PROJECT_NAME}
-        ${OpenCV_LIBS}  # OpenCV库
-        ${EIGEN3_LIBS}  # Eigen3库
-        ${Pangolin_LIBRARIES}  # Pangolin库
+# target_link_libraries(${PROJECT_NAME}
+        #${OpenCV_LIBS}  # OpenCV库
+        #${EIGEN3_LIBS}  # Eigen3库
+        #${Pangolin_LIBRARIES}  # Pangolin库
         # 还链接了位于Thirdparty/DBoW2和Thirdparty/g2o的第三方库
-        ${PROJECT_SOURCE_DIR}/Thirdparty/DBoW3/lib/libDBoW3.so
+        #${PROJECT_SOURCE_DIR}/Thirdparty/DBoW3/lib/libDBoW3.so
         #${PROJECT_SOURCE_DIR}/Thirdparty/g2o/lib/libg2o.so
-)
+#)
 
 # Build examples
 
@@ -551,10 +551,8 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/Examples/Monocular)
 #add_executable(mono_tum Examples/Monocular/mono_tum.cc)
 #target_link_libraries(mono_tum ${PROJECT_NAME})
 add_executable(mono_kitti Examples/Monocular/mono_kitti.cpp)
-target_link_libraries(mono_kitti ${PROJECT_NAME})
+#target_link_libraries(mono_kitti ${PROJECT_NAME})
 #add_executable(mono_euroc Examples/Monocular/mono_euroc.cc)
 #target_link_libraries(mono_euroc ${PROJECT_NAME})
 
 ```
-
-    
