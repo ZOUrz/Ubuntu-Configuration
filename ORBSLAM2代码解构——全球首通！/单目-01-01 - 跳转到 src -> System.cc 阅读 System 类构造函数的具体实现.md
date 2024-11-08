@@ -125,6 +125,14 @@
           mpVocabulary->load(strVocFile);
   ```
 
+  - 其中, 成员变量 `mpVocabulary` 是在 `include/System.h` 中定义的
+ 
+  ```c++
+          // 一个指向 ORB 字典的指针
+          // ORB vocabulary used for place recognition and feature matching.
+          ORBVocabulary* mpVocabulary;
+  ```
+
 
 - ### 5. 创建关键帧数据库
 
@@ -242,9 +250,7 @@
 是在 include/System.h 中定义的
 
 ```c++
-        // 一个指向 ORB 字典的指针
-        // ORB vocabulary used for place recognition and feature matching.
-        ORBVocabulary* mpVocabulary;
+
 
         // 关键帧数据库的指针, 这个数据库用于重定位和回环检测
         // KeyFrame database for place recognition (relocalization and loop detection).
