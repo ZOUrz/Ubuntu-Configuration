@@ -61,6 +61,58 @@ void LoadImages(const string &strPathToSequence, vector<string> &vstrImageFilena
 }
 ```
 
+
+- ### 2. 输入参数检查
+
+    - 检查输入参数个数是否足够, 对于 `mono_kitti.cc` 来说, 在终端命令行输入的参数为
+
+    - ` ./mono_kitti 词典文件路径 配置文件路径 数据集路径`
+
+```c++
+    // Step 1 检查输入参数个数是否足够
+    if(argc != 4)
+    {
+        cerr << endl << "Usage: ./mono_kitti path_to_vocabulary path_to_settings path_to_sequence" << endl;
+        return 1;
+    }
+```
+
+
+- ### 3. 加载图像和时间戳
+
+    - 使用 `LoadImages` 函数, 获取图像序列中每张图像的文件路径以及对应的时间戳
+ 
+    - 然后获取当前图像序列的图像数目
+
+```c++
+    // Step 2 加载图像
+    // Retrieve paths to images
+    // 图像序列的文件名, 字符串序列
+    vector<string> vstrImageFilenames;
+    // 时间戳
+    vector<double> vTimestamps;
+    LoadImages(string(argv[3]), vstrImageFilenames, vTimestamps);
+
+    // 当前图像序列的图片数目
+    // int nImages = vstrImageFilenames.size();
+    int nImages = static_cast<int>(vstrImageFilenames.size());
+```
+
+
+- ### 4. 加载 SLAM 系统
+
+    - 输入的参数如下: 输入的参数如下: 词典文件路径, 配置文件路径, 传感器类型, 是否使用可视化界面
+ 
+    - 下面这行代码的作用是, 调用 `ORB-SLAM2` 中 `System` 类的构造函数，初始化一个名为 `SLAM` 的实例
+ 
+```c++
+    // Step 2 加载 SLAM 系统
+    // Create SLAM system. It initializes all system threads and gets ready to process frames.
+    // 输入的参数如下: 词典文件路径, 配置文件路径, 传感器类型, 是否使用可视化界面
+    ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true);
+```
+
+
 整个文件内的代码比较简单, 因为这只是一个将 SLAM 系统进行定位的步骤串起来的流程文件
 
 因此我们关注的重点是在这个文件内, 调用了哪些在其他文件内的函数, 以及这些函数构造以及具体实现是哪些文件写的
