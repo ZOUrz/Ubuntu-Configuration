@@ -102,9 +102,24 @@
 
   - 这里跟 `ORBSLAM2` 的源码不同, 源码用的词典是 `DBoW2`, 而 `SuperPoint + ORBSLAM2` 项目中使用的是 `DBoW3`
  
-  - 因此
+  - 因此, 成员变量 `mpVocabulary` 没有 `loadFromTextFile` 这个方法 
 
-
+```c++
+      // 建立一个新的 ORB 字典
+        mpVocabulary = new ORBVocabulary();
+        // Origin:
+        /**
+        bool bVocLoad = mpVocabulary->loadFromTextFile(strVocFile);
+        if(!bVocLoad)
+        {
+            cerr << "Wrong path to vocabulary. " << endl;
+            cerr << "Falied to open at: " << strVocFile << endl;
+            exit(-1);
+        }
+        cout << "Vocabulary loaded!" << endl << endl;
+        **/
+        mpVocabulary->load(strVocFile);
+```
 
 
 ```c++
