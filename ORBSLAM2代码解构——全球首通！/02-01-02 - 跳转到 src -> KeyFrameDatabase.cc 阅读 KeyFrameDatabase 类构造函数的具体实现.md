@@ -1,4 +1,4 @@
-# src/KeyFrameDatabase
+# 跳转到 src/KeyFrameDatabase.cc 阅读 KeyFrameDatabase 类构造函数的具体实现
 
 KeyFrameDatabase 类的构造函数就几行代码, 难点在于其使用的成员变量 mvInvertedFile 的数据类型是来由其他文件中定义的
 
