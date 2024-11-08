@@ -120,7 +120,7 @@
   - 在 `成员变量初始化列表` 中加上:
 
   ```c++
-          mpViewer(static_cast<Viewer*>(nullptr)),
+          mpViewer(static_cast<Viewer*>(nullptr))
   ```
 
   - 完整代码
