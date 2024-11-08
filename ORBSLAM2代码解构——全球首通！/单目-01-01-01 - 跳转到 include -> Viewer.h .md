@@ -33,7 +33,7 @@
 
   - Build from scratch - Changed 1
 
-  - 文件开头开头加上:
+  - 文件开头加上:
 
   ```c++
   #include "Viewer.h"
