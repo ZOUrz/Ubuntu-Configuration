@@ -9,7 +9,19 @@
 - ### 1. include/Viewer.h
 
 ```c++
+#ifndef VIEWER_H
+#define VIEWER_H
 
+namespace ORB_SLAM2
+{
+
+  class Viewer
+  {
+
+  };
+}
+
+#endif //VIEWER_H
 ```
 
 
