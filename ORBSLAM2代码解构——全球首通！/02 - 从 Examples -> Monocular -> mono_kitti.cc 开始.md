@@ -68,14 +68,14 @@
 
     - ` ./mono_kitti 词典文件路径 配置文件路径 数据集路径`
 
-```c++
-    // Step 1 检查输入参数个数是否足够
-    if(argc != 4)
-    {
-        cerr << endl << "Usage: ./mono_kitti path_to_vocabulary path_to_settings path_to_sequence" << endl;
-        return 1;
-    }
-```
+    ```c++
+        // Step 1 检查输入参数个数是否足够
+        if(argc != 4)
+        {
+            cerr << endl << "Usage: ./mono_kitti path_to_vocabulary path_to_settings path_to_sequence" << endl;
+            return 1;
+        }
+    ```
 
 
 - ### 3. 加载图像和时间戳
@@ -84,19 +84,19 @@
  
     - 然后获取当前图像序列的图像数目
 
-```c++
-    // Step 2 加载图像
-    // Retrieve paths to images
-    // 图像序列的文件名, 字符串序列
-    vector<string> vstrImageFilenames;
-    // 时间戳
-    vector<double> vTimestamps;
-    LoadImages(string(argv[3]), vstrImageFilenames, vTimestamps);
-
-    // 当前图像序列的图片数目
-    // int nImages = vstrImageFilenames.size();
-    int nImages = static_cast<int>(vstrImageFilenames.size());
-```
+    ```c++
+        // Step 2 加载图像
+        // Retrieve paths to images
+        // 图像序列的文件名, 字符串序列
+        vector<string> vstrImageFilenames;
+        // 时间戳
+        vector<double> vTimestamps;
+        LoadImages(string(argv[3]), vstrImageFilenames, vTimestamps);
+    
+        // 当前图像序列的图片数目
+        // int nImages = vstrImageFilenames.size();
+        int nImages = static_cast<int>(vstrImageFilenames.size());
+    ```
 
 
 - ### 4. 加载 SLAM 系统
@@ -105,12 +105,25 @@
  
     - 下面这行代码的作用是, 调用 `ORB-SLAM2` 中 `System` 类的构造函数，初始化一个名为 `SLAM` 的实例
  
-```c++
-    // Step 2 加载 SLAM 系统
-    // Create SLAM system. It initializes all system threads and gets ready to process frames.
-    // 输入的参数如下: 词典文件路径, 配置文件路径, 传感器类型, 是否使用可视化界面
-    ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true);
-```
+    ```c++
+        // Step 3 加载 SLAM 系统
+        // Create SLAM system. It initializes all system threads and gets ready to process frames.
+        // 输入的参数如下: 词典文件路径, 配置文件路径, 传感器类型, 是否使用可视化界面
+        ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true);
+    ```
+
+
+- ### 5. 运行前准备
+
+    变量 `vector` `vTimesTrack` 是为了保存追踪一帧图像(仅 `Tracker`)所花费的时间
+
+    ```c++
+        // Step 3 运行前准备
+        // Vector for tracking time statistics
+        // 统计追踪一帧耗时(仅 Tracker 线程)
+        vector<float> vTimesTrack;
+        vTimesTrack.resize(nImages);
+    ```
 
 
 整个文件内的代码比较简单, 因为这只是一个将 SLAM 系统进行定位的步骤串起来的流程文件
