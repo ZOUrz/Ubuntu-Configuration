@@ -4,11 +4,11 @@
 ## 重点代码逐行解析
 
 
-### 1. include DBoW3
+- ### 1. include DBoW3
 
-注意, SuperPoint + ORBSLAM2 这个项目使用的是DBoW3, 而 ORBSLAM2 源码使用的是 DBoW2
+    - 注意, `SuperPoint + ORBSLAM2` 这个项目使用的是 `DBoW3`, 而 `ORBSLAM2` 源码使用的是 `DBoW2`
 
-所以如果想从头开始写代码的话, 是要注意把 DBoW3 的源码放在文件夹 Thirdparty 里, 而且要修改 DBoW3 的 CMakeLists 以及 整个项目的 CMakeList
+
 
 ** 具体的实现细节以及流程等后续有时间的话, 有可能出一个从头开始写 ORBSLAM2 代码的教程 (暂定)**
 
@@ -19,6 +19,7 @@
 #include "Thirdparty/DBoW3/src/DBoW3.h"
 ```
 
+所以如果想从头开始写代码的话, 是要注意把 DBoW3 的源码放在文件夹 Thirdparty 里, 而且要修改 DBoW3 的 CMakeLists 以及 整个项目的 CMakeList
 
 ### 2. 设置 Vocabulary 类的别名
 
