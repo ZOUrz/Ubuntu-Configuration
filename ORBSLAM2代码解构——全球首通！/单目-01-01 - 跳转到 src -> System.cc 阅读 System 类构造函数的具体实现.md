@@ -559,6 +559,8 @@
 
 ## 重头开始构建 ORBSLAM2
 
+- 如果是从零开始构建 `ORBSLAM2` 系统,  
+
 - ### 1. mono_kitti.cc 的修改
 
   - 在文件开头加上
@@ -576,6 +578,11 @@ mono_kitti.cc
     // 输入的参数如下: 词典文件路径, 配置文件路径, 传感器类型, 是否使用可视化界面
     ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true);
 ```
+
+- ### 1. include/System.h (Build from scratch - Changed 0)
+
+  - 如果是从零开始构建 ORBSLAM2 系统 
+
 
 ```c++
 #ifndef SYSTEM_H
