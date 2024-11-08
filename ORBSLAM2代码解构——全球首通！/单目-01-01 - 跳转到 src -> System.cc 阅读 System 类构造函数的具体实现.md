@@ -797,7 +797,8 @@
   
   ```
 
-  ```cmake
+
+```cmake
 # 指定CMake的最低版本要求为2.8
 cmake_minimum_required(VERSION 2.8)
 # 定义一个名为ORB_SLAM2的项目
@@ -941,6 +942,5 @@ add_executable(mono_kitti Examples/Monocular/mono_kitti.cpp)
 target_link_libraries(mono_kitti ${PROJECT_NAME})
 #add_executable(mono_euroc Examples/Monocular/mono_euroc.cc)
 #target_link_libraries(mono_euroc ${PROJECT_NAME})
-
-  ```
+```
   
