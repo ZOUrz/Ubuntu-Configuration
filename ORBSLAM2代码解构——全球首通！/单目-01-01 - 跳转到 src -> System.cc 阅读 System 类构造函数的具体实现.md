@@ -890,23 +890,6 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
 # 创建一个名为${PROJECT_SOURCE_DIR}的共享库(SHARED表示生成动态链接库), 并将指定的源文件添加到库中
 add_library(${PROJECT_NAME} SHARED
         src/System.cpp
-        #src/KeyFrameDatabase.cpp
-        #src/Frame.cpp
-        #src/ORBextractor.cpp
-        #src/Tracking.cc
-        #src/LocalMapping.cc
-        #src/LoopClosing.cc
-        #src/ORBmatcher.cc
-        #src/FrameDrawer.cc
-        #src/Converter.cc
-        #src/MapPoint.cc
-        #src/Map.cc
-        #src/MapDrawer.cc
-        #src/Optimizer.cc
-        #src/PnPsolver.cc
-        #src/Sim3Solver.cc
-        #src/Initializer.cc
-        #src/Viewer.cc
 )
 
 # 指定${PROJECT_SOURCE_DIR}库链接的其他库
