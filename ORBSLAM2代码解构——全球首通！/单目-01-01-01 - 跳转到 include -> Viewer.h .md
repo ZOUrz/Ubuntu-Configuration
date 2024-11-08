@@ -181,29 +181,6 @@
           // Load ORB Vocabulary
           cout << endl << "Loading ORB Vocabulary. This could take a while..." << endl;
   
-          // 建立一个新的ORB字典
-          // mpVocabulary = new ORBVocabulary();
-          // 尝试加载字典
-          /**
-          try
-          {
-              mpVocabulary->load(strVocFile);
-              cout << "Vocabulary loaded!" << endl << endl;
-          }
-          // 如果加载失败, 就输出调试信息
-          catch (const exception &e)
-          {
-              cerr << "Wrong path to vocabulary. " << endl;
-              cerr << "Falied to open at: " << strVocFile << endl;
-              // 然后退出
-              exit(-1);
-          }
-          **/
-  
-  
-          // Create KeyFrame Database
-          // mpKeyFrameDatabase = new KeyFrameDatabase(*mpVocabulary);
-  
       }
   
   }
