@@ -69,6 +69,7 @@
           bool mbDeactivateLocalizationMode;
   ```
 
+
 - ### 2. 输出当前传感器类型
 
   ```c++
@@ -81,6 +82,7 @@
       else if(mSensor==RGBD)
           cout << "RGB-D" << endl;
   ```
+
 
 - ### 3. 读取配置文件
 
@@ -99,50 +101,69 @@
           }
   ```
 
+
 - ### 4. 加载 ORB 字典
 
   - 这里跟 `ORBSLAM2` 的源码不同, 源码用的词典是 `DBoW2`, 而 `SuperPoint + ORBSLAM2` 项目中使用的是 `DBoW3`
  
   - 因此, 成员变量 `mpVocabulary` 没有 `loadFromTextFile` 这个方法 
 
+  ```c++
+        // 建立一个新的 ORB 字典
+          mpVocabulary = new ORBVocabulary();
+          // Origin:
+          /**
+          bool bVocLoad = mpVocabulary->loadFromTextFile(strVocFile);
+          if(!bVocLoad)
+          {
+              cerr << "Wrong path to vocabulary. " << endl;
+              cerr << "Falied to open at: " << strVocFile << endl;
+              exit(-1);
+          }
+          cout << "Vocabulary loaded!" << endl << endl;
+          **/
+          mpVocabulary->load(strVocFile);
+  ```
+
+
+- ### 5. 创建关键帧数据库
+
+  ```c++
+          // Create KeyFrame Database
+          mpKeyFrameDatabase = new KeyFrameDatabase(*mpVocabulary);
+  ```
+
+
+- ### 6. 创建地图
+
+  ```c++
+          // Create the Map
+          mpMap = new Map();
+  ```
+
+
+- ### 7. 创建绘制器
+
+  - 这里的帧绘制器和地图绘制器将会被可视化的 `Viewer` 所使用
+ 
+  ```c++
+          // 这里的帧绘制器和地图绘制器将会被可视化的 Viewer 所使用
+          // Create Drawers. These are used by the Viewer
+          mpFrameDrawer = new FrameDrawer(mpMap);
+          mpMapDrawer = new MapDrawer(mpMap, strSettingsFile);
+  ```
+
+
+- ### 8. 创建追踪器
+
+  - 在本主进程中初始化追踪器
+ 
+  - `Tracking` 类的构造函数输入的参数如下: `this`, `字典`, 帧绘制器, 地图绘制器, 地图, 关键帧地图, 配置文件路径, 传感器类型
+ 
+  - this 代表 System 类的当前对象指针, 其作用为, Tracking 类的构造函数中的 pSys 参数会接收到 this，也就是当前 System 对象的指针
+        // 通过将 this 作为参数传递给 Tracking，能获得 System 类实例的指针，从而可以在 Tracking 类的内部使用它
+
 ```c++
-      // 建立一个新的 ORB 字典
-        mpVocabulary = new ORBVocabulary();
-        // Origin:
-        /**
-        bool bVocLoad = mpVocabulary->loadFromTextFile(strVocFile);
-        if(!bVocLoad)
-        {
-            cerr << "Wrong path to vocabulary. " << endl;
-            cerr << "Falied to open at: " << strVocFile << endl;
-            exit(-1);
-        }
-        cout << "Vocabulary loaded!" << endl << endl;
-        **/
-        mpVocabulary->load(strVocFile);
-```
-
-
-```c++
-      // 建立一个新的 ORB 字典
-        mpVocabulary = new ORBVocabulary();
-        /**
-        bool bVocLoad = mpVocabulary->loadFromTextFile(strVocFile);
-        if(!bVocLoad)
-        {
-            cerr << "Wrong path to vocabulary. " << endl;
-            cerr << "Falied to open at: " << strVocFile << endl;
-            exit(-1);
-        }
-        cout << "Vocabulary loaded!" << endl << endl;
-        **/
-        mpVocabulary->load(strVocFile);
-
-        // Create KeyFrame Database
-        mpKeyFrameDatabase = new KeyFrameDatabase(*mpVocabulary);
-
-        // Create the Map
-        mpMap = new Map();
 
         // 这里的帧绘制器和地图绘制器将会被可视化的 Viewer 所使用
         // Create Drawers. These are used by the Viewer
