@@ -158,27 +158,24 @@
 
   - 在本主进程中初始化追踪器
  
-  - `Tracking` 类的构造函数输入的参数如下: `this`, `字典`, 帧绘制器, 地图绘制器, 地图, 关键帧地图, 配置文件路径, 传感器类型
+  - `Tracking` 类的构造函数输入的参数如下: `this`, `字典`, `帧绘制器`, `地图绘制器`, `地图`, `关键帧地图`, `配置文件路径`, `传感器类型`
  
-  - this 代表 System 类的当前对象指针, 其作用为, Tracking 类的构造函数中的 pSys 参数会接收到 this，也就是当前 System 对象的指针
-        // 通过将 this 作为参数传递给 Tracking，能获得 System 类实例的指针，从而可以在 Tracking 类的内部使用它
+  - `this` 代表 `System` 类的当前对象指针, 其作用为, `Tracking` 类的构造函数中的 `pSys` 参数会接收到 `this`，也就是当前 `System` 对象的指针, 通过将 `this` 作为参数传递给 `Tracking`，能获得 `System` 类实例的指针，从而可以在 `Tracking` 类的内部使用它
+ 
+  ```c++
+          // 在本主进程中初始化追踪器
+          // Initialize the Tracking thread
+          // (it will live in the main thread of execution, the one that called this constructor)
+          // Tracking 类的构造函数输入的参数如下: this, 字典, 帧绘制器, 地图绘制器, 地图, 关键帧地图, 配置文件路径, 传感器类型
+          // this 代表 System 类的当前对象指针
+          // 其作用为, Tracking 类的构造函数中的 pSys 参数会接收到 this，也就是当前 System 对象的指针
+          // 通过将 this 作为参数传递给 Tracking，能获得 System 类实例的指针，从而可以在 Tracking 类的内部使用它
+          mpTracker = new Tracking(this, mpVocabulary, mpFrameDrawer, mpMapDrawer,
+                                   mpMap, mpKeyFrameDatabase, strSettingsFile, mSensor);
+  ```
 
 ```c++
 
-        // 这里的帧绘制器和地图绘制器将会被可视化的 Viewer 所使用
-        // Create Drawers. These are used by the Viewer
-        mpFrameDrawer = new FrameDrawer(mpMap);
-        mpMapDrawer = new MapDrawer(mpMap, strSettingsFile);
-
-        // 在本主进程中初始化追踪器
-        // Initialize the Tracking thread
-        // (it will live in the main thread of execution, the one that called this constructor)
-        // Tracking 类的构造函数输入的参数如下: this, 字典, 帧绘制器, 地图绘制器, 地图, 关键帧地图, 配置文件路径, 传感器类型
-        // this 代表 System 类的当前对象指针
-        // 其作用为, Tracking 类的构造函数中的 pSys 参数会接收到 this，也就是当前 System 对象的指针
-        // 通过将 this 作为参数传递给 Tracking，能获得 System 类实例的指针，从而可以在 Tracking 类的内部使用它
-        mpTracker = new Tracking(this, mpVocabulary, mpFrameDrawer, mpMapDrawer,
-                                 mpMap, mpKeyFrameDatabase, strSettingsFile, mSensor);
 
         // 初始化局部建图器并运行局部建图线程
         // Initialize the Local Mapping thread and launch
