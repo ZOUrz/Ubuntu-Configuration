@@ -17,7 +17,7 @@
 void LoadImages(const string &strPathToSequence, vector<string> &vstrImageFilenames, vector<double> &vTimestamps);
 ```
 
-这行代码是 `LoadImages` 函数的声明, 因此这个函数的具体实现在文件最后面, 所以需要在文件开头进行函数的声明, 否则在 `main` 里无法调用
+    - 这行代码是 `LoadImages` 函数的声明, 因此这个函数的具体实现在文件最后面, 所以需要在文件开头进行函数的声明, 否则在 `main` 里无法调用
 
 `LoadImages` 函数的具体实现:
 
