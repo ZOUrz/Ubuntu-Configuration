@@ -1,6 +1,6 @@
 # Examples/Monocular/mono_kitti.cc
 
-* 该文件是 **ORBSLAM2** 系统在 **KITTI** 数据集上使用单目传感器进行定位的整体流程
+* 该文件是 `ORBSLAM2` 系统在 **KITTI** 数据集上使用单目传感器进行定位的整体流程
 
 * 我们先从这个文件开始阅读
 
