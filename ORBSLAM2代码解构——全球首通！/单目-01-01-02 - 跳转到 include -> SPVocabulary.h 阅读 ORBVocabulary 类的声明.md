@@ -63,3 +63,94 @@ namespace ORB_SLAM2
 
 #endif //VOCABULARY_H
 ```
+
+
+## 重头开始构建 ORBSLAM2
+
+- 如果需要从零开始构建 `ORBSLAM2` 系统, 就按照下面给出的文件内容进行代码的编写
+
+- `ORBSLAM2` 源码使用的是 `DBoW2`, 并且是经过作者修改的, 因此适配性比较差, 所以选择使用 `DBoW3`
+
+- ### 1. DBoW3
+
+    - #### 1.1 下载源码
+
+        - 需要下载 `DBoW3` 的源码到 `Thirdparty` 文件夹内, 然后源码中删除 `utils` 文件夹和 `orbvoc.dbow3文件
+ 
+    - #### 1.2 修改 CMakeLists.txt
+
+        - 然后修改 `DBoW3` 的 `CMakeLists.txt` 
+
+        ```cmake
+        cmake_minimum_required(VERSION 2.8)
+        project(DBoW3)
+        
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}  -Wall  -O3 -march=native ")
+        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall   -O3 -march=native")
+        
+        set(HDRS_DBOW3
+                src/BowVector.h
+                src/Database.h
+                src/DBoW3.h
+                src/DescManip.h
+                src/exports.h
+                src/FeatureVector.h
+                src/QueryResults.h
+                src/quicklz.h
+                src/ScoringObject.h
+                src/timers.h
+                src/Vocabulary.h
+        )
+        set(SRCS_DBOW3
+                src/BowVector.cpp
+                src/Database.cpp
+                src/DescManip.cpp
+                src/FeatureVector.cpp
+                src/QueryResults.cpp
+                src/quicklz.c
+                src/ScoringObject.cpp
+                src/Vocabulary.cpp
+        )
+        
+        find_package(OpenCV 3.0 QUIET)
+        if(NOT OpenCV_FOUND)
+            find_package(OpenCV 2.4.3 QUIET)
+            if(NOT OpenCV_FOUND)
+                message(FATAL_ERROR "OpenCV > 2.4.3 not found.")
+            endif()
+        endif()
+        
+        set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
+        
+        include_directories(${OpenCV_INCLUDE_DIRS})
+        add_library(DBoW3 SHARED ${SRCS_DBOW3})
+        target_link_libraries(DBoW3 ${OpenCV_LIBS})
+        
+        ```
+
+- ### 2. build.sh
+
+    - 编写 `build.sh` 文件
+ 
+```shell
+echo "Configuring and buildding Thirdparty/FBoW ..."
+
+cd Thirdparty/DBoW3
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make -j
+
+cd ../../../
+
+echo "Configuring and building ORB_SLAM2 ..."
+
+mkdir build
+cd build
+cmake .. -DCMAKE_BUILD_TYPE=Release
+make -j
+
+```
+
+
+
