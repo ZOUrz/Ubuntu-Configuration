@@ -1,8 +1,8 @@
 # Examples/Monocular/mono_kitti.cc
 
-该文件是 **ORBSLAM2** 系统在 **KITTI** 数据集上使用单目传感器进行定位的整体流程
+* 该文件是 **ORBSLAM2** 系统在 **KITTI** 数据集上使用单目传感器进行定位的整体流程
 
-我们先从这个文件开始阅读
+* 我们先从这个文件开始阅读
 
 
 ## 重点代码逐行解析
@@ -10,16 +10,16 @@
 
 ### 1. LoadImages
 
-获取图像序列中每一张图像的路径和时间戳
+* 获取图像序列中每一张图像的路径和时间戳
 
 ```c++
 // 获取图像序列中每一张图像的路径和时间戳
 void LoadImages(const string &strPathToSequence, vector<string> &vstrImageFilenames, vector<double> &vTimestamps);
 ```
 
-这行代码是 LoadImages 函数的声明, 因此这个函数的具体实现在文件最后面, 所以需要在文件开头进行函数的声明, 否则 main 函数里无法调用
+* 这行代码是 LoadImages 函数的声明, 因此这个函数的具体实现在文件最后面, 所以需要在文件开头进行函数的声明, 否则 main 函数里无法调用
 
-LoadImages 函数的具体实现:
+* LoadImages 函数的具体实现:
 
 ```
 // 获取图像序列中每一张图像的路径和时间戳
