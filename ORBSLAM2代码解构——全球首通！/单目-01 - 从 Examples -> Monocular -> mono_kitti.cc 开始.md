@@ -322,9 +322,11 @@
 
 如果需要从零开始构建 `ORBSLAM2` 系统, 就按照下面给出的文件内容进行代码的编写 
 
-- ### mono_kitti.cc (Build from scratch - Changed 0)
+- ### 1. mono_kitti.cc
 
-      - 先写到 "加载 `SLAM` 系统那一步即可"
+    - Build from scratch - Changed 0
+
+    - 先写到 "加载 `SLAM` 系统那一步即可"
 
     ```c++
     
