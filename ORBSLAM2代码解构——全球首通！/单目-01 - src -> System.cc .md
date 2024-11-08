@@ -1,4 +1,4 @@
-# src/System.cc
+# 跳转到 src/System.cc 阅读 System 类构造函数的具体实现
 
 主要阅读该文件中 **`System` 类的构造函数**
 
