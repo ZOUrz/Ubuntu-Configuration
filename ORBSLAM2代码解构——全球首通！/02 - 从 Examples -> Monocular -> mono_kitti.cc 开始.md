@@ -115,15 +115,90 @@
 
 - ### 5. 运行前准备
 
-    变量 `vector` `vTimesTrack` 是为了保存追踪一帧图像(仅 `Tracker`)所花费的时间
+    - 变量 `vTimesTrack` 是为了保存追踪一帧图像(仅 `Tracker`)所花费的时间
 
     ```c++
-        // Step 3 运行前准备
+        // Step 4 运行前准备
         // Vector for tracking time statistics
         // 统计追踪一帧耗时(仅 Tracker 线程)
         vector<float> vTimesTrack;
         vTimesTrack.resize(nImages);
     ```
+
+- ### 6. SLAM 系统的主循环
+
+    - 依次追踪图像序列中的每一张图像
+ 
+    ```c++
+        for(int ni=0; ni<nImages; ni++)
+    ```
+    - #### 6.1 读取图像
+         
+        - 根据前面获得的图像文件名读取图像, 读取过程中不改变图像的格式
+
+        ```c++
+                // Step 5.1 根据前面获得的图像文件名读取图像, 读取过程中不改变图像的格式
+                // Read image from file
+                im = cv::imread(vstrImageFilenames[ni],CV_LOAD_IMAGE_UNCHANGED);
+                double tframe = vTimestamps[ni];
+        ```
+
+    - #### 6.2 检查是否读取到图像
+
+        - 图像的合法性检查
+
+        ```c++
+                // Step 5.2 图像的合法性检查
+                if(im.empty())
+                {
+                    cerr << endl << "Failed to load image at: " << vstrImageFilenames[ni] << endl;
+                    return 1;
+                }
+        ```
+
+    - #### 6.3 开始计时
+
+        - `std::chrono::steady_clock` 是 `C++11` 和 `C++14` 中的稳定计时器, 适用于测量时间间隔, 因为它不会受到系统时间的调整而影响
+
+        ```c++
+                // Step 5.3 开始计时
+                #ifdef COMPILEDWITHC14
+                std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
+                #else
+                std::chrono::monotonic_clock::time_point t1 = std::chrono::monotonic_clock::now();
+                #endif
+        ```
+
+    - #### 6.4 追踪当前图像
+
+        - 调用了 `SLAM` 中的 `TrackMonocular` 函数, 其中, `SLAM` 是上面经过初始化后的 `System` 类实例
+
+        - `im`: 这是当前帧的图像数据, 是 `cv::Mat` 类型
+
+        - `tframe`: 这是该帧的时间戳(double 类型)
+
+计算追踪一帧图像的耗时
+
+追踪完成, 停止当前帧的图像计时, 并计算追踪耗时
+
+匹配图像采集时的时间间隔
+
+根据图像时间戳中记录的两张图像之间的时间和现在追踪当前图像所耗费的时间, 使得下一张图像能够按照时间戳被送入到 SLAM 系统中进行跟踪
+
+```c++
+        // Step 5.6 根据图像时间戳中记录的两张图像之间的时间和现在追踪当前图像所耗费的时间
+        // 使得下一张图像能够按照时间戳被送入到 SLAM 系统中进行跟踪
+        // Wait to load the next frame
+        double T=0;
+        if(ni<nImages-1)
+            T = vTimestamps[ni+1]-tframe;
+        else if(ni>0)
+            T = tframe-vTimestamps[ni-1];
+
+        if(ttrack<T)
+            // usleep((T - ttrack) * 1e6);
+            usleep(static_cast<unsigned int>((T-ttrack)*1e6));
+```
 
 
 整个文件内的代码比较简单, 因为这只是一个将 SLAM 系统进行定位的步骤串起来的流程文件
@@ -134,82 +209,6 @@
 ## 完整代码
 
 ```c++
-/**
-* This file is part of ORB-SLAM2.
-*
-* Copyright (C) 2014-2016 Raúl Mur-Artal <raulmur at unizar dot es> (University of Zaragoza)
-* For more information see <https://github.com/raulmur/ORB_SLAM2>
-*
-* ORB-SLAM2 is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* ORB-SLAM2 is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with ORB-SLAM2. If not, see <http://www.gnu.org/licenses/>.
-**/
-
-#include <chrono>
-#include <fstream>
-#include <iomanip>
-#include <iostream>
-#include <algorithm>
-
-#include<opencv2/core/core.hpp>
-
-#include"System.h"
-
-
-using namespace std;
-
-
-// 获取图像序列中每一张图像的路径和时间戳
-void LoadImages(const string &strPathToSequence, vector<string> &vstrImageFilenames, vector<double> &vTimestamps);
-
-
-int main(int argc, char **argv)
-{
-    // Step 1 检查输入参数个数是否足够
-    if(argc != 4)
-    {
-        cerr << endl << "Usage: ./mono_kitti path_to_vocabulary path_to_settings path_to_sequence" << endl;
-        return 1;
-    }
-
-    // Step 2 加载图像
-    // Retrieve paths to images
-    // 图像序列的文件名, 字符串序列
-    vector<string> vstrImageFilenames;
-    // 时间戳
-    vector<double> vTimestamps;
-    LoadImages(string(argv[3]), vstrImageFilenames, vTimestamps);
-
-    // 当前图像序列的图片数目
-    // int nImages = vstrImageFilenames.size();
-    int nImages = static_cast<int>(vstrImageFilenames.size());
-
-    cout << "Creating ORB-SLAM2 system ..." << endl;
-
-    // Step 2 加载 SLAM 系统
-    // Create SLAM system. It initializes all system threads and gets ready to process frames.
-    // 输入的参数如下: 词典文件路径, 配置文件路径, 传感器类型, 是否使用可视化界面
-    ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true);
-
-    // Step 3 运行前准备
-    // Vector for tracking time statistics
-    // 统计追踪一帧耗时(仅 Tracker 线程)
-    vector<float> vTimesTrack;
-    vTimesTrack.resize(nImages);
-
-    cout << endl << "-------" << endl;
-    cout << "Start processing sequence ..." << endl;
-    cout << "Images in the sequence: " << nImages << endl << endl;
-
     // Step 4 依次追踪图像序列中的每一张图像
     // Main loop
     cv::Mat im;
