@@ -100,7 +100,9 @@
 
 - ### 4. 加载 ORB 字典
 
-  - 这里跟 `ORBSLAM2` 的源码不同, 源码用的词典是
+  - 这里跟 `ORBSLAM2` 的源码不同, 源码用的词典是 `DBoW2`, 而 `SuperPoint + ORBSLAM2` 项目中使用的是 `DBoW3`
+ 
+  - 因此
 
 
 
