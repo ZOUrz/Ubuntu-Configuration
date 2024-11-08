@@ -140,6 +140,14 @@
           // Create KeyFrame Database
           mpKeyFrameDatabase = new KeyFrameDatabase(*mpVocabulary);
   ```
+  
+  - 其中, 成员变量 `mpKeyFrameDatabase` 是在 `include/System.h` 中定义的
+ 
+  ```c++
+          // 关键帧数据库的指针, 这个数据库用于重定位和回环检测
+          // KeyFrame database for place recognition (relocalization and loop detection).
+          KeyFrameDatabase* mpKeyFrameDatabase;
+  ```
 
 
 - ### 6. 创建地图
@@ -147,6 +155,14 @@
   ```c++
           // Create the Map
           mpMap = new Map();
+  ```
+
+  - 其中, 成员变量 `mpMap` 是在 `include/System.h` 中定义的
+ 
+  ```c++
+          // 指向地图(数据库)的指针
+          // Map structure that stores the pointers to all KeyFrames and MapPoints.
+          Map* mpMap;
   ```
 
 
@@ -159,6 +175,15 @@
           // Create Drawers. These are used by the Viewer
           mpFrameDrawer = new FrameDrawer(mpMap);
           mpMapDrawer = new MapDrawer(mpMap, strSettingsFile);
+  ```
+
+  - 其中, 成员变量 `mpFrameDrawer` 和 `mpMapDrawer` 是在 `include/System.h` 中定义的
+ 
+  ```c++
+          // 帧绘制器
+          FrameDrawer* mpFrameDrawer;
+          // 地图绘制器
+          MapDrawer* mpMapDrawer;
   ```
 
 
@@ -182,6 +207,16 @@
                                    mpMap, mpKeyFrameDatabase, strSettingsFile, mSensor);
   ```
 
+  - 其中, 成员变量 `mpTracker` 是在 `include/System.h` 中定义的
+ 
+  ```c++
+          // 追踪器, 除了进行运动追踪外还要负责创建关键帧, 创建新地图点和进行重定位的工作
+          // Tracker. It receives a frame and computes the associated camera pose.
+          // It also decides when to insert a new keyframe, create some new MapPoints and
+          // performs relocalization if tracking fails.
+          Tracking* mpTracker;
+  ```
+
 
 - ### 9. 创建局部见图器和局部建图线程
 
@@ -192,6 +227,19 @@
           // Initialize the Local Mapping thread and launch
           mpLocalMapper = new LocalMapping(mpMap, mSensor==MONOCULAR);
           mptLocalMapping = new thread(&ORB_SLAM2::LocalMapping::Run,mpLocalMapper);
+  ```
+
+  - 其中, 成员变量 `mpLocalMapper` 和 `mptLocalMapping` 是在 `include/System.h` 中定义的
+ 
+  ```c++
+          // 局部建图器, 局部BA由它进行
+          // Local Mapper. It manages the local map and performs local bundle adjustment.
+          LocalMapping* mpLocalMapper;
+  
+          // 系统除了在主进程中进行运动追踪外, 会创建局部建图线程, 回环检测线程和可视化线程
+          // System threads: Local Mapping, Loop Closing, Viewer.
+          // The Tracking thread "lives" in the main execution thread that creates the System object.
+          std::thread* mptLocalMapping;
   ```
 
 
@@ -208,6 +256,21 @@
           mpLoopCloser = new LoopClosing(mpMap, mpKeyFrameDatabase, mpVocabulary, mSensor!=MONOCULAR);
           mptLoopClosing = new thread(&ORB_SLAM2::LoopClosing::Run, mpLoopCloser);
   ```
+
+  - 其中, 成员变量 `mpLoopCloser` 和 `mptLoopClosing` 是在 `include/System.h` 中定义的
+ 
+  ```c++
+          // 回环检测器, 会执行位姿图优化并且开一个新的线程进行全局BA
+          // Loop Closer. It searches loops with every new keyframe. If there is a loop it performs
+          // a pose graph optimization and full bundle adjustment (in a new thread) afterwards.
+          LoopClosing* mpLoopCloser;
+  
+          // 系统除了在主进程中进行运动追踪外, 会创建局部建图线程, 回环检测线程和可视化线程
+          // System threads: Local Mapping, Loop Closing, Viewer.
+          // The Tracking thread "lives" in the main execution thread that creates the System object.
+          std::thread* mptLoopClosing;
+  ```  
+
 
 - ### 11. 创建可视化器
 
@@ -233,57 +296,12 @@
           }
   ```
 
-其中, 变量
-
-* mpVocabulary
-* mpKeyFrameDatabase
-* mpMap
-* mpFrameDrawer
-* mpMapDrawer
-* mpTracker
-* mpLocalMapper
-* mptLocalMapping
-* mpLoopCloser
-* mptLoopClosing
-* mptViewer
-
-是在 include/System.h 中定义的
+  - 其中, 成员变量 `mpViewer` 在构造函数体外的成员变量初始化列表中已经提到过了, 成员变量 `mptViewer` 是在 `include/System.h` 中定义的
 
 ```c++
-
-
-        // 关键帧数据库的指针, 这个数据库用于重定位和回环检测
-        // KeyFrame database for place recognition (relocalization and loop detection).
-        KeyFrameDatabase* mpKeyFrameDatabase;
-
-        // 指向地图(数据库)的指针
-        // Map structure that stores the pointers to all KeyFrames and MapPoints.
-        Map* mpMap;
-
-        // 追踪器, 除了进行运动追踪外还要负责创建关键帧, 创建新地图点和进行重定位的工作
-        // Tracker. It receives a frame and computes the associated camera pose.
-        // It also decides when to insert a new keyframe, create some new MapPoints and
-        // performs relocalization if tracking fails.
-        Tracking* mpTracker;
-
-        // 局部建图器, 局部BA由它进行
-        // Local Mapper. It manages the local map and performs local bundle adjustment.
-        LocalMapping* mpLocalMapper;
-
-        // 回环检测器, 会执行位姿图优化并且开一个新的线程进行全局BA
-        // Loop Closer. It searches loops with every new keyframe. If there is a loop it performs
-        // a pose graph optimization and full bundle adjustment (in a new thread) afterwards.
-        LoopClosing* mpLoopCloser;
-        // 帧绘制器
-        FrameDrawer* mpFrameDrawer;
-        // 地图绘制器
-        MapDrawer* mpMapDrawer;
-
         // 系统除了在主进程中进行运动追踪外, 会创建局部建图线程, 回环检测线程和可视化线程
         // System threads: Local Mapping, Loop Closing, Viewer.
         // The Tracking thread "lives" in the main execution thread that creates the System object.
-        std::thread* mptLocalMapping;
-        std::thread* mptLoopClosing;
         std::thread* mptViewer;
 ```
 
