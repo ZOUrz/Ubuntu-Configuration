@@ -135,7 +135,7 @@
         cv::Mat im;
         for(int ni=0; ni<nImages; ni++)
     ```
-    - #### 6.1 读取图像
+    - #### 5.1 读取图像
          
         - 根据前面获得的图像文件名读取图像, 读取过程中不改变图像的格式
 
@@ -146,7 +146,7 @@
                 double tframe = vTimestamps[ni];
         ```
 
-    - #### 6.2 检查是否读取到图像
+    - #### 5.2 检查是否读取到图像
 
         - 图像的合法性检查
 
@@ -159,7 +159,7 @@
                 }
         ```
 
-    - #### 6.3 开始计时
+    - #### 5.3 开始计时
 
         - `std::chrono::steady_clock` 是 `C++11` 和 `C++14` 中的稳定计时器, 适用于测量时间间隔, 因为它不会受到系统时间的调整而影响
 
@@ -168,7 +168,7 @@
                 std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
         ```
 
-    - #### 6.4 追踪当前图像
+    - #### 5.4 追踪当前图像
 
         - 调用了 `SLAM` 中的 `TrackMonocular` 函数, 其中, `SLAM` 是上面经过初始化后的 `System` 类实例
 
@@ -182,7 +182,7 @@
                 SLAM.TrackMonocular(im,tframe);
         ```
 
-    - #### 6.5 计算追踪一帧图像的耗时
+    - #### 5.5 计算追踪一帧图像的耗时
 
         - 追踪完成, 停止当前帧的图像计时, 并计算追踪耗时
      
@@ -200,7 +200,7 @@
                 vTimesTrack[ni] = static_cast<float>(ttrack);
         ```
 
-    - #### 6.6 匹配图像采集时的时间间隔
+    - #### 5.6 匹配图像采集时的时间间隔
 
         - 根据图像时间戳中记录的两张图像之间的时间和现在追踪当前图像所耗费的时间, 使得下一张图像能够按照时间戳被送入到 `SLAM` 系统中进行跟踪
 
@@ -220,7 +220,7 @@
         ```
 
 
-- ### 7. 关闭 SLAM 系统
+- ### 6. 关闭 SLAM 系统
 
     - 如果所有图像都追踪完毕, 就终止当前的 `SLAM` 系统
 
@@ -231,7 +231,7 @@
     ```
 
 
-- ### 8. 计算平均耗时
+- ### 7. 计算平均耗时
 
     - 计算平均耗时
  
@@ -250,7 +250,7 @@
     ```
 
 
-- ### 9. 保存轨迹
+- ### 8. 保存轨迹
 
     - 保存 TUM 格式的相机轨迹
     
@@ -335,8 +335,7 @@
     #include <iostream>
     #include <opencv2/core/core.hpp>
     
-    // #include "System.h"
-    
+
     using namespace std;
     
     
@@ -364,11 +363,7 @@
         // 当前图像序列的图片数目
         // int nImages = vstrImageFilenames.size();
         int nImages = static_cast<int>(vstrImageFilenames.size());
-    
-        // Step 3 加载 SLAM 系统
-        // Create SLAM system. It initializes all system threads and gets ready to process frames.
-        // 输入的参数如下: 词典文件路径, 配置文件路径, 传感器类型, 是否使用可视化界面
-        // ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true);
+
     }
     
     
