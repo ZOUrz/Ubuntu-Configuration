@@ -325,73 +325,85 @@
 
 - ### mono_kitti.cc (Build from scratch)
 
-```c++
-    // Step 5 如果所有图像都追踪完毕, 就终止当前的 SLAM 系统
-    // Stop all threads
-    SLAM.Shutdown();
-
-    // Step 6 计算平均耗时
-    // Tracking time statistics
-    sort(vTimesTrack.begin(),vTimesTrack.end());
-    float totaltime = 0;
-    for(int ni=0; ni<nImages; ni++)
+    ```c++
+    
+    #include <fstream>
+    #include <iomanip>
+    #include <iostream>
+    #include <opencv2/core/core.hpp>
+    
+    // #include "System.h"
+    
+    using namespace std;
+    
+    
+    // 获取图像序列中每一张图像的路径和时间戳
+    void LoadImages (const string &strPathToSequence, vector<string> &vstrImageFilenames, vector<double> &vTimestamps);
+    
+    
+    int main(int argc, char **argv)
     {
-        totaltime+=vTimesTrack[ni];
+        // Step 1 检查输入参数个数是否足够
+        if(argc != 4)
+        {
+            cerr << endl << "Usage: ./mono_kitti path_to_vocabulary path_to_settings path_to_sequence" << endl;
+            return 1;
+        }
+    
+        // Step 2 加载图像
+        // Retrieve paths to images
+        // 图像序列的文件名, 字符串序列
+        vector<string> vstrImageFilenames;
+        // 时间戳
+        vector<double> vTimestamps;
+        LoadImages(string(argv[3]), vstrImageFilenames, vTimestamps);
+    
+        // 当前图像序列的图片数目
+        // int nImages = vstrImageFilenames.size();
+        int nImages = static_cast<int>(vstrImageFilenames.size());
+    
+        // Step 3 加载 SLAM 系统
+        // Create SLAM system. It initializes all system threads and gets ready to process frames.
+        // 输入的参数如下: 词典文件路径, 配置文件路径, 传感器类型, 是否使用可视化界面
+        // ORB_SLAM2::System SLAM(argv[1],argv[2],ORB_SLAM2::System::MONOCULAR,true);
     }
-    cout << "-------" << endl << endl;
-    cout << "median tracking time: " << vTimesTrack[nImages/2] << endl;
-    cout << "mean tracking time: " << totaltime/nImages << endl;
-
-    // Step 7 保存 TUM 格式的相机轨迹
-    // Save camera trajectory
-    SLAM.SaveKeyFrameTrajectoryTUM("KeyFrameTrajectory.txt");    
-
-    return 0;
-}
-
-// 获取图像序列中每一张图像的路径和时间戳
-void LoadImages(const string &strPathToSequence, vector<string> &vstrImageFilenames, vector<double> &vTimestamps)
-{
-    // Step 1 读取时间戳文件
-    ifstream fTimes;
-    string strPathTimeFile = strPathToSequence + "/times.txt";
-    fTimes.open(strPathTimeFile.c_str());
-    while(!fTimes.eof())
+    
+    
+    // 获取图像序列中每一张图像的路径和时间戳
+    void LoadImages(const string &strPathToSequence, vector<string> &vstrImageFilenames, vector<double> &vTimestamps)
     {
-        string s;
-        getline(fTimes,s);
-        // 当该行不为空时执行
-        if(!s.empty())
+        // Step 1 读取时间戳文件
+        ifstream fTimes;
+        string strPathTimeFile = strPathToSequence + "/times.txt";
+        fTimes.open(strPathTimeFile.c_str());
+        while(!fTimes.eof())
+        {
+            string s;
+            getline(fTimes,s);
+            // 当该行不为空时执行
+            if(!s.empty())
+            {
+                stringstream ss;
+                ss << s;
+                double t;
+                ss >> t;
+                // 保存时间戳
+                vTimestamps.push_back(t);
+            }
+        }
+    
+        // Step 2 使用左目图像, 生成左目图像序列中每一张图像的文件名
+        string strPrefixLeft = strPathToSequence + "/image_0/";
+    
+        //const int nTimes = vTimestamps.size();
+        const int nTimes = static_cast<int>(vTimestamps.size());
+        vstrImageFilenames.resize(nTimes);
+    
+        for(int i=0; i<nTimes; i++)
         {
             stringstream ss;
-            ss << s;
-            double t;
-            ss >> t;
-            // 保存时间戳
-            vTimestamps.push_back(t);
+            ss << setfill('0') << setw(6) << i;
+            vstrImageFilenames[i] = strPrefixLeft + ss.str() + ".png";
         }
     }
-
-    // Step 2 使用左目图像, 生成左目图像序列中每一张图像的文件名
-    string strPrefixLeft = strPathToSequence + "/image_0/";
-
-    //const int nTimes = vTimestamps.size();
-    const int nTimes = static_cast<int>(vTimestamps.size());
-    vstrImageFilenames.resize(nTimes);
-
-    for(int i=0; i<nTimes; i++)
-    {
-        stringstream ss;
-        ss << setfill('0') << setw(6) << i;
-        vstrImageFilenames[i] = strPrefixLeft + ss.str() + ".png";
-    }
-}
-
-```
-
-整个文件内的代码比较简单, 因为这只是一个将 SLAM 系统进行定位的步骤串起来的流程文件
-
-因此我们关注的重点是在这个文件内, 调用了哪些在其他文件内的函数, 以及这些函数构造以及具体实现是哪些文件写的
-
-
-
+    ```
