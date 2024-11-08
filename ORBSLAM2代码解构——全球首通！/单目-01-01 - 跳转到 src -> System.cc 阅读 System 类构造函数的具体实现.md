@@ -541,6 +541,12 @@
   ```
 
 
+## 重头开始构建 ORBSLAM2
+
+- ### 1. mono_kitti.cc 的修改
+
+  - 在文件开头加上
+
 mono_kitti.cc
 
 #include "System.h"
