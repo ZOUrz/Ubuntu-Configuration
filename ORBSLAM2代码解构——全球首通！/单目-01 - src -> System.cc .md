@@ -472,6 +472,10 @@
           mpKeyFrameDatabase = new KeyFrameDatabase(*mpVocabulary);
   ```
 
+  - 使用 `new` 关键字创建一个 `KeyFrameDatabase` 对象，并将其指针存储在成员指针变量 `mpKeyFrameDatabase`, 并调用 `KeyFrameDatabase` 构造函数来初始化该对象
+ 
+  - 具体实现是在 src/KeyFrameDatabase.cc 里, 所以需要去到该文件里看看 KeyFrameDatabase 类构造函数的具体实现
+  
 
 - ### 4. 地图(数据库)
 
