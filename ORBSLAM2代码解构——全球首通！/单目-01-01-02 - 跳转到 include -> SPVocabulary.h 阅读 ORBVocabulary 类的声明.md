@@ -132,25 +132,55 @@ namespace ORB_SLAM2
 
     - 编写 `build.sh` 文件
  
-```shell
-echo "Configuring and buildding Thirdparty/FBoW ..."
+    ```shell
+    echo "Configuring and buildding Thirdparty/FBoW ..."
+    
+    cd Thirdparty/DBoW3
+    mkdir build
+    cd build
+    cmake .. -DCMAKE_BUILD_TYPE=Release
+    make -j
+    
+    cd ../../../
+    
+    echo "Configuring and building ORB_SLAM2 ..."
+    
+    mkdir build
+    cd build
+    cmake .. -DCMAKE_BUILD_TYPE=Release
+    make -j
+    
+    ```
 
-cd Thirdparty/DBoW3
-mkdir build
-cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release
-make -j
+- ### 3. CMakeLists.txt
 
-cd ../../../
+    - Build from scratch - Changed 2
+  
+    - 在 `CMakeLists.txt` 文件的这个位置, 要加入这行代码
+ 
+    ```cmake
+    # 指定${PROJECT_SOURCE_DIR}库链接的其他库
+    target_link_libraries(${PROJECT_NAME}
+            ${OpenCV_LIBS}  # OpenCV库
+            ${EIGEN3_LIBS}  # Eigen3库
+            ${Pangolin_LIBRARIES}  # Pangolin库
+            # 还链接了位于Thirdparty/DBoW2和Thirdparty/g2o的第三方库
+            ${PROJECT_SOURCE_DIR}/Thirdparty/DBoW3/lib/libDBoW3.so
+            #${PROJECT_SOURCE_DIR}/Thirdparty/g2o/lib/libg2o.so
+    )
+    ```
 
-echo "Configuring and building ORB_SLAM2 ..."
+    - 然后再进行编译, 在终端依次输入
+ 
+    ```c++
+    chmod +x build.sh
+    ./build.sh
+    ```
 
-mkdir build
-cd build
-cmake .. -DCMAKE_BUILD_TYPE=Release
-make -j
+    - 完整代码
+ 
+```c++
 
 ```
-
 
 
