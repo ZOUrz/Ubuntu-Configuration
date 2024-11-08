@@ -305,124 +305,138 @@
         std::thread* mptViewer;
 ```
 
-### 3. 余下没有初始化的成员变量
 
-在 include/System.h 中还有
+- ### 12. 设置进程间的指针
 
-* mTrackingState
-* mTrackedMapPoints
-* mTrackedKeyPointsUn
-* mMutexState
+  - 设置 `mpTracker`, `mpLocalMapper` 和 `mpLoopCloser` 三个进程之间的指针
+
+  - 设置指针的目的是, 为了使各个进程之间能够互相访问和交互
+ 
+  - 举例来说, `mpTracker` 需要访问 `mpLocalMapper`, 因此需要设置 `mpTracker` 对象的内部指针, 指向 `mpLocalMapper`, 从而使得 `mpTracker` 可以调用 `mpLocalMapper` 中的函数或使用其数据
+ 
+  ```c++
+          // 设置进程间的指针, 使它们能够相互访问和交互
+          // 举例来说, mpTracker 需要访问 mpLocalMapper, 因此需要设置 mpTracker 对象的内部指针, 指向 mpLocalMapper
+          // 从而使得 mpTracker 可以调用 mpLocalMapper 中的函数或使用其数据
+          // Set pointers between threads
+          mpTracker->SetLocalMapper(mpLocalMapper);
+          mpTracker->SetLoopClosing(mpLoopCloser);
+  
+          mpLocalMapper->SetTracker(mpTracker);
+          mpLocalMapper->SetLoopCloser(mpLoopCloser);
+  
+          mpLoopCloser->SetTracker(mpTracker);
+          mpLoopCloser->SetLocalMapper(mpLocalMapper);
+  ```
+
+  - 其实在上面的代码 `创建可视化器` 中, 已经有类似的操作了, 目的是为了让 mpTracker 能够调用 mpViewer 中的函数或使用其数据
+
+  ```c++
+              // 设置追踪器的 Viewer
+              mpTracker->SetViewer(mpViewer);
+  ```
+
+  - 上述的函数可以在各自的头文件中中找到它们的声明
+
+    - include/Tracking.h
+
+    ```c++
+        void SetLocalMapper(LocalMapping* pLocalMapper);
+        void SetLoopClosing(LoopClosing* pLoopClosing);
+        void SetViewer(Viewer* pViewer);
+    ```
+    
+    - include/LocalMapping.h
+
+    ```c++
+        void SetLoopCloser(LoopClosing* pLoopCloser);
+        void SetTracker(Tracking* pTracker);
+    ```
+
+    - include/LoopClosing.h
    
-这四个成员变量没有在构造函数中进行初始化, 后续用到它们的时候会再提一下
+    ```c++
+        void SetTracker(Tracking* pTracker);
+        void SetLocalMapper(LocalMapping* pLocalMapper);
+    ```
 
-```c++
-        // 追踪状态标志
-        // Tracking state
-        int mTrackingState;
-        
-        std::vector<MapPoint*> mTrackedMapPoints;
-        std::vector<cv::KeyPoint> mTrackedKeyPointsUn;
-        std::mutex mMutexState;
-```
+  - 可以在各自的源文件中找到它们的具体实现
 
-不过在CLion中会出现警告 System 类的构造函数中没有初始化 mTrackingState 的提示, 这个成员变量代表追踪器的状态, 输出的值为 2 (目前不知道数值的具体意义)
+    - src/Tracking.cc
+  
+    ```c++
+    void Tracking::SetViewer(Viewer *pViewer)
+    {
+        mpViewer=pViewer;
+    }
+    void Tracking::SetLocalMapper(LocalMapping *pLocalMapper)
+    {
+        mpLocalMapper=pLocalMapper;
+    }
+    void Tracking::SetLoopClosing(LoopClosing *pLoopClosing)
+    {
+        mpLoopClosing=pLoopClosing;
+    }
+    ```
 
-如果不想出现这个警告, 可以在构造函数最后加上以下代码, 不会影响代码正常运行
+    - src/LocalMapping.cc
+    
+    ```c++
+    void LocalMapping::SetLoopCloser(LoopClosing* pLoopCloser)
+    {
+        mpLoopCloser = pLoopCloser;
+    }
+    void LocalMapping::SetTracker(Tracking *pTracker)
+    {
+        mpTracker=pTracker;
+    }
+    ```
 
-```c++
-        // 初始化 mTrackingState 的值, 直接设置为0, 只是为了避免CLion的警告提示
-        mTrackingState = 0;
-```
+    - src/LoopClosing.cc
+   
+    ```c++
+    void LoopClosing::SetTracker(Tracking *pTracker)
+    {
+        mpTracker=pTracker;
+    }
+    void LoopClosing::SetLocalMapper(LocalMapping *pLocalMapper)
+    {
+        mpLocalMapper=pLocalMapper;
+    }
+    ```
 
-### 4. 设置进程间的指针
 
-目的是为了使各个进程之间能够互相访问和交互
+- ### 12. 余下没有初始化的成员变量
 
-* 设置 mpTracker, mpLocalMapper 和 mpLoopCloser 三个进程之间的指针
+  - 在 include/System.h 中还有
 
-```c++
-        // 设置进程间的指针, 使它们能够相互访问和交互
-        // 举例来说, mpTracker 需要访问 mpLocalMapper, 因此需要设置 mpTracker 对象的内部指针, 指向 mpLocalMapper
-        // 从而使得 mpTracker 可以调用 mpLocalMapper 中的函数或使用其数据
-        // Set pointers between threads
-        mpTracker->SetLocalMapper(mpLocalMapper);
-        mpTracker->SetLoopClosing(mpLoopCloser);
+    - mTrackingState
+    - mTrackedMapPoints
+    - mTrackedKeyPointsUn
+    - mMutexState
 
-        mpLocalMapper->SetTracker(mpTracker);
-        mpLocalMapper->SetLoopCloser(mpLoopCloser);
+  - 这四个成员变量没有在构造函数中进行初始化, 后续用到它们的时候会再提一下
 
-        mpLoopCloser->SetTracker(mpTracker);
-        mpLoopCloser->SetLocalMapper(mpLocalMapper);
-```
+  ```c++
+          // 追踪状态标志
+          // Tracking state
+          int mTrackingState;
+          
+          std::vector<MapPoint*> mTrackedMapPoints;
+          std::vector<cv::KeyPoint> mTrackedKeyPointsUn;
+          std::mutex mMutexState;
+  ```
 
-* 同理 在初始化可视化器 Viewer 部分的代码中, 也有类似的操作, 目的是为了让 mpTracker 能够调用 mpViewer 中的函数或使用其数据
+  - 不过在 `CLion` 中会出现警告 `System` 类的构造函数中没有初始化 `mTrackingState` 的提示, 这个成员变量代表追踪器的状态, 在 `SLAM` 系统运行时输出的值为 2 (目前不知道数值的具体意义)
 
-```c++
-            // 设置追踪器的 Viewer
-            mpTracker->SetViewer(mpViewer);
-```
+  - 如果不想出现这个警告, 可以在构造函数最后加上以下代码, 不会影响代码正常运行
 
-上述的函数可以在各自的头文件中中找到它们的声明
+  ```c++
+          // 初始化 mTrackingState 的值, 直接设置为0, 只是为了避免CLion的警告提示
+          mTrackingState = 0;
+  ```
 
-  * include/Tracking.h
-```c++
-    void SetLocalMapper(LocalMapping* pLocalMapper);
-    void SetLoopClosing(LoopClosing* pLoopClosing);
-    void SetViewer(Viewer* pViewer);
-```
-  * include/LocalMapping.h
-```c++
-    void SetLoopCloser(LoopClosing* pLoopCloser);
-    void SetTracker(Tracking* pTracker);
-```
-  * include/LoopClosing.h
-```c++
-    void SetTracker(Tracking* pTracker);
-    void SetLocalMapper(LocalMapping* pLocalMapper);
-```
 
-可以在各自的源文件中找到它们的具体实现
-
-  * src/Tracking.cc
-```c++
-void Tracking::SetViewer(Viewer *pViewer)
-{
-    mpViewer=pViewer;
-}
-void Tracking::SetLocalMapper(LocalMapping *pLocalMapper)
-{
-    mpLocalMapper=pLocalMapper;
-}
-void Tracking::SetLoopClosing(LoopClosing *pLoopClosing)
-{
-    mpLoopClosing=pLoopClosing;
-}
-```
-  * src/LocalMapping.cc
-```c++
-void LocalMapping::SetLoopCloser(LoopClosing* pLoopCloser)
-{
-    mpLoopCloser = pLoopCloser;
-}
-void LocalMapping::SetTracker(Tracking *pTracker)
-{
-    mpTracker=pTracker;
-}
-```
-  * src/LoopClosing.cc
-```c++
-void LoopClosing::SetTracker(Tracking *pTracker)
-{
-    mpTracker=pTracker;
-}
-void LoopClosing::SetLocalMapper(LocalMapping *pLocalMapper)
-{
-    mpLocalMapper=pLocalMapper;
-}
-```
-
-中找到它们的具体实现
 
 
 ## 构造函数的完整代码
