@@ -51,12 +51,19 @@
 
 ## 需要进行跳转阅读的位置
 
-### 1. mvInvertedFile[i]
 
-```c++
-        // 倒排索引, mvInvertedFile[i] 表示包含了第 i 个 word id 的所有关键帧
-        // Inverted file
-        std::vector<std::list<KeyFrame*> > mvInvertedFile;
-```
+- ### 1. mvInvertedFile[i]
 
-其中, std::vector<std::list<KeyFrame*>> 是一个 vector 容器, 其每个元素都是一个 list, 而这个 list 存储的是指向 KeyFrame 类型对象的指针
+    ```c++
+            // 倒排索引, mvInvertedFile[i] 表示包含了第 i 个 word id 的所有关键帧
+            // Inverted file
+            std::vector<std::list<KeyFrame*> > mvInvertedFile;
+    ```
+
+    - 其中, `std::vector<std::list<KeyFrame*>>` 是一个 `vector` 容器, 其每个元素都是一个 `list`, 而这个 `list` 存储的是指向 `KeyFrame` 类型对象的指针
+ 
+    - 由于 `mvInvertedFile` 只定义了一个存放指针的容器, 并没有实际创建 `KeyFrame` 对象，因此在这行代码中并没有调用 `KeyFrame` 的构造函数
+
+    - `mvInvertedFile` 只是声明了一个向量和链表的结构, 存储的是 `KeyFrame` 类型的指针, 并不会触发 `KeyFrame` 实例的创建
+ 
+    - 因此这行代码不会调用 `KeyFrame` 类的构造函数, 因此只需要跳转到 include/KeyFrame.h 查看
