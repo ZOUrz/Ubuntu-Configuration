@@ -381,6 +381,18 @@
   - 具体实现是在 `src/ORBextractor.cc` 里, 所以需要去到该文件里看看 `ORBextractor` 类构造函数的具体实现
 
 
+## 重头开始构建 ORBSLAM2
+
+- 如果是从零开始构建 `ORBSLAM2` 系统, 就按照下面给出的文件内容进行代码的编写
+
+
+- ### 1. include/Tracking.h
+
+  - Build from scratch - Changed 1
+ 
+  - 添加了 `Tracking` 类的构造函数以及相应的成员变量
+ 
+  - 这里就先不管成员变量 ``
 
 
 
