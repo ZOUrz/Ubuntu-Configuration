@@ -343,3 +343,47 @@
           // For RGB-D inputs only. For some datasets (e.g. TUM) the depthmap values are scaled.
           float mDepthMapFactor;
   ```
+
+
+## 需要进行跳转阅读的位置
+
+  - 在 `Tracking.cc` 文件的 `Tracking` 类构造函数中, 所调用的来自其他文件定义的类
+
+
+- ### 1. 初始化器
+
+  ```
+          mpInitializer(static_cast<Initializer*>(nullptr))
+  ```
+
+  - 在这行代码中, `mpInitializer` 是一个指向 `Initializer` 对象的指针, 将 `nullptr` (空指针)转换为 `Initializer` 类型, 这样可以显式地将 `mpInitializer` 初始化为 `nullptr`
+
+  - 所以这行代码并没有创建 `Initializer` 实例, 因此不会调用其构造函数, 因此只需要跳转到 `include/Initializer.h` 查看
+
+
+- ### 2. 特征点提取器
+
+  ```c++
+          // Tracking 过程都会用到 mpORBextractorLeft 作为特征点提取器
+          mpORBextractorLeft = new ORBextractor(nFeatures,fScaleFactor,nLevels,fIniThFAST,fMinThFAST);
+  
+          // 如果是双目, Tracking 过程中还会用到 mpORBextractorRight 作为右目特征点提取器
+          if(sensor==System::STEREO)
+              mpORBextractorRight = new ORBextractor(nFeatures,fScaleFactor,nLevels,fIniThFAST,fMinThFAST);
+  
+          // 在单目初始化的时候, 会用 mpIniORBextractor 来作为特征点提取器
+          if(sensor==System::MONOCULAR)
+              mpIniORBextractor = new ORBextractor(2*nFeatures,fScaleFactor,nLevels,fIniThFAST,fMinThFAST);
+  ```
+
+  - 这三行代码同样都使用了 `new` 关键字来创建 `ORBextractor` 对象, 并将其指针存储在成员指针变量 `mpORBextractorLeft`, `mpORBextractorRight` 和 `mpIniORBextractor`, 并调用 `ORBextractor` 类的构造函数来初始化对象
+ 
+  - 具体实现是在 `src/ORBextractor.cc` 里, 所以需要去到该文件里看看 `ORBextractor` 类构造函数的具体实现
+
+
+
+
+
+
+
+  
