@@ -319,7 +319,7 @@
   ```
 
 
-- ### 5. CMakeLists
+- ### 5. CMakeLists.txt
 
   - Build from scratch - Changed 3
  
