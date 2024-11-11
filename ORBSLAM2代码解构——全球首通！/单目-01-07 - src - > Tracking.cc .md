@@ -39,7 +39,7 @@
           mpFrameDrawer(pFrameDrawer), mpMapDrawer(pMapDrawer), mpMap(pMap), mnLastRelocFrameId(0)
   ```
 
-  - 其中, 变量 `mState`, `mSensor`, `mbOnlyTracking`, `mbVO`, `mpORBVocabulary`, `mpKeyFrameDB`, `mpInitializer`, `mpSystem`, `mpViewer`, `mpFrameDrawer`, `mpMapDrawer`, `mpMap` 和 `mnLastRelocFrameId` 是 `Tracking` 类的成员变量, 它们是在 include/Tracking.h 中定义的
+  - 其中, 变量 `mState`, `mSensor`, `mbOnlyTracking`, `mbVO`, `mpORBVocabulary`, `mpKeyFrameDB`, `mpInitializer`, `mpSystem`, `mpViewer`, `mpFrameDrawer`, `mpMapDrawer`, `mpMap` 和 `mnLastRelocFrameId` 是 `Tracking` 类的成员变量, 它们是在 `include/Tracking.h` 中定义的
 
   ```c++
           // 跟踪状态
