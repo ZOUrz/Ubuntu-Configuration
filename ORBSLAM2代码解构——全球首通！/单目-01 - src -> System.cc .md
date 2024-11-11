@@ -44,7 +44,7 @@
           mbActivateLocalizationMode(false), mbDeactivateLocalizationMode(false)
    ```
 
-  - 其中, 变量 `mSensor`, `mpViewer`, `mbReset`, `mbActivateLocalizationMode` 和 `mbDeactivateLocalizationMode` 是 System 类的成员变量, 它们是在 `include/System.h` 中定义的
+  - 其中, 变量 `mSensor`, `mpViewer`, `mbReset`, `mbActivateLocalizationMode` 和 `mbDeactivateLocalizationMode` 是 `System` 类的成员变量, 它们是在 `include/System.h` 中定义的
 
   ```c++
           // 成员变量的命名方式, 类的变量名有前缀m, 如果这个变量是指针类型还要多加个前缀p, 如果是进程则加个前缀t, 等等
