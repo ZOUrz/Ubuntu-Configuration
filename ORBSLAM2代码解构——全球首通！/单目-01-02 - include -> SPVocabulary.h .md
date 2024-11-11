@@ -394,6 +394,11 @@ namespace ORB_SLAM2
         // 如果不使用前向声明, 而直接包含头文件, 可能会导致头文件之间的循环依赖, 进而导致编译错误或头文件包含的死循环
         // 通过前向声明, 编译器不会立即要求完整定义, 只需要一个简单的类声明, 防止了这些问题
         class Viewer;
+        class FrameDrawer;
+        class Map;
+        class Tracking;  // 源码是注释调的, 不注释也能正常运行, 目前不清楚作者注释的动机
+        class LocalMapping;
+        class LoopClosing;
 
         // 本类的定义
         class System
