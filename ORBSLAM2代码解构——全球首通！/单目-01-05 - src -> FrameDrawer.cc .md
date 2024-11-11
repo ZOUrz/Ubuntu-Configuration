@@ -31,6 +31,64 @@
   - 由于定义的代码位于 `include/Tracking.h`中, 因此只需要跳转到该文件中即可
 
 
+## 重头开始构建 ORBSLAM2
+
+- 如果是从零开始构建 `ORBSLAM2` 系统, 就按照下面给出的文件内容进行代码的编写
 
 
+- ### 1. include/FrameDrawer.h
 
+ - Build from scratch - Changed 0
+
+```c++
+
+```
+
+
+- ### 2. src/FrameDrawer.cc
+
+ - Build from scratch - Changed 0
+
+```c++
+
+```
+
+
+- ### 3. include/System.h
+
+ - Build from scratch - Changed 5
+
+ - 文件开头加上
+
+```c++
+
+```
+
+ - 然后添加成员变量
+
+```c++
+
+```
+
+ - 完整代码
+
+```c++
+
+```
+
+
+- ### 4. src/System.cc
+
+ - Build from scratch - Changed 5
+
+ - 在代码最后加上
+
+```c++
+
+```
+
+ - 完整代码
+
+```c++
+
+```
