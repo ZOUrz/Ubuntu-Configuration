@@ -67,3 +67,9 @@
     - `mvInvertedFile` 只是声明了一个向量和链表的结构, 存储的是 `KeyFrame` 类型的指针, 并不会触发 `KeyFrame` 实例的创建
  
     - 因此这行代码不会调用 `KeyFrame` 类的构造函数, 因此只需要跳转到 include/KeyFrame.h 查看
+
+
+## 重头开始构建 ORBSLAM2
+
+- 如果是从零开始构建 `ORBSLAM2` 系统, 就按照下面给出的文件内容进行代码的编写
+
