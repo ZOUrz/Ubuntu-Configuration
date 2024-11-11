@@ -472,7 +472,7 @@
           mpKeyFrameDatabase = new KeyFrameDatabase(*mpVocabulary);
   ```
 
-  - 使用 `new` 关键字创建一个 `KeyFrameDatabase` 对象，并将其指针存储在成员指针变量 `mpKeyFrameDatabase`, 并调用 `KeyFrameDatabase` 类的构造函数来初始化该对象
+  - 这行代码使用 `new` 关键字创建一个 `KeyFrameDatabase` 对象，并将其指针存储在成员指针变量 `mpKeyFrameDatabase`, 并调用 `KeyFrameDatabase` 类的构造函数来初始化该对象
  
   - 具体实现是在 `src/KeyFrameDatabase.cc` 里, 所以需要去到该文件里看看 `KeyFrameDatabase` 类构造函数的具体实现
   
@@ -484,7 +484,7 @@
           mpMap = new Map();
   ```
 
-  - 使用 `new` 关键字创建一个 `Map` 对象，并将其指针存储在成员指针变量 `mpMap`, 并调用 `Map` 类的构造函数来初始化该对象
+  - 这行代码使用 `new` 关键字创建一个 `Map` 对象，并将其指针存储在成员指针变量 `mpMap`, 并调用 `Map` 类的构造函数来初始化该对象
  
   - 具体实现是在 `src/Map.cc` 里, 所以需要去到该文件里看看 `Map` 类构造函数的具体实现
 
@@ -495,8 +495,11 @@
           // 这里的帧绘制器和地图绘制器将会被可视化的 Viewer 所使用
           // Create Drawers. These are used by the Viewer
           mpFrameDrawer = new FrameDrawer(mpMap);
-          mpMapDrawer = new MapDrawer(mpMap, strSettingsFile);
   ```
+
+  - 这行代码使用 `new` 关键字创建一个 `FrameDrawer` 对象，并将其指针存储在成员指针变量 `mpFrameDrawer`, 并调用 `FrameDrawer` 类的构造函数来初始化该对象
+ 
+  - 具体实现是在 `src/FrameDrawer.cc` 里, 所以需要去到该文件里看看 `FrameDrawer` 类构造函数的具体实现
 
 
 - ### 6. 地图绘制器
@@ -504,9 +507,12 @@
   ```c++
           // 这里的帧绘制器和地图绘制器将会被可视化的 Viewer 所使用
           // Create Drawers. These are used by the Viewer
-          mpFrameDrawer = new FrameDrawer(mpMap);
           mpMapDrawer = new MapDrawer(mpMap, strSettingsFile);
   ```
+
+  - 这行代码使用 `new` 关键字创建一个 `MapDrawer` 对象，并将其指针存储在成员指针变量 `mpMapDrawer`, 并调用 `MapDrawer` 类的构造函数来初始化该对象
+ 
+  - 具体实现是在 `src/MapDrawer.cc` 里, 所以需要去到该文件里看看 `MapDrawer` 类构造函数的具体实现
 
 
 - ### 7. 追踪器
