@@ -93,6 +93,7 @@
           unsigned int mnLastRelocFrameId;
   ```
 
+
 - ### 2. 从配置文件中加载相机参数
 
   ```c++
@@ -104,6 +105,7 @@
           float cx = fSettings["Camera.cx"];
           float cy = fSettings["Camera.cy"];
   ```
+
 
 - ### 3. 构造相机内参矩阵
 
@@ -126,6 +128,7 @@
           // 相机的内参数矩阵
           cv::Mat mK;
   ```
+
 
 - ### 4.获取图像矫正系数
 
@@ -154,6 +157,7 @@
           cv::Mat mDistCoef;
   ```
 
+
 - ### 5. 获取双目摄像头基线
 
   - 相机的基线长度 * 相机的焦距
@@ -170,6 +174,7 @@
           float mbf;
   ```
 
+
 - ### 6. 获取FPS
 
   ```c++
@@ -177,6 +182,7 @@
           if(fps==0)
               fps=30;
   ```
+
 
 - ### 7. 获取最小最大时间间隔
 
@@ -196,6 +202,7 @@
           int mMaxFrames;
   ```
 
+
 - ### 8. 参数输出
 
   ```c++
@@ -213,6 +220,7 @@
           cout << "- p2: " << DistCoef.at<float>(3) << endl;
           cout << "- fps: " << fps << endl;
   ```
+
 
 - ### 9. 获取图像的颜色通道顺序
 
@@ -236,6 +244,7 @@
           bool mbRGB;
   ```
 
+
 - ### 10. 加载 ORB 特征点有关的参数
 
   ```c++
@@ -253,6 +262,7 @@
           // 如果默认阈值提取不出足够的 FAST 特征点, 则使用最小阈值 8
           int fMinThFAST = fSettings["ORBextractor.minThFAST"];
   ```
+
 
 - ### 11. 特征点提取器实例化
 
@@ -285,6 +295,7 @@
           ORBextractor* mpIniORBextractor;
   ```
 
+
 - ### 12. 输出 ORB 特征点提取的相关参数
 
   ```c++
@@ -296,7 +307,8 @@
           cout << "- Minimum Fast Threshold: " << fMinThFAST << endl;
   ```
 
-- ### 13.
+
+- ### 13. 计算 mThDepth 和 mDepthMapFactor
 
   ```c++
           if(sensor==System::STEREO || sensor==System::RGBD)
