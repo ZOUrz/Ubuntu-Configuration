@@ -8,7 +8,7 @@
 - 如果是从零开始构建 `ORBSLAM2` 系统, 就按照下面给出的文件内容进行代码的编写
 
 
-- ### 1. KeyFrame.h
+- ### 1. include/KeyFrame.h
 
     - Build from scratch - Changed 0
 
@@ -41,7 +41,7 @@
     ```
 
 
-- ### 2. KeyFrameDatabase.h
+- ### 2. include/KeyFrameDatabase.h
 
     - Build from scratch - Changed 1
  
@@ -100,7 +100,7 @@
     ```
 
 
-- ### 3. KeyFrameDatabase.cc
+- ### 3. src/KeyFrameDatabase.cc
 
     - Build from scratch - Changed 1
  
