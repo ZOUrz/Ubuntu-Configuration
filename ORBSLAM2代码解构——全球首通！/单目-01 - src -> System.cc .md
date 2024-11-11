@@ -298,12 +298,12 @@
 
   - 其中, 成员变量 `mpViewer` 在构造函数体外的成员变量初始化列表中已经提到过了, 成员变量 `mptViewer` 是在 `include/System.h` 中定义的
 
-```c++
-        // 系统除了在主进程中进行运动追踪外, 会创建局部建图线程, 回环检测线程和可视化线程
-        // System threads: Local Mapping, Loop Closing, Viewer.
-        // The Tracking thread "lives" in the main execution thread that creates the System object.
-        std::thread* mptViewer;
-```
+  ```c++
+          // 系统除了在主进程中进行运动追踪外, 会创建局部建图线程, 回环检测线程和可视化线程
+          // System threads: Local Mapping, Loop Closing, Viewer.
+          // The Tracking thread "lives" in the main execution thread that creates the System object.
+          std::thread* mptViewer;
+  ```
 
 
 - ### 12. 设置进程间的指针
