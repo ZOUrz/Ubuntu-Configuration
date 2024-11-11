@@ -20,6 +20,16 @@
     
     namespace ORB_SLAM2
     {
+        // 要用到的其他类的前向声明
+        // 在该项目代码中，类之间可能存在复杂的相互依赖关系
+        // 例如, System 类可能需要引用 Viewer 类, 而 Viewer 类可能又引用 System 类, 前向声明能够打破这种直接的依赖关系
+        // 如果不使用前向声明, 而直接包含头文件, 可能会导致头文件之间的循环依赖, 进而导致编译错误或头文件包含的死循环
+        // 通过前向声明, 编译器不会立即要求完整定义, 只需要一个简单的类声明, 防止了这些问题
+        class Map;
+        class MapPoint;
+        class Frame;
+        class KeyFrameDatabase;
+    
         class KeyFrame
         {
     
@@ -54,6 +64,13 @@
     
     namespace ORB_SLAM2
     {
+        // 要用到的其他类的前向声明
+        // 在该项目代码中，类之间可能存在复杂的相互依赖关系
+        // 例如, System 类可能需要引用 Viewer 类, 而 Viewer 类可能又引用 System 类, 前向声明能够打破这种直接的依赖关系
+        // 如果不使用前向声明, 而直接包含头文件, 可能会导致头文件之间的循环依赖, 进而导致编译错误或头文件包含的死循环
+        // 通过前向声明, 编译器不会立即要求完整定义, 只需要一个简单的类声明, 防止了这些问题
+        class KeyFrame;
+        class Frame;
     
         // 关键帧数据库
         class KeyFrameDatabase
