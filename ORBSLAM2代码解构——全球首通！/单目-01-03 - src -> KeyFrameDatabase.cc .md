@@ -345,6 +345,8 @@
 
 - ### 5. CMakeLists.txt
 
+    - Build from scratch - Changed 2
+
     - 在文件以下位置进行修改, 将 `KeyFrameDatabase.cc` 源文件添加到库中
  
     ```cmake
