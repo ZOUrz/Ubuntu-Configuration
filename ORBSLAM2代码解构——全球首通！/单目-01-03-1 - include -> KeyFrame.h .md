@@ -11,6 +11,18 @@
 - ### 1. KeyFrame.h
 
 ```c++
+#ifndef KEYFRAME_H
+#define KEYFRAME_H
+
+namespace ORB_SLAM2
+{
+    class KeyFrame
+    {
+
+    };
+}
+
+#endif //KEYFRAME_H
 
 ```
 
@@ -18,6 +30,41 @@
 - ### 2. KeyFrameDatabase.h
 
 ```c++
+#ifndef KEYFRAMEDATABASE_H
+#define KEYFRAMEDATABASE_H
+
+
+#include "ORBVocabulary.h"
+#include "KeyFrame.h"
+
+
+namespace ORB_SLAM2
+{
+
+    // 关键帧数据库
+    class KeyFrameDatabase
+    {
+    public:
+
+        // 构造函数
+        explicit KeyFrameDatabase(const ORBVocabulary &voc);
+
+        // 允许类内部和派生类访问, 但不允许外部访问
+    protected:
+
+        // 预先训练好的词典
+        // Associated vocabulary
+        const ORBVocabulary* mpVoc;
+
+        // 倒排索引, mvInvertedFile[i] 表示包含了第 i 个 word id 的所有关键帧
+        // Inverted file
+        std::vector<std::list<KeyFrame*>> mvInvertedFile;
+
+    };
+
+}
+
+#endif //KEYFRAMEDATABASE_H
 
 ```
 
@@ -26,6 +73,27 @@
 
 
 ```c++
+// 关键帧数据库, 用于回环检测和重定位
+
+
+#include "KeyFrameDatabase.h"
+#include "KeyFrame.h"
+
+
+using namespace std;
+
+
+namespace ORB_SLAM2
+{
+
+    // 构造函数
+    KeyFrameDatabase::KeyFrameDatabase (const ORBVocabulary &voc):
+        mpVoc(&voc)
+    {
+        // 数据库的主要内容
+        mvInvertedFile.resize(voc.size());
+    }
+}
 
 ```
 
