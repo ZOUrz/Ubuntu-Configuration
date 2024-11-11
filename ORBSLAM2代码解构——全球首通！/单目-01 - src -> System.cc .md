@@ -820,6 +820,17 @@
 - ### 4. CMakeLists
 
   - Build from scratch - Changed 1
+ 
+  - 在文件以下位置进行修改, 将 `System.cc` 源文件添加到库中
+ 
+  ```cmake
+  # 创建一个名为${PROJECT_SOURCE_DIR}的共享库(SHARED表示生成动态链接库), 并将指定的源文件添加到库中
+  add_library(${PROJECT_NAME} SHARED
+          src/System.cpp
+  )
+  ```
+
+  - 完整代码
 
   ```cmake
   # 指定CMake的最低版本要求为2.8
