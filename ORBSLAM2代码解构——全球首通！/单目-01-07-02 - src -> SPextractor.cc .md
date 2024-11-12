@@ -34,7 +34,15 @@
  
     - 其中, `SPextractor` 类的构造函数是在 `include/SPextractor.h` 中声明的
  
+```c++
+
+```
+ 
     - 变量 `nfeatures`, `scaleFactor`, `nlevels`, `iniThFAST` 和 `minThFAST` 是 `SPextractor` 类的成员变量, 同样地, 它们是在 `include/SPextractor.h` 中声明的
+
+```c++
+
+```
 
     - 要注意 **定义** 和 **声明** 的区别:
 
