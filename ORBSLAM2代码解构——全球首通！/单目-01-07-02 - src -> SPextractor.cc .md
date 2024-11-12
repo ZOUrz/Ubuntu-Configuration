@@ -82,6 +82,12 @@
         
         - `torch::load` 是 `libtorch` 提供的一个函数, 用于加载模型的参数
         - `model` 是一个指向 `SuperPoint` 对象的智能指针, `torch::load` 会将 "`superpoint.pt`" 文件中的权重数据加载到 `model` 所指的 `SuperPoint` 对象中
+     
+    - 其中, 成员变量 `model` 是在 `include/SPextractor.h` 中声明的
+     
+    ```c++
+            std::shared_ptr<SuperPoint> model;
+    ```
 
 
 - ### 3. 计算缩放因子
@@ -113,6 +119,13 @@
     - 从第 `1` 层开始, 每层缩放因子逐步乘上 `scaleFactor`
  
     - `mvLevelSigma2` 是缩放因子的平方, 用于后续运算
+ 
+    - 其中, 成员变量 `mvScaleFactor` 和 `mvLevelSigma2` 是在 `include/SPextractor.h` 中声明的
+
+     ```c++
+            std::vector<float> mvScaleFactor;  // 每层图像的缩放因子
+            std::vector<float> mvLevelSigma2;  // Sigma2: 每层图像相对于底层图像缩放倍数的平方
+    ```
 
 
  - ### 4. 计算缩放因子的倒数
@@ -130,6 +143,13 @@
             }
     ```
 
+    - 其中, 成员变量 `mvInvScaleFactor` 和 `mvInvLevelSigma2` 是在 `include/SPextractor.h` 中声明的
+
+    ```c++
+        std::vector<float> mvInvScaleFactor;  // 每层缩放因子的倒数
+        std::vector<float> mvInvLevelSigma2;  // Sigma2 的倒数
+    ```
+
 
 - ### 5. 设置图像金字塔
 
@@ -140,6 +160,13 @@
     ```c++
             // 调整图像金字塔 vector 以使得其符合设定的图像层数
             mvImagePyramid.resize(nlevels);
+    ```
+
+    - 其中, 成员变量 `mvImagePyramid` 是在 `include/SPextractor.h` 中声明的
+ 
+    ```c++
+            // 用来存储图像金字塔的变量, 一个元素存储一层图像
+            std::vector<cv::Mat> mvImagePyramid;
     ```
 
 
@@ -177,6 +204,13 @@
             // 由于前面的特征点个数取整操作, 可能会导致剩余一些特征点个数没有被分配, 所以这里就将这个余出来的特征点分配到最高的图层中
             mnFeaturesPerLevel[nlevels-1] = std::max(nfeatures - sumFeatures, 0);
     ```
+
+    - 其中, 成员变量 `mnFeaturesPerLevel` 是在 `include/SPextractor.h` 中声明的
+
+    ```c++
+            std::vector<int> mnFeaturesPerLevel;  // 分配到每层图像中, 要提取的特征点数目
+    ```
+    
 
 
 ## ORBSLAM2 源码补充
