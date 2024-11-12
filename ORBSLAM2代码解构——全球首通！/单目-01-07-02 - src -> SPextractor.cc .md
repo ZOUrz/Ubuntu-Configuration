@@ -234,50 +234,62 @@
  
     - `HALF_PATCH_SIZE` 定义了描述子计算中要使用的图像区域半径, 这样 `umax` 就是长度为 `HALF_PATCH_SIZE + 1` 的向量
  
+    ```c++
+        // 下面的内容是和特征点的旋转计算有关的
+        // This is for orientation
+        // 预先计算图像 patch 中行的结束位置
+        // pre-compute the end of a row in a circular patch
+        // + 1 中的 1 表示那个圆的中间行
+        umax.resize(HALF_PATCH_SIZE + 1);
+    ```
+ 
 
 - ### 5. 计算 umax 的前半部分
 
-    -
+    - `vmax` 和 `vmin` 定义了对称的计算范围, 用于计算图像旋转时每一行的最右边界(半径)
  
+    - `hp2` 是半径的平方, `sqrt(hp2 - v * v)` 得到给定 `v` 值对应的最大水平距离 u, 存储在 `umax[v]` 中
+ 
+    - `umax[v]` 最终代表的是一个圆形区域的边界, 即旋转 `patch` 的每行都能到达的最右侧像素位置(这里不太懂???)
+ 
+    ```c++
+        // cvFloor 返回不大于参数的最大整数值, cvCeil 返回不小于参数的最小整数值, cvRound 则是四舍五入
+        // v: 循环辅助变量, v0: 辅助变量, vmax: 计算圆的最大行号, + 1 是把中间行也考虑进行了
+        // NOTICE: 注意这里的最大行号指的是计算时的最大行号, 此行和圆的角点在 45 度圆心角的一边上
+        // NOTICE：之所以这样选择是因为圆周上的对称特性 
+        int v, v0, vmax = cvFloor(HALF_PATCH_SIZE * sqrt(2.f) / 2 + 1);
+        // 二分之根号二就是对应 45 度圆心角
+        int vmin = cvCeil(HALF_PATCH_SIZE * sqrt(2.f) / 2);
+        // 半径的平方
+        const double hp2 = HALF_PATCH_SIZE*HALF_PATCH_SIZE;
+        // 利用圆的方程计算每行像素的 u 坐标边界( max )
+        for (v = 0; v <= vmax; ++v)
+            // 结果都是大于 0 的结果, 表示 x 坐标在这一行的边界
+            umax[v] = cvRound(sqrt(hp2 - v * v));
+    ```
 
-```c++
-    // 下面的内容是和特征点的旋转计算有关的
-    // This is for orientation
-    // 预先计算图像 patch 中行的结束位置
-    // pre-compute the end of a row in a circular patch
-    // + 1 中的 1 表示那个圆的中间行
-    umax.resize(HALF_PATCH_SIZE + 1);
 
-    // cvFloor 返回不大于参数的最大整数值, cvCeil 返回不小于参数的最小整数值, cvRound 则是四舍五入
-    // v: 循环辅助变量, v0: 辅助变量, vmax: 计算圆的最大行号, + 1 是把中间行也考虑进行了
-    // NOTICE: 注意这里的最大行号指的是计算时的最大行号, 此行和圆的角点在 45 度圆心角的一边上
-    // NOTICE：之所以这样选择是因为圆周上的对称特性 
-    int v, v0, vmax = cvFloor(HALF_PATCH_SIZE * sqrt(2.f) / 2 + 1);
-    // 二分之根号二就是对应 45 度圆心角
-    int vmin = cvCeil(HALF_PATCH_SIZE * sqrt(2.f) / 2);
-    // 半径的平方
-    const double hp2 = HALF_PATCH_SIZE*HALF_PATCH_SIZE;
-    // 利用圆的方程计算每行像素的 u 坐标边界( max )
-    for (v = 0; v <= vmax; ++v)
-        // 结果都是大于 0 的结果, 表示 x 坐标在这一行的边界
-        umax[v] = cvRound(sqrt(hp2 - v * v));
+- ### 6. 确保 umax 对称
 
-    // Make sure we are symmetric
-    // 使用对称的方式计算上四分之一的圆周上的umax, 目的是为了保持严格的对称
-    // 如果使用 cvRound 就会很容易出现不对称, 就无法满足旋转不变性
-    for (v = HALF_PATCH_SIZE, v0 = 0; v >= vmin; --v)
-    {
-        while (umax[v0] == umax[v0 + 1])
+    - 通过对称化 `umax`, 保证计算 `BRIEF` 描述子时具有旋转不变性, 使得在不同角度上特征提取结果一致
+
+    ```c++
+        // Make sure we are symmetric
+        // 使用对称的方式计算上四分之一的圆周上的umax, 目的是为了保持严格的对称
+        // 如果使用 cvRound 就会很容易出现不对称, 就无法满足旋转不变性
+        for (v = HALF_PATCH_SIZE, v0 = 0; v >= vmin; --v)
+        {
+            while (umax[v0] == umax[v0 + 1])
+                ++v0;
+            umax[v] = v0;
             ++v0;
-        umax[v] = v0;
-        ++v0;
-    }
-```
-    
-
-    
+    ```
  
 
+
+    
+
+    
 ```c++
     // 特征点提取器的构造函数
     // 构造函数输入的参数:
