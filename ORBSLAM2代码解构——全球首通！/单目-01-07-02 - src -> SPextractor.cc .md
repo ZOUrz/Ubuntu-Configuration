@@ -11,9 +11,7 @@
     - `Tracking` 类的构造函数
 
     - 在 `Tracking` 类构造函数体外, 是部分成员变量的初始化列表, 用于初始化类的部分成员变量
- 
-    - 在初始化列表中, 总共设置了:
- 
+  
     ```c++
         // 特征点提取器的构造函数
         // 构造函数输入的参数:
@@ -24,6 +22,8 @@
             nfeatures(_nfeatures), scaleFactor(_scaleFactor), nlevels(_nlevels),
             iniThFAST(_iniThFAST), minThFAST(_minThFAST)  // 初始化成员变量列表
     ```
+
+    - 在初始化列表中, 总共设置了:
 
       - `nfeatures`: 希望提取的总特征点数量
       - `scaleFactor`: 图像金字塔的缩放系数(控制图像逐层缩小的倍数)
