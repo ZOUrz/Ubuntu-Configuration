@@ -392,10 +392,74 @@
  
   - 添加了 `Tracking` 类的构造函数以及相应的成员变量
  
-  - 这里就先不管成员变量 ``
+  - 这里就先不管成员变量 `mpORBextractorLeft`, `mpORBextractorRight`, `mpIniORBextractor` 和 `mpInitializer` 的声明, 先注释掉或者可以先不写
+ 
+```c++
+
+```
 
 
+- ### 2. src/Tracking.cc
+
+  - Build from scratch - Changed 0
+
+```c++
+
+```
 
 
+- ### 3. include/System.h
 
-  
+  - Build from scratch - Changed 7
+   
+  - 文件开头加上:
+ 
+```c++
+
+```
+
+  - 然后添加成员变量
+
+```c++
+
+```
+
+  - 完整代码
+
+```c++
+
+```
+
+
+- ### 4. src/System.cc
+
+  - Build from scratch - Changed 7
+   
+  - 在代码最后加上
+ 
+```c++
+
+```
+
+  - 完整代码
+
+```c++
+
+```
+
+
+- ### 5. CMakeLists.txt
+
+  - Build from scratch - Changed 6
+ 
+  - 在文件以下位置进行修改, 将 Tracking.cc 源文件添加到库中
+ 
+```cmake
+
+```
+
+  - 完整代码
+
+```cmake
+
+```
