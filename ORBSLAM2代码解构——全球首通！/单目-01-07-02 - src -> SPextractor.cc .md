@@ -91,11 +91,11 @@
     - `mvScaleFactor` 和 `mvLevelSigma2` 是两个 `vector`, 用来存储每层图像相对于初始图像的缩放系数及其平方
 
     ```c++
-            // 存储每层图像缩放系数的vector,调整为符合图层数目的大小
+            // 存储每层图像缩放系数的 vector,调整为符合图层数目的大小
             mvScaleFactor.resize(nlevels);
             // 每层图像相对初始图像缩放因子的平方
             mvLevelSigma2.resize(nlevels);
-            // 对于初始图像, 这两个参数都是1
+            // 对于初始图像, 这两个参数都是 1
             mvScaleFactor[0] = 1.0f;
             mvLevelSigma2[0] = 1.0f;
             // 然后逐层计算图像金字塔中图像相当于初始图像的缩放系数
@@ -187,15 +187,62 @@
 
 - 以下代码解析的是在 `ORBSLAM2` 源码中, `ORBextractor` 类构造函数余下的内容
 
+
+- ### 1. 采样点数量
+
+    - 定义了常量 `npoints`, 值为 `512`, 表示 `BRIEF` 描述子中需要的采样点数量
+
+    - 也是 `pattern` 的长度, 这里的 `512` 表示 `512` 个点, 上面的 `bit_pattern_31` 数组中存储的坐标是 `256 * 2 * 2`
+ 
+    ```c++
+        // 成员变量 pattern 的长度, 也就是点的个数, 这里的 512 表示 512 个点(所以上面的数组中存储的坐标是 256*2*2)
+        constexpr int npoints = 512;
+    ```
+
+
+- ### 2. 强制类型转换
+
+    - `bit_pattern_31` 是一个 `int [ ]` 数组, 存储的是 `BRIEF` 描述子所需的随机采样点的坐标
+ 
+    - 使用 `reinterpret_cast` 强制将 `bit_pattern_31` 转换为 `Point*` 类型的指针, 以便后续处理
+ 
+    - `cv::Point` 通常表示一个二维坐标类型, 每个点包含 `x` 和 `y` 坐标, 这样就可以通过 `pattern0` 指针按 `Point` 的格式来访问采样点的坐标信息
+ 
+    ```c++
+        // 获取用于计算 BRIEF 描述子的随机采样点 点集 头指针
+        // 注意到pattern0的数据类型为Points*, bit_pattern_31_是int[]型, 所以这里需要进行强制类型转换
+        const auto pattern0 = reinterpret_cast<const Point*>(bit_pattern_31_);
+    ```
+
+
+- ### 3. 给成员变量 pattern 赋值
+
+    - `std::copy` 将 `pattern0` 指向的 `npoints` 个采样点复制到 `pattern` 容器中
+ 
+    - `std::back_inserter` 是一种迭代器, 保证数据会被添加到 `pattern` 的末尾, 避免覆盖容器中已有的数据
+ 
+    ```c++
+        // 使用 std::back_inserte r的目的是可以快覆盖掉这个容器 pattern 之前的数据
+        // 将在全局变量区域的, int 格式的随机采样点以 cv::point 格式复制到当前类对象中的成员变量中
+        std::copy(pattern0, pattern0 + npoints, std::back_inserter(pattern));
+    ```
+
+
+- ### 4. 初始化 umax
+
+    - `umax` 是一个向量, 用来存储 `BRIEF` 特征点的一个计算值, 在图像旋转时保持不变性
+ 
+    - `HALF_PATCH_SIZE` 定义了描述子计算中要使用的图像区域半径, 这样 `umax` 就是长度为 `HALF_PATCH_SIZE + 1` 的向量
+ 
+
+- ### 5. 计算 umax 的前半部分
+
+    -
+ 
+
 ```c++
-    // 成员变量pattern的长度, 也就是点的个数, 这里的512表示512个点(所以上面的数组中存储的坐标是256*2*2)
-    constexpr int npoints = 512;
-    // 获取用于计算BRIEF描述子的随机采样点 点集 头指针
-    // 注意到pattern0的数据类型为Points*, bit_pattern_31_是int[]型, 所以这里需要进行强制类型转换
-    const auto pattern0 = reinterpret_cast<const Point*>(bit_pattern_31_);
-    // 使用std::back_inserter的目的是可以快覆盖掉这个容器pattern之前的数据
-    // 将在全局变量区域的、int格式的随机采样点以cv::point格式复制到当前类对象中的成员变量中
-    std::copy(pattern0, pattern0 + npoints, std::back_inserter(pattern));
+
+
 
     //This is for orientation
     // pre-compute the end of a row in a circular patch
