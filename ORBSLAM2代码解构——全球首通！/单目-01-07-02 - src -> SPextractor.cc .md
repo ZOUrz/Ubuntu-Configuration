@@ -1,6 +1,6 @@
 # 跳转到 src/SPextractor.cc 阅读 SPextractor 类构造函数的具体实现
 
-主要阅读该文件中 `SPextractor` 类的构造函数
+- 主要阅读该文件中 `SPextractor` 类的构造函数
 
 
 ## 重点代码逐行解析
@@ -159,32 +159,39 @@
 
     - `factor` 是 `scaleFactor` 的倒数, `nDesiredFeaturesPerScale` 计算每层的目标特征点数量
  
-    - 通过循环分配每层的特征点, 除去最高层, 其余层依次按比例减少, 由于取整
+    - 通过循环分配每层的特征点, 除去最高层, 其余层依次按比例减少, 由于取整可能导致最后的分配数不足, 所以将剩余的特征点分配到最高层, 以保证总特征点数满足要求
+ 
+    ```c++
+            // 用于在特征点个数分配的, 特征点的累计计数清空
+            int sumFeatures = 0;
+            // 开始逐层计算要分配的特征点个书, 顶层图像除外
+            for( int level = 0; level < nlevels-1; level++ )
+            {
+                // 分配 cvRound: 返回跟参数最接近的整数值
+                mnFeaturesPerLevel[level] = cvRound(nDesiredFeaturesPerScale);
+                // 累计
+                sumFeatures += mnFeaturesPerLevel[level];
+                // 乘系数
+                nDesiredFeaturesPerScale *= factor;
+            }
+            // 由于前面的特征点个数取整操作, 可能会导致剩余一些特征点个数没有被分配, 所以这里就将这个余出来的特征点分配到最高的图层中
+            mnFeaturesPerLevel[nlevels-1] = std::max(nfeatures - sumFeatures, 0);
+    ```
+
+
+## ORBSLAM2 源码补充
+
+- 上述的代码是 `SuperPoint + ORBSLAM2` 项目里的源码, `SuperPoint` 能够在提取特征点的同时, 输出相应的描述子
+    
+- 而 `ORB` 特征点使用的是 `BRIEF` 特征描述子, 还需要一些预处理的步骤
+
+- 以下代码解析的是在 `ORBSLAM2` 源码中, `ORBextractor` 类构造函数余下的内容
+
+- 
     
 
     
  
-
-```c++
-    {
-
-
-        // 用于在特征点个数分配的, 特征点的累计计数清空
-        int sumFeatures = 0;
-        // 开始逐层计算要分配的特征点个书, 顶层图像除外
-        for( int level = 0; level < nlevels-1; level++ )
-        {
-            // 分配 cvRound: 返回跟参数最接近的整数值
-            mnFeaturesPerLevel[level] = cvRound(nDesiredFeaturesPerScale);
-            // 累计
-            sumFeatures += mnFeaturesPerLevel[level];
-            // 乘系数
-            nDesiredFeaturesPerScale *= factor;
-        }
-        // 由于前面的特征点个数取整操作, 可能会导致剩余一些特征点个数没有被分配, 所以这里就将这个余出来的特征点分配到最高的图层中
-        mnFeaturesPerLevel[nlevels-1] = std::max(nfeatures - sumFeatures, 0);
-    }
-```
 
 ```c++
     // 特征点提取器的构造函数
