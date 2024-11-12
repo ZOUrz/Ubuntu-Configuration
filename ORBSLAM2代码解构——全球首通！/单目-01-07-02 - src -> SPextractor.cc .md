@@ -58,8 +58,66 @@
 
       - **声明(Declaration)**: 告诉编译器变量的类型和名字, 但不分配内存或赋值. 例如, `extern int x;` 是声明, 仅告知编译器有一个名为 `x` 的 `int` 类型变量, 它的定义在其他地方
 
-      - **定义(Definition)**: 在声明的基础上, 同时分配内存, 并可选择性地赋值. 例如, `int x = 10;` 是定义, 既分配了内存也赋值为 `10`  
+      - **定义(Definition)**: 在声明的基础上, 同时分配内存, 并可选择性地赋值. 例如, `int x = 10;` 是定义, 既分配了内存也赋值为 `10`
 
+
+- ### 2. 加载 SuperPoint 模型
+
+    - 加载了预训练的 `SuperPoint` 模型文件 "`superpoint.pt`", 并将模型对象赋给 model 指针, 以完成模型的初始化
+ 
+    ```c++
+            // 加载 SuperPoint 模型
+            model = make_shared<SuperPoint>();
+            torch::load(model, "superpoint.pt");
+    ```
+
+    - 这段代码首先创建了一个 `SuperPoint` 类的对象, 并将它存储在一个 `shared_ptr` 智能指针中
+
+        - `make_shared<SuperPoint>()` 是一种简便的智能指针创建方法:
+            - 创建了一个 `shared_ptr<SuperPoint>` 对象, `shared_ptr` 是 `C++11` 中的智能指针之一, 用于管理动态分配的内存
+            - `shared_ptr` 的特点是**引用计数**, 可以在多个地方共享同一个对象, 当最后一个 `shared_ptr`指针离开作用域时, 对象会自动销毁, 释放内存, 避免手动管理内存和内存泄露的问题
+        - `model` 是一个 `shared_ptr<SuperPoint>`, 它指向一个动态分配的 `SuperPoint` 对象, 这样可以在类的其他成员函数中访问和使用 `SuperPoint` 的方法和属性
+    
+    - 然后使用 `libtorch` ('PyTorch C++' 接口)将预训练的模型权重文件 "`superpoint.pt`" 加载到 `model` 中
+        
+        - `torch::load` 是 `libtorch` 提供的一个函数, 用于加载模型的参数
+        - `model` 是一个指向 `SuperPoint` 对象的智能指针, `torch::load` 会将 "`superpoint.pt`" 文件中的权重数据加载到 `model` 所指的 `SuperPoint` 对象中
+
+
+- ### 3. 计算缩放因子
+
+    - 计算图像金字塔的缩放因子
+ 
+    - `mvScaleFactor` 和 `mvLevelSigma2` 是两个 `vector`, 用来存储每层图像相对于初始图像的缩放系数及其平方
+
+    ```c++
+            // 存储每层图像缩放系数的vector,调整为符合图层数目的大小
+            mvScaleFactor.resize(nlevels);
+            // 每层图像相对初始图像缩放因子的平方
+            mvLevelSigma2.resize(nlevels);
+            // 对于初始图像, 这两个参数都是1
+            mvScaleFactor[0] = 1.0f;
+            mvLevelSigma2[0] = 1.0f;
+            // 然后逐层计算图像金字塔中图像相当于初始图像的缩放系数
+            for(int i=1; i<nlevels; i++)
+            {
+                // 通过累乘计算得来的
+                mvScaleFactor[i] = static_cast<float>(mvScaleFactor[i-1] * scaleFactor);
+                // 每层图像相对于初始图像缩放因子的平方
+                mvLevelSigma2[i] = mvScaleFactor[i] * mvScaleFactor[i];
+            }
+    ```
+
+    - 第 `0` 层表示原图, 因此缩放因子为 `1`
+ 
+    - 从第 `1` 层开始, 每层缩放因子逐步乘上 `scaleFactor`
+ 
+    - `mvLevelSigma2` 是缩放因子的平方, 用于后续运算
+
+
+ - ### 4. 计算缩放因子的倒数
+
+    - 
     
 
     
@@ -67,9 +125,6 @@
 
 ```c++
     {
-        // 加载 SuperPoint 模型
-        model = make_shared<SuperPoint>();
-        torch::load(model, "superpoint.pt");
 
         // 存储每层图像缩放系数的vector,调整为符合图层数目的大小
         mvScaleFactor.resize(nlevels);
