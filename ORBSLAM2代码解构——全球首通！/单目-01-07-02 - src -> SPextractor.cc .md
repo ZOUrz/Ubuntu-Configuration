@@ -241,20 +241,30 @@
  
 
 ```c++
-
-
-
-    //This is for orientation
+    // 下面的内容是和特征点的旋转计算有关的
+    // This is for orientation
+    // 预先计算图像 patch 中行的结束位置
     // pre-compute the end of a row in a circular patch
+    // + 1 中的 1 表示那个圆的中间行
     umax.resize(HALF_PATCH_SIZE + 1);
 
+    // cvFloor 返回不大于参数的最大整数值, cvCeil 返回不小于参数的最小整数值, cvRound 则是四舍五入
+    // v: 循环辅助变量, v0: 辅助变量, vmax: 计算圆的最大行号, + 1 是把中间行也考虑进行了
+    // NOTICE: 注意这里的最大行号指的是计算时的最大行号, 此行和圆的角点在 45 度圆心角的一边上
+    // NOTICE：之所以这样选择是因为圆周上的对称特性 
     int v, v0, vmax = cvFloor(HALF_PATCH_SIZE * sqrt(2.f) / 2 + 1);
+    // 二分之根号二就是对应 45 度圆心角
     int vmin = cvCeil(HALF_PATCH_SIZE * sqrt(2.f) / 2);
+    // 半径的平方
     const double hp2 = HALF_PATCH_SIZE*HALF_PATCH_SIZE;
+    // 利用圆的方程计算每行像素的 u 坐标边界( max )
     for (v = 0; v <= vmax; ++v)
+        // 结果都是大于 0 的结果, 表示 x 坐标在这一行的边界
         umax[v] = cvRound(sqrt(hp2 - v * v));
 
     // Make sure we are symmetric
+    // 使用对称的方式计算上四分之一的圆周上的umax, 目的是为了保持严格的对称
+    // 如果使用 cvRound 就会很容易出现不对称, 就无法满足旋转不变性
     for (v = HALF_PATCH_SIZE, v0 = 0; v >= vmin; --v)
     {
         while (umax[v0] == umax[v0 + 1])
