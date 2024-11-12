@@ -49,7 +49,7 @@
   #include "Viewer.h"
   ```
 
-  - 然后加上成员变量 `mpViewer` 的声明, 实际上是一个 Viewer 类的指针, 但并未分配内存或调用构造函数
+  - 然后加上成员变量 `mpViewer` 的声明, 实际上是一个 `Viewer` 类的指针, 但并未分配内存或调用构造函数
  
   ```c++
             // The viewer draws the map and the current camera pose. It uses Pangolin.
