@@ -34,15 +34,25 @@
  
     - 其中, `SPextractor` 类的构造函数是在 `include/SPextractor.h` 中声明的
  
-```c++
-
-```
+    ```c++
+            // 构造函数
+            // nfeatures: 指定要提取出来的特征点数目
+            // scaleFactor: 图像金字塔的缩放系数
+            // nlevels: 指定需要提取特征点的图像金字塔层
+            // iniThFAST: 初始的默认FAST响应值阈值
+            // minThFAST: 较小的FAST响应值阈值
+            SPextractor(int nfeatures, float scaleFactor, int nlevels, float iniThFAST, float minThFAST);
+    ```
  
     - 变量 `nfeatures`, `scaleFactor`, `nlevels`, `iniThFAST` 和 `minThFAST` 是 `SPextractor` 类的成员变量, 同样地, 它们是在 `include/SPextractor.h` 中声明的
 
-```c++
-
-```
+    ```c++
+            int nfeatures;  // 整个图像金字塔中, 要提取的特征点数目
+            double scaleFactor;  // 图像金字塔中, 层与层之间的缩放因子
+            int nlevels;  // 图像金字塔的层数
+            float iniThFAST;  // 初始的FAST响应值阈值
+            float minThFAST;  // 最小的FAST响应值阈值
+    ```
 
     - 要注意 **定义** 和 **声明** 的区别:
 
