@@ -36,7 +36,11 @@
  
     - 变量 `nfeatures`, `scaleFactor`, `nlevels`, `iniThFAST` 和 `minThFAST` 是 `SPextractor` 类的成员变量, 同样地, 它们是在 `include/SPextractor.h` 中声明的
 
-    - ** 要注意 `定义` 和 `声明` 的区别 **
+    - 要注意 **定义** 和 **声明** 的区别:
+
+      - **声明(Declaration)**: 告诉编译器变量的类型和名字, 但不分配内存或赋值. 例如, `extern int x;` 是声明, 仅告知编译器有一个名为 `x` 的 `int` 类型变量, 它的定义在其他地方
+
+      - **定义(Definition)**: 在声明的基础上, 同时分配内存, 并可选择性地赋值. 例如, `int x = 10;` 是定义, 既分配了内存也赋值为 `10`  
 
     
 
