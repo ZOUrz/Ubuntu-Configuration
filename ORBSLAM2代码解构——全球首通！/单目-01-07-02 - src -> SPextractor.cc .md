@@ -1,4 +1,37 @@
+# 跳转到 src/SPextractor.cc 阅读 SPextractor 类构造函数的具体实现
 
+主要阅读该文件中 `SPextractor` 类的构造函数
+
+
+## 重点代码逐行解析
+
+
+- ### 1. 成员变量初始化列表
+
+    - `Tracking` 类的构造函数
+
+    - 在 `Tracking` 类构造函数体外, 是部分成员变量的初始化列表, 用于初始化类的部分成员变量
+ 
+    - 在初始化列表中, 总共设置了:
+ 
+    ```c++
+        // 特征点提取器的构造函数
+        // 构造函数输入的参数:
+        // 指定要提取的特征点数目, 指定图像金字塔的缩放系数, 指定图像金字塔的层数
+        // _iniThFAST: 指定初始的 FAST 特征点提取参数, 用于提取出最明显的角点
+        // _minTHFAST: 如果初始阈值没有检测到角点, 降低到这个阈值提取出弱一点的角点
+        SPextractor::SPextractor(int _nfeatures, float _scaleFactor, int _nlevels, float _iniThFAST, float _minThFAST):
+            nfeatures(_nfeatures), scaleFactor(_scaleFactor), nlevels(_nlevels),
+            iniThFAST(_iniThFAST), minThFAST(_minThFAST)  // 初始化成员变量列表
+    ```
+
+      - `nfeatures`: 希望提取的总特征点数量
+      - `scaleFactor`: 图像金字塔的缩放系数(控制图像逐层缩小的倍数)
+      - `nLevels`: 图像金字塔的层数
+      - `iniThFAST` 和 `minThFAST`: `FAST` 特征提取的阈值, 用于控制特征点的角点强度
+     
+    - 这些参数被直接赋值给成员变量
+ 
 
 ```c++
     // 特征点提取器的构造函数
