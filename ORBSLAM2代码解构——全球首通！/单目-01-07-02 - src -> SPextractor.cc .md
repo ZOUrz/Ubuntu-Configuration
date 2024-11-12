@@ -187,7 +187,35 @@
 
 - 以下代码解析的是在 `ORBSLAM2` 源码中, `ORBextractor` 类构造函数余下的内容
 
-- 
+```c++
+    // 成员变量pattern的长度, 也就是点的个数, 这里的512表示512个点(所以上面的数组中存储的坐标是256*2*2)
+    constexpr int npoints = 512;
+    // 获取用于计算BRIEF描述子的随机采样点 点集 头指针
+    // 注意到pattern0的数据类型为Points*, bit_pattern_31_是int[]型, 所以这里需要进行强制类型转换
+    const auto pattern0 = reinterpret_cast<const Point*>(bit_pattern_31_);
+    // 使用std::back_inserter的目的是可以快覆盖掉这个容器pattern之前的数据
+    // 将在全局变量区域的、int格式的随机采样点以cv::point格式复制到当前类对象中的成员变量中
+    std::copy(pattern0, pattern0 + npoints, std::back_inserter(pattern));
+
+    //This is for orientation
+    // pre-compute the end of a row in a circular patch
+    umax.resize(HALF_PATCH_SIZE + 1);
+
+    int v, v0, vmax = cvFloor(HALF_PATCH_SIZE * sqrt(2.f) / 2 + 1);
+    int vmin = cvCeil(HALF_PATCH_SIZE * sqrt(2.f) / 2);
+    const double hp2 = HALF_PATCH_SIZE*HALF_PATCH_SIZE;
+    for (v = 0; v <= vmax; ++v)
+        umax[v] = cvRound(sqrt(hp2 - v * v));
+
+    // Make sure we are symmetric
+    for (v = HALF_PATCH_SIZE, v0 = 0; v >= vmin; --v)
+    {
+        while (umax[v0] == umax[v0 + 1])
+            ++v0;
+        umax[v] = v0;
+        ++v0;
+    }
+```
     
 
     
