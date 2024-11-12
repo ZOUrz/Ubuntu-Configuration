@@ -261,6 +261,12 @@
         std::copy(pattern0, pattern0 + npoints, std::back_inserter(pattern));
     ```
 
+    - 其中, 成员变量 `pattern` 是在 `include/SPextractor.h` 中声明的
+
+    ```c++
+            std::vector<cv::Point> pattern;  // 用于计算描述子的随机采样点集合
+    ```
+
 
 - ### 4. 初始化 umax
 
@@ -275,6 +281,12 @@
         // pre-compute the end of a row in a circular patch
         // + 1 中的 1 表示那个圆的中间行
         umax.resize(HALF_PATCH_SIZE + 1);
+    ```
+
+    - 其中, 成员变量 `umax` 是在 `include/SPextractor.h` 中声明的
+
+    ```c++
+        std::vector<int> umax;  // 计算特征点方向的时候, 这个 vector 中存储了每行 u 轴的边界 (四分之一, 其他部分通过对称获得)
     ```
  
 
