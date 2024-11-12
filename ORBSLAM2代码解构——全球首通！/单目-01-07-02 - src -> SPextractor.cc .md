@@ -117,7 +117,49 @@
 
  - ### 4. 计算缩放因子的倒数
 
-    - 
+    - `mvInvScaleFactor` 和 `mvInvLevelSigma2` 分别存储了缩放因子和缩放因子平方的倒数, 便于在图像重采样和特征点计算中进行更高效的逆运算
+  
+    ```c++
+            // 下面的两个参数保存的是上面两个参数的倒数
+            mvInvScaleFactor.resize(nlevels);
+            mvInvLevelSigma2.resize(nlevels);
+            for(int i=0; i<nlevels; i++)
+            {
+                mvInvScaleFactor[i] = 1.0f/mvScaleFactor[i];
+                mvInvLevelSigma2[i] = 1.0f/mvLevelSigma2[i];
+            }
+    ```
+
+
+- ### 5. 设置图像金字塔
+
+    - `mvImagePyramid` 是一个 `vector`, 预留空间给每一层的图像
+ 
+    - 这一步确保了金字塔中每一层图像在运行时可以直接访问和处理
+ 
+    ```c++
+            // 调整图像金字塔 vector 以使得其符合设定的图像层数
+            mvImagePyramid.resize(nlevels);
+    ```
+
+
+- ### 6. 特征点数量分配
+
+    - 特征点分配是通过等比递减的方式来确定每层的特征点数, 保证较低分辨率的图像层中提取较少的特征点
+ 
+    ```c++
+            // 每层需要提取出来的特征点个数, 要根据图像金字塔设定的层数进行调整
+            mnFeaturesPerLevel.resize(nlevels);
+            // 图片降采样缩放系数的倒数
+            const auto factor = static_cast<float>(1.0f / scaleFactor);
+            // 第0层图像应该分配的特征点数
+            float nDesiredFeaturesPerScale = static_cast<float>(nfeatures)*(1-factor) /
+                (1-static_cast<float>(pow(static_cast<double>(factor), static_cast<double>(nlevels))));
+    ```
+
+    - `factor` 是 `scaleFactor` 的倒数, `nDesiredFeaturesPerScale` 计算每层的目标特征点数量
+ 
+    - 通过循环分配每层的特征点, 除去最高层, 其余层依次按比例减少, 由于取整
     
 
     
@@ -126,41 +168,6 @@
 ```c++
     {
 
-        // 存储每层图像缩放系数的vector,调整为符合图层数目的大小
-        mvScaleFactor.resize(nlevels);
-        // 每层图像相对初始图像缩放因子的平方
-        mvLevelSigma2.resize(nlevels);
-        // 对于初始图像, 这两个参数都是1
-        mvScaleFactor[0] = 1.0f;
-        mvLevelSigma2[0] = 1.0f;
-        // 然后逐层计算图像金字塔中图像相当于初始图像的缩放系数
-        for(int i=1; i<nlevels; i++)
-        {
-            // 通过累乘计算得来的
-            mvScaleFactor[i] = static_cast<float>(mvScaleFactor[i-1] * scaleFactor);
-            // 每层图像相对于初始图像缩放因子的平方
-            mvLevelSigma2[i] = mvScaleFactor[i] * mvScaleFactor[i];
-        }
-
-        // 下面的两个参数保存的时上面两个参数的倒数
-        mvInvScaleFactor.resize(nlevels);
-        mvInvLevelSigma2.resize(nlevels);
-        for(int i=0; i<nlevels; i++)
-        {
-            mvInvScaleFactor[i] = 1.0f/mvScaleFactor[i];
-            mvInvLevelSigma2[i] = 1.0f/mvLevelSigma2[i];
-        }
-
-        // 调整图像金字塔 vector 以使得其符合设定的图像层数
-        mvImagePyramid.resize(nlevels);
-
-        // 每层需要提取出来的特征点个数, 要根据图像金字塔设定的层数进行调整
-        mnFeaturesPerLevel.resize(nlevels);
-        // 图片降采样缩放系数的倒数
-        const auto factor = static_cast<float>(1.0f / scaleFactor);
-        // 第0层图像应该分配的特征点数
-        float nDesiredFeaturesPerScale = static_cast<float>(nfeatures)*(1-factor) /
-            (1-static_cast<float>(pow(static_cast<double>(factor), static_cast<double>(nlevels))));
 
         // 用于在特征点个数分配的, 特征点的累计计数清空
         int sumFeatures = 0;
