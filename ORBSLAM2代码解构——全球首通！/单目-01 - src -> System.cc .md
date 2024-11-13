@@ -550,7 +550,7 @@
 
   - 第二行代码:
 
-    - 首先使用 `new thread` 创建一个新的std::thread对象, 表示创建了一个新线程
+    - 首先使用 `new thread` 创建一个新的 `std::thread` 对象, 表示创建了一个新线程
     - 其中, `&ORB_SLAM2::LocalMapping::Run` 表示的是指向 `ORB_SLAM2::LocalMapping` 类的成员函数 `Run` 的指针, 使用 `&` 符号来获取 `Run` 函数的地址
     - `Run` 函数是 `LocalMapping` 类的一个成员函数, 用于处理与局部地图( `Local Mapping` )相关的操作
     - `mpLocalMapper`: 是传递给 `Run` 函数的对象指针, 是一个 `ORB_SLAM2::LocalMapping` 类的实例, 其被传递给 `Run` 函数作为 `this` 指针, 意味着 `Run` 将在 `mpLocalMapper` 对象上执行
