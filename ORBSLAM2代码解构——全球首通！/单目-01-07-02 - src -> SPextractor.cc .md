@@ -215,9 +215,15 @@
 
 - ### 7. 定义类别名
 
+    - 在 `include/SPextractor.h` 文件的最后, 作者还写了以下这段代码:
+
     ```c++
         typedef SPextractor ORBextractor;
     ```
+
+    - 这行代码将 `ORBextractor` 定义为 `SPextractor` 的一个类型别名, 所以在后续代码中使用的 `ORBextractor` 实际上指向的是 `SPextractor`
+ 
+    - 这样做的目的是为了减少后续代码的更改, 减少工作量, 否则需要把项目内的所有文件都进行检查和更改
     
 
 ## ORBSLAM2 源码补充
