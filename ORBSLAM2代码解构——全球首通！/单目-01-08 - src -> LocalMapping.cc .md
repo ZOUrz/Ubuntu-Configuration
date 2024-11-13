@@ -314,7 +314,7 @@
                             std::this_thread::sleep_for(std::chrono::milliseconds(3));
                 ```
     
-    - #### 3. 结束线程
+    - ### 3. 结束线程
  
         - 设置线程已完成状态, 将 `mbFinished` 和 `mbStopped` 都设为 `true`, 表示线程已完成其任务并安全地结束
  
