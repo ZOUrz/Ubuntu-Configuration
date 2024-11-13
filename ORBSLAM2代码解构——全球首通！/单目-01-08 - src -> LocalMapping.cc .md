@@ -289,12 +289,12 @@
 
         - ### 2-5. 重新设置允许插入关键帧
      
-            重新设置 `mbAcceptKeyFrames` 为 `true`, 允许 `Tracking` 插入关键帧
+            - 重新设置 `mbAcceptKeyFrames` 为 `true`, 允许 `Tracking` 插入关键帧
      
-            ```
-                        // Tracking will see that Local Mapping is busy
-                        SetAcceptKeyFrames(true);
-            ```
+                ```
+                            // Tracking will see that Local Mapping is busy
+                            SetAcceptKeyFrames(true);
+                ```
 
         - ### 2-6. 检查线程是否应结束
      
