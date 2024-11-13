@@ -92,7 +92,9 @@
     - #### 2. 主循环
  
         - ##### 2-1. 停止接收关键帧
-     
+
+            - 设置 `mbAcceptKeyFrames` 标志为 `false`, 表示当前线程处于忙碌状态, 不接受新的关键帧
+
             ```c++
                         // Step 1 告诉 Tracking, LocalMapping 正处于繁忙状态, 请不要发送关键帧打扰
                         // Tracking will see that Local Mapping is busy
@@ -115,16 +117,58 @@
                         void SetAcceptKeyFrames(bool flag);
                 ```
 
-            - 设置 `mbAcceptKeyFrames` 标志为 `false`, 表示当前线程处于忙碌状态, 不接受新的关键帧
+
+         
+        - #### 2-2. 检查是否有待处理关键帧
+
+            - **注意: 现在还处于系统初始化阶段, 因此不可能有新的关键帧, 因此 `if` 里面的代码先不用管, 等到后面需要处理关键帧的时候再回来, 这里就只写一行代码作为省略**
+         
+            - 检查关键帧队列是否有待处理的关键帧, 如果有, 则需要继续处理
+     
+            ```
+                        // 等待处理的关键帧列表不为空
+                        // Check if there are keyframes in the queue
+                        if(CheckNewKeyFrames())
+                        {
+                            std::cout << "There are keyframes in the queue!" << std::endl;
+                        }
+            ```
+
+            - 其中, 函数 `CheckNewKeyFrames` 的具体实现以及声明为:
+         
+                ```c++
+                    // 查看列表中是否有等待被插入的关键帧
+                    bool LocalMapping::CheckNewKeyFrames()
+                    {
+                        unique_lock<mutex> lock(mMutexNewKFs);
+                        return(!mlNewKeyFrames.empty());
+                    }
+                ```
+                
+                ```c++
+                        // 查看列表中是否有等待被插入的关键帧
+                        bool CheckNewKeyFrames();
+                ```
+
+            - 此外, 成员变量 `mlNewKeyFrames` 和 `mMutexNewKFs` 的声明为:
+                
+                ```c++
+                        // Tracking 线程向 LocalMapping 中插入关键帧是先插入到该队列中
+                        // 等待处理的关键帧列表
+                        std::list<KeyFrame*> mlNewKeyFrames;
+                
+                        // 操作关键帧列表时使用的互斥锁
+                        std::mutex mMutexNewKFs;
+                ```
+
+
+        - #### 2-3. 检查是否有停止请求
+
+            
 
 ```c++
 
-        // 主循环
-        while(true)
-        {
-            // Step 1 告诉 Tracking, LocalMapping 正处于繁忙状态, 请不要发送关键帧打扰
-            // Tracking will see that Local Mapping is busy
-            SetAcceptKeyFrames(false);
+
 
             // 等待处理的关键帧列表不为空
             // Check if there are keyframes in the queue
