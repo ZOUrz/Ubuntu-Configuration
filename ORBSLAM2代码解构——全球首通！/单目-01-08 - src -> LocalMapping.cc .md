@@ -76,15 +76,48 @@
 
 - ### 2. Run 函数
 
-    - 这是
+    - 这是 `LocalMapping` 类的主线程函数, 负责处理关键帧队列, 响应停止或复位请求等操作
+
+ 
+    - #### 1. 线程开始执行
+ 
+        ```
+                std::cout << "Runing LocalMapping::Run()" << std::endl;
+                // 标记状态, 表示当前 Run 函数正在运行, 尚未结束
+                mbFinished = false;
+        ```
+
+        - `mbFinished` 标志被设为 `false`, 表示线程正在运行
+     
+    - #### 2. 主循环
+ 
+        - ##### 2-1. 停止接收关键帧
+     
+            ```c++
+                        // Step 1 告诉 Tracking, LocalMapping 正处于繁忙状态, 请不要发送关键帧打扰
+                        // Tracking will see that Local Mapping is busy
+                        SetAcceptKeyFrames(false);
+            ```
+            
+            - 其中, 函数 `SetAcceptKeyFrames` 的具体实现以及声明为:
+         
+                ```c++
+                    // 设置 "允许接受关键帧" 的状态标标志
+                    void LocalMapping::SetAcceptKeyFrames(bool flag)
+                    {
+                        unique_lock<mutex> lock(mMutexAccept);
+                        mbAcceptKeyFrames=flag;
+                    }
+                ```
+
+                ```c++
+                        // 设置 "允许接受关键帧" 的状态标志
+                        void SetAcceptKeyFrames(bool flag);
+                ```
+
+            - 设置 `mbAcceptKeyFrames` 标志为 `false`, 表示当前线程处于忙碌状态, 不接受新的关键帧
 
 ```c++
-    // 线程主函数
-    void LocalMapping::Run()
-    {
-        std::cout << "Runing LocalMapping::Run()" << std::endl;
-        // 标记状态, 表示当前 Run 函数正在运行, 尚未结束
-        mbFinished = false;
 
         // 主循环
         while(true)
