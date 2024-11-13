@@ -313,7 +313,8 @@
                 ```
                             std::this_thread::sleep_for(std::chrono::milliseconds(3));
                 ```
-    
+
+
     - #### 3. 结束线程
  
         - 设置线程已完成状态, 将 `mbFinished` 和 `mbStopped` 都设为 `true`, 表示线程已完成其任务并安全地结束
@@ -340,4 +341,91 @@
                     // 设置当前线程已经真正地结束了, 由本线程 Run 函数调用
                     void SetFinish();
             ```
+
+
+## 重头开始构建 ORBSLAM2
+
+- 如果是从零开始构建 `ORBSLAM2` 系统, 就按照下面给出的文件内容进行代码的编写
+
+
+- ### 1. include/LocalMapping.h
+
+    - Build from scratch - Changed 0
+ 
+```c++
+
+```
+
+
+- ### 2. src/LocalMapping.cc
+
+    - Build from scratch - Changed 0
+ 
+```c++
+
+```
+
+
+- ### 3. include/System.h
+
+    - Build from scratch - Changed 8
+ 
+    - 文件开头加上
+ 
+```c++
+
+```
+
+    - 然后添加成员变量
+
+```c++
+
+```
+
+    - 完整代码
+
+```c++
+
+```
+
+
+- ### 4. src/System.cc
+
+    - Build from scratch - Changed 8
+ 
+    - 在代码最后加上
+
+```
+
+```
+
+    - 完整代码
+
+```
+
+```
+
+
+- ### 5. CMakeLists.txt
+
+    - Build from scratch - Changed 8
+ 
+    - 在文件以下位置进行修改, 将 `LocalMapping.cc` 源文件添加到库中
+ 
+```cmake
+
+```
+
+    - 完整代码
+
+```cmake
+
+```
+
+
+
+
+
+
+
 
