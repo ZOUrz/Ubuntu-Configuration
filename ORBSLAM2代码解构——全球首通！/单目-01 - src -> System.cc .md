@@ -529,6 +529,10 @@
                                    mpMap, mpKeyFrameDatabase, strSettingsFile, mSensor);
   ```
 
+  - 这行代码使用 `new` 关键字创建一个 `Tracking` 对象，并将其指针存储在成员指针变量 `mpTracker`, 并调用 `Tracking` 类的构造函数来初始化该对象
+ 
+  - 具体实现是在 `src/Tracking.cc` 里, 所以需要去到该文件里看看 `Tracking` 类构造函数的具体实现
+
 
 - ### 8. 局部建图器
 
@@ -538,6 +542,20 @@
           mpLocalMapper = new LocalMapping(mpMap, mSensor==MONOCULAR);
           mptLocalMapping = new thread(&ORB_SLAM2::LocalMapping::Run,mpLocalMapper);
   ```
+
+  - 第一行代码:
+
+    - 使用 `new` 关键字创建一个 `LocalMapping` 对象，并将其指针存储在成员指针变量 `mpLocalMapper`, 并调用 `LocalMapping` 类的构造函数来初始化该对象
+    - 具体实现是在 `src/LocalMapping.cc` 里, 所以需要去到该文件里看看 `LocalMapping` 类构造函数的具体实现
+
+  - 第二行代码:
+
+    - 首先使用 `new thread` 创建一个新的std::thread对象, 表示创建了一个新线程
+    - 其中, `&ORB_SLAM2::LocalMapping::Run` 表示的是指向 `ORB_SLAM2::LocalMapping` 类的成员函数 `Run` 的指针, 使用 `&` 符号来获取 `Run` 函数的地址
+    - `Run` 函数是 `LocalMapping` 类的一个成员函数, 用于处理与局部地图( `Local Mapping` )相关的操作
+    - `mpLocalMapper`: 是传递给 `Run` 函数的对象指针, 是一个 `ORB_SLAM2::LocalMapping` 类的实例, 其被传递给 `Run` 函数作为 `this` 指针, 意味着 `Run` 将在 `mpLocalMapper` 对象上执行
+    - `mptLocalMapping`: 是一个指向 `std::thread` 的指针, 用于保存创建的线程对象, 在 `new thread` 之后, 这个指针 `mptLocalMapping` 将指向新创建的线程
+    - `Run` 函数的具体实现是在 `src/LocalMapping.cc` 里, 所以同样需要去到该文件里看看 `Run` 函数的具体实现
 
 
 - ### 9. 回环检测器
