@@ -1048,22 +1048,6 @@
           src/FrameDrawer.cpp
           src/MapDrawer.cpp
           src/Tracking.cpp
-          #src/Frame.cpp
-          #src/ORBextractor.cpp
-          #src/Tracking.cc
-          #src/LocalMapping.cc
-          #src/LoopClosing.cc
-          #src/ORBmatcher.cc
-          #src/FrameDrawer.cc
-          #src/Converter.cc
-          #src/MapPoint.cc
-          #src/Map.cc
-          #src/MapDrawer.cc
-          #src/Optimizer.cc
-          #src/PnPsolver.cc
-          #src/Sim3Solver.cc
-          #src/Initializer.cc
-          #src/Viewer.cc
   )
   
   # 指定${PROJECT_SOURCE_DIR}库链接的其他库
