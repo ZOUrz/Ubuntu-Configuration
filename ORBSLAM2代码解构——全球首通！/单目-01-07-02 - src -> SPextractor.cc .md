@@ -28,7 +28,7 @@
       - `nfeatures`: 希望提取的总特征点数量
       - `scaleFactor`: 图像金字塔的缩放系数(控制图像逐层缩小的倍数)
       - `nLevels`: 图像金字塔的层数
-      - **!!!!** 这里的 `iniThFAST` 和 `minThFAST` 的含义不是下面写的这个, 具体要等看到后面才知道, 另外在 `ORBSLAM2` 源码中, 这两个成员变量的类型为 `int`
+      - **!!!! 这里的 `iniThFAST` 和 `minThFAST` 的含义不是下面写的这个, 具体要等看到后面才知道, 另外在 `ORBSLAM2` 源码中, 这两个成员变量的类型为 `int`**
       - `iniThFAST` 和 `minThFAST`: `FAST` 特征提取的阈值, 用于控制特征点的角点强度
      
     - 这些参数被直接赋值给成员变量
