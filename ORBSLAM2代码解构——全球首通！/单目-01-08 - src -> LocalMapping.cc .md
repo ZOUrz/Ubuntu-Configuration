@@ -77,5 +77,25 @@
 - ### 2. Run 函数
 
 
+    - #### SetAcceptKeyFrames
+
+```c++
+    // 设置 "允许接受关键帧" 的状态标标志
+    void LocalMapping::SetAcceptKeyFrames(bool flag)
+    {
+        unique_lock<mutex> lock(mMutexAccept);
+        mbAcceptKeyFrames=flag;
+    }
+```
+
+```c++
+        // 设置 "允许接受关键帧" 的状态标志
+        void SetAcceptKeyFrames(bool flag);
+```
+
+```c++
+
+```
+
 
 
