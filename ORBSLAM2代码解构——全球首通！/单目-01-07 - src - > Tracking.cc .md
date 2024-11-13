@@ -935,7 +935,7 @@
 
   - Build from scratch - Changed 6
  
-  - 在文件以下位置进行修改, 将 Tracking.cc 源文件添加到库中
+  - 在文件以下位置进行修改, 将 `Tracking.cc` 源文件添加到库中
  
   ```cmake
   # 创建一个名为${PROJECT_SOURCE_DIR}的共享库(SHARED表示生成动态链接库), 并将指定的源文件添加到库中
