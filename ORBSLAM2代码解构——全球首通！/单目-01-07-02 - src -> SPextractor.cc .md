@@ -211,8 +211,14 @@
     ```c++
             std::vector<int> mnFeaturesPerLevel;  // 分配到每层图像中, 要提取的特征点数目
     ```
-    
 
+
+- ### 7. 定义类别名
+
+    ```c++
+        typedef SPextractor ORBextractor;
+    ```
+    
 
 ## ORBSLAM2 源码补充
 
