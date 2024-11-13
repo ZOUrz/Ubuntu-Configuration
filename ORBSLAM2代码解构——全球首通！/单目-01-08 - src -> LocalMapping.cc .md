@@ -76,6 +76,59 @@
 
 - ### 2. Run 函数
 
+```c++
+    // 线程主函数
+    void LocalMapping::Run()
+    {
+        std::cout << "Runing LocalMapping::Run()" << std::endl;
+        // 标记状态, 表示当前 Run 函数正在运行, 尚未结束
+        mbFinished = false;
+
+        // 主循环
+        while(true)
+        {
+            // Step 1 告诉 Tracking, LocalMapping 正处于繁忙状态, 请不要发送关键帧打扰
+            // Tracking will see that Local Mapping is busy
+            SetAcceptKeyFrames(false);
+
+            // 等待处理的关键帧列表不为空
+            // Check if there are keyframes in the queue
+            if(CheckNewKeyFrames())
+            {
+                std::cout << "There are keyframes in the queue!" << std::endl;
+            }
+            else if(Stop())  // 当要终止当前线程的时候
+            {
+                // Safe area to stop
+                while(isStopped() && !CheckFinish())
+                {
+                    // 如果还没有结束利索, 那么等3毫秒
+                    // usleep(3000);
+                    std::this_thread::sleep_for(std::chrono::milliseconds(3));
+                }
+                // 然后确定终止了就跳出这个线程的主循环
+                if(CheckFinish())
+                    break;
+            }
+
+            // 查看是否有复位线程的请求
+            ResetIfRequested();
+
+            // Tracking will see that Local Mapping is busy
+            SetAcceptKeyFrames(true);
+
+            // 如果当前线程已经结束了就跳出主循环
+            if(CheckFinish())
+                break;
+
+            std::this_thread::sleep_for(std::chrono::milliseconds(3));
+        }
+
+        // 设置线程已经终止
+        SetFinish();
+    }
+
+```
 
 - #### SetAcceptKeyFrames
 
