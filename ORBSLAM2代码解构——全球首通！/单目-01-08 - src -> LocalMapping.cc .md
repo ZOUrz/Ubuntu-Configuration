@@ -77,7 +77,7 @@
 - ### 2. Run 函数
 
 
-    - #### SetAcceptKeyFrames
+- #### SetAcceptKeyFrames
 
 ```c++
     // 设置 "允许接受关键帧" 的状态标标志
@@ -93,8 +93,128 @@
         void SetAcceptKeyFrames(bool flag);
 ```
 
-```c++
+- ####  CheckNewKeyFrames
 
+```c++
+    // 查看列表中是否有等待被插入的关键帧
+    bool LocalMapping::CheckNewKeyFrames()
+    {
+        unique_lock<mutex> lock(mMutexNewKFs);
+        return(!mlNewKeyFrames.empty());
+    }
+```
+
+```c++
+        // 查看列表中是否有等待被插入的关键帧
+        bool CheckNewKeyFrames();
+```
+
+```c++
+        // Tracking 线程向 LocalMapping 中插入关键帧是先插入到该队列中
+        // 等待处理的关键帧列表
+        std::list<KeyFrame*> mlNewKeyFrames;
+
+        // 操作关键帧列表时使用的互斥锁
+        std::mutex mMutexNewKFs;
+```
+
+- #### Stop
+
+```c++
+    // 检查是否要把当前的局部建图线程停止工作, 运行的时候要检查是否有终止请求, 如果有就执行. 由 Run 函数调用
+    bool LocalMapping::Stop()
+    {
+        unique_lock<mutex> lock(mMutexStop);
+        // 如果当前线程还没有准备停止, 但是已经有终止请求了, 那么就准备停止当前线程
+        if(mbStopRequested && !mbNotStop)
+        {
+            mbStopped = true;
+            cout << "Local Mapping STOP" << endl;
+            return true;
+        }
+```
+
+```c++
+        // 检查是否要把当前的局部建图线程停止, 如果当前线程没有那么检查请求标志, 如果请求标志被置位那么就设置为停止工作. 由 Run 函数调用
+        bool Stop();
+```
+
+- #### isStopped
+
+```c++
+    // 检查 mbStopped 是否为 true, 为 true 表示可以终止 LocalMapping 线程
+    bool LocalMapping::isStopped()
+    {
+        unique_lock<mutex> lock(mMutexStop);
+        return mbStopped;
+    }
+```
+
+```c++
+        // 检查 mbStopped 是否被置位了
+        bool isStopped();
+```
+
+- #### CheckFinish
+
+```c++
+    // 检查是否已经有外部线程请求终止当前线程
+    bool LocalMapping::CheckFinish()
+    {
+        unique_lock<mutex> lock(mMutexFinish);
+        return mbFinishRequested;
+    }
+```
+
+```c++
+        // 检查是否已经有外部线程请求终止当前线程
+        bool CheckFinish();
+```
+
+- #### ResetIfRequested
+
+```c++
+    // 检查是否有复位线程的请求
+    void LocalMapping::ResetIfRequested()
+    {
+        unique_lock<mutex> lock(mMutexReset);
+        // 执行复位操作: 清空关键帧缓冲区, 清空待 cull 的地图点缓冲
+        if(mbResetRequested)
+        {
+            mlNewKeyFrames.clear();
+            mlpRecentAddedMapPoints.clear();
+            // 恢复为 False 表示复位过程完成
+            mbResetRequested=false;
+        }
+    }
+```
+
+```c++
+        // 检查当前是否有复位线程的请求
+        void ResetIfRequested();
+```
+
+```c++
+        // 存储当前关键帧生成的地图点, 也是等待检查的地图点列表
+        std::list<MapPoint*> mlpRecentAddedMapPoints;
+```
+
+- #### SetFinish
+
+```c++
+    // 设置当前线程已经真正地结束了
+    void LocalMapping::SetFinish()
+    {
+        unique_lock<mutex> lock(mMutexFinish);
+        mbFinished = true;
+        unique_lock<mutex> lock2(mMutexStop);
+        mbStopped = true;
+    }
+```
+
+```c++
+        // 设置当前线程已经真正地结束了, 由本线程 Run 函数调用
+        void SetFinish();
 ```
 
 
