@@ -4,12 +4,6 @@ This repository serves as a reference for reinstalling and configuring deep lear
 
 这个仓库作为一份参考, 旨在从头开始重新安装和配置 Ubuntu 上的深度学习环境, 既是个人记录文档, 也是初学者的指南
 
-# Ubuntu System Configuration (Ubuntu系统配置)
-
-- The content of this document outlines the process of configuring the Ubuntu system from scratch to facilitate learning and testing of SLAM.
-
-- 本文档的内容概述了从头配置Ubuntu系统的过程, 以便于学习和测试SLAM
-
 
 
 ## 1. Reinstall Ubuntu 18.04 (重装Ubuntu18.04系统)
