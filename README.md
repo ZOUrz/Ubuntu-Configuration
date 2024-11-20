@@ -2,7 +2,7 @@
 
 This repository serves as a reference for reinstalling and configuring deep learning environments on Ubuntu from scratch, providing both personal documentation and a guide for beginners.
 
-本项目旨在为作者提供一份参考记录, 以确保关键步骤不被遗漏
+这个仓库作为一份参考, 旨在从头开始重新安装和配置 Ubuntu 上的深度学习环境, 既是个人记录文档, 也是初学者的指南
 
 # Ubuntu System Configuration (Ubuntu系统配置)
 
