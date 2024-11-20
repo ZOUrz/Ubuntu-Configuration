@@ -16,6 +16,8 @@ This repository serves as a reference for reinstalling and configuring deep lear
 
   ![Ubuntu18.04](/Screenshot/Ubuntu18.04iso.png)
 
+- **Note:** 参考上面的链接进行重装时, 注意不要按照链接的方式分配 tmp 空间, 否则在安装一些软件的时候会提示 tmp 空间不足(我在安装 Nvidia 显卡驱动时遇到了), 可以跳过这一步, 让 tmp 直接分配到根路径 :/ 即可(也许分配大一点可以解决? 但具体多少就不会出问题我没有进行测试)
+
 
 
 ## 2. Mount the hard drive (挂载硬盘)
