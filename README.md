@@ -6,9 +6,9 @@ This repository serves as a reference for reinstalling and configuring deep lear
 
 
 
-## 1. Reinstall Ubuntu 18.04 (重装Ubuntu18.04系统)
+## 1. 重装 Ubuntu18.04 系统
 
-Reference link: https://zhuanlan.zhihu.com/p/667673008
+参考链接: https://zhuanlan.zhihu.com/p/667673008
 
 Ubuntu18.04iso download link：https://releases.ubuntu.com/18.04/
 
