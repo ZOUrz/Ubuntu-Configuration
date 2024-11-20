@@ -10,10 +10,11 @@ This repository serves as a reference for reinstalling and configuring deep lear
 
 - 参考链接: https://zhuanlan.zhihu.com/p/667673008
 
-- Ubuntu18.04iso download link：https://releases.ubuntu.com/18.04/
+- Ubuntu18.04 系统镜像文件下载链接: https://releases.ubuntu.com/18.04/
 
+  - 点击如图所示的文件即可进行下载
 
-![Ubuntu18.04](/Screenshot/Ubuntu18.04iso.png)
+  ![Ubuntu18.04](/Screenshot/Ubuntu18.04iso.png)
 
 
 
