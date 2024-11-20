@@ -1,6 +1,6 @@
 # Ubuntu Configuration
 
-**This project aims to provide the author with a reference record to ensure that critical steps are not overlooked.**
+This repository serves as a reference for reinstalling and configuring deep learning environments on Ubuntu from scratch, providing both personal documentation and a guide for beginners.
 
 本项目旨在为作者提供一份参考记录, 以确保关键步骤不被遗漏
 
