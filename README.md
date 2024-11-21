@@ -113,39 +113,39 @@ This repository serves as a reference for reinstalling and configuring deep lear
 
   ![chown]
   
-  
+
+## 3. 安装百度网盘
+
+- 参考链接: https://blog.csdn.net/suiqianjushi/article/details/123824801
+
+- **夸克网盘不支持 Linux 系统!!**
 
 
+## 4. 使用 Clash 科学上网
 
+- 安装 Clash for Windows 客户端
 
+  - 下载链接: https://github.com/lantongxue/clash_for_windows_pkg/releases
 
-## 4. Use Clash client for internet access with proxy (使用Clash科学上网)
+    - **如果点击没反应, 应该是网络问题, 最好连接手机热点进行下载!!!**
 
-### (1) Install Clash client (安装Clash for Windows客户端)
+  - 下载 Clash.for.Windows-0.20.39-x64-linux.tar.gz  
 
-Download link: https://github.com/lantongxue/clash_for_windows_pkg/releases
+  ![Download Clash](/Screenshot/DownloadClash.png)
 
-**!!!最好先连接手机热点进行下载**
+  - 解压缩:
 
-- a. 下载Clash.for.Windows-0.20.39-x64-linux.tar.gz
+  ```
+  tar -zxvf Clash.for.Windows-0.20.39-x64-linux.tar.gz
+  ```
 
+- 启动客户端
 
-![Download Clash](/Screenshot/DownloadClash.png)
-
-
-- b. Unzip (解压缩):
-
-```
-tar -zxvf Clash.for.Windows-0.20.39-x64-linux.tar.gz
-```
-
-- c. Launch the client (启动客户端)
-
-```
-mv Clash\ for\ Windows-0.20.39-x64-linux clash
-cd clash/
-./cfw
-```
+  ```
+  mv Clash\ for\ Windows-0.20.39-x64-linux clash
+  cd clash/
+  ./cfw
+  ```
 
 ![ClashClient](/Screenshot/ClashClient.png)
 
