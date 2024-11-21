@@ -115,35 +115,7 @@ This repository serves as a reference for reinstalling and configuring deep lear
   
   
 
-## 3. 下载数据集
 
-### TUM
-
-Download link: https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download
-
-- No need to download everything, just download as shown.
-
-- 不需要全部下载，只需要下载如图所示的即可
-
-
-![TUM1](/Screenshot/TUM1.png)
-
-![TUM2](/Screenshot/TUM2.png)
-
-
-### EuRoC
-
-Download link: https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets
-
-
-![EuRoC](/Screenshot/EuRoC.png)
-
-
-### KITTI
-
-Official download link: https://www.cvlibs.net/datasets/kitti/eval_odometry.php
-      
-BaiduYun download link: https://pan.baidu.com/s/1oXqNR_yd4MkgfABDa9FGSw?pwd=lsdb Extraction code：lsdb
 
 
 
