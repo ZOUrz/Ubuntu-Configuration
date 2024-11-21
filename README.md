@@ -135,59 +135,48 @@ This repository serves as a reference for reinstalling and configuring deep lear
 
   - 下载 Clash.for.Windows-0.20.39-x64-linux.tar.gz  
 
-  ![Download Clash](/Screenshot/DownloadClash.png)
+  ![Download Clash](/Screenshot/4_1_DownloadClash.png)
 
-  - 解压缩:
+  - 解压缩
 
-  ```
- tar -zxvf Clash.for.Windows-0.20.39-x64-linux.tar.gz -C ~/work/ProgramFiles/
-  ```
+    ```
+    tar -zxvf Clash.for.Windows-0.20.39-x64-linux.tar.gz -C ~/work/ProgramFiles/
+    ```
 
-- 启动客户端
+  - 启动客户端, 在 Clash 文件夹目录打开终端, 输入
 
-  ```
-  mv Clash\ for\ Windows-0.20.39-x64-linux clash
-  cd clash/
-  ./cfw
-  ```
+    ```
+    ./cfw
+    ```
 
-![ClashClient](/Screenshot/ClashClient.png)
+    ![ClashClient](/Screenshot/4_2_ClashClient.png)
 
 
-### (2) Import nodes and set proxy (导入节点并设置代理)
+- 导入节点并设置代理
 
-**注: 可以选择其他的方式获取Clash订阅的链接,  这里分享的是我使用的CuteCloud(不一定最好)**
+  - **Note:** 可以选择其他的方式获取 Clash 订阅的链接, 这里分享的是我使用的 CuteCloud
 
-CuteCloud link: https://dh.cutecloud.link/
+  - CuteCloud 官网链接: https://dh.cutecloud.link/
 
-- a. 进入后注册登录(最好使用手机热点), 然后购买套餐后便可在主页一键复制Clash订阅
+  - 进入后注册登录(最好使用手机热点), 然后购买套餐后便可在主页一键复制 Clash 订阅
 
+    ![CuteCloud](/Screenshot/4_3_CuteCloud.png)
 
-![CuteCloud](/Screenshot/CuteCloud.png)
+  - 回到 Clash 客户端, 点击 `Profiles`, 复制订阅链接到输入框中, 点击 `Download` 下载节点
 
+    ![ImportNodes](/Screenshot/4_4_ImportNodes.png)
 
-- b. 回到Clash客户端, 点击Profiles, 复制订阅链接到输入框中, 点击Download下载节点
+  - 注意这里的端口号是 `7890`
 
+    ![Port](/Screenshot/4_5_Port.png)
 
-![ImportNodes](/Screenshot/ImportNodes.png)
+  - 然后在 Firefox 浏览器上设置代理
 
+    ![SetProxy](/Screenshot/4_6_SetProxy.png)
 
-- c. 注意这里的端口号是7890
+  - 确定后便大功告成! Enjoy!
 
-
-![Port](/Screenshot/Port.png)
-
-
-- d. 然后在Firefox浏览器上设置代理
-
-
-![SetProxy](/Screenshot/SetProxy.png)
-
-
-- e. 确定后便大功告成! Enjoy!
-
-
-![Google](/Screenshot/Google.png)
+    ![Google](/Screenshot/4_7_Google.png)
 
 
 
