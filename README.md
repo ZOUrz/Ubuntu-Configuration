@@ -179,20 +179,18 @@ This repository serves as a reference for reinstalling and configuring deep lear
     ![Google](/Screenshot/4_7_Google.png)
 
 
-## 5. 安装Git
+## 5. 安装 Git
 
 ```
 sudo apt-get install git
 ```
 
 
+## 6. 安装Anaconda
 
+- 参考链接: https://blog.csdn.net/qq_64671439/article/details/135293643
 
-
-
-## 7. Install Anaconda (安装Anaconda)
-
-Reference link: https://blog.csdn.net/qq_64671439/article/details/135293643
+- 现在下载需要
 
 ### (1) 给Anaconda换源:
 
