@@ -13,7 +13,9 @@ This document provides a detailed tutorial on ORB-SLAM2, including the processes
 
 - 然后安装编译 ORB-SLAM2
 
-- **Note 1:** 安装 ROS 时, 有几个选项跟参考的链接不一样, 参考下图所选的即可
+- **Note 1:** 我将 Pangolin 和 OpenCV 这两个库都安装在 `~/Thirdparty` 目录下(我的 Libtorch 也装在这里)
+
+- **Note 2:** 安装 ROS 时, 有几个选项跟参考的链接不一样, 参考下图所选的即可
 
   ![ROS1](/Screenshot/ROS1.png)
   
@@ -21,7 +23,7 @@ This document provides a detailed tutorial on ORB-SLAM2, including the processes
   
   ![ROS3](/Screenshot/ROS3.png)
 
-- **Note 2:** 在安装 rosdpe 时, 不要使用参考链接的方式进行安装, 应当使用如下方式进行安装:
+- **Note 3:** 在安装 rosdpe 时, 不要使用参考链接的方式进行安装, 应当使用如下方式进行安装:
 
   - 在终端输入:
 
