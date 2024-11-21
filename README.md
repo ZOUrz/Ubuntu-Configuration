@@ -349,6 +349,8 @@ Download link: https://developer.nvidia.com/rdp/cudnn-archive
 
 - Download "cuDNN Library for Linux (x86)"
 
+- tar -xvf cudnn-11.3-linux-x64-v8.2.1.32.tgz -C ~/work/ProgramFiles/
+
 ```
 sudo cp cuda/include/* -R /usr/local/cuda/include/ 
 sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64/ 
