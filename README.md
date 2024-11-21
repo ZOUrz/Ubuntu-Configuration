@@ -274,6 +274,11 @@ sudo apt-get install cmake
 
 ### (1) Install CUDA 10.2
 
+进入英伟达的cuda版本列表: https://developer.nvidia.com/cuda-toolkit-archive
+
+wget https://developer.download.nvidia.com/compute/cuda/11.3.0/local_installers/cuda_11.3.0_465.19.01_linux.run
+sudo sh cuda_11.3.0_465.19.01_linux.run
+
 Download link: https://developer.nvidia.com/cuda-10.2-download-archive
 
 - Select as shown in the figure
