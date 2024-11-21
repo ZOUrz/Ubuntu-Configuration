@@ -259,12 +259,11 @@ sudo apt-get install git
 - 学生认证的方式跟 CLion 是一样的, 认证后登录账号即可激活
 
 
-## 9. Install Nivida Driver (安装英伟达显卡驱动)
+## 9. 安装英伟达显卡驱动
 
-Reference link: https://blog.csdn.net/coolsmartboy/article/details/120532547
+- 参考链接: https://blog.csdn.net/coolsmartboy/article/details/120532547
 
-
-![NvidiaDriver](/Screenshot/NvidiaDriver.png)
+![NvidiaDriver](/Screenshot/9_1_NvidiaDriver.png)
 
 
 
