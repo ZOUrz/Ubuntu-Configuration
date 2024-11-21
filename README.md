@@ -237,6 +237,12 @@ sudo apt-get install git
 
    ![CLionVersion](Screenshot/7_1_CLionVersion.png)
 
+- 设置字体
+
+  - CLion 默认的字体很小, 可以在设置中自定义字体, 打开 File -> Settings -> Editor -> Font -> Size 即可调整字体大小
+ 
+  ![CLionFont][Screenshot/7_2_CLionFont.png)
+
 
 ## 8. Install CLion and Pycharm (安装CLion和Pycharm)
 
