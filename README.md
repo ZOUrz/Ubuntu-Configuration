@@ -351,9 +351,11 @@ Download link: https://developer.nvidia.com/rdp/cudnn-archive
 
 - tar -xvf cudnn-11.3-linux-x64-v8.2.1.32.tgz -C ~/work/ProgramFiles/
 
+- 进入解压后的文件夹内
+
 ```
-sudo cp cuda/include/* -R /usr/local/cuda/include/ 
-sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64/ 
+sudo cp include/* -R /usr/local/cuda/include/
+sudo cp lib64/libcudnn* /usr/local/cuda/lib64/
 sudo chmod a+r /usr/local/cuda/include/cudnn.h 
 sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
 ```
