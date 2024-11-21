@@ -4,6 +4,32 @@
 
 # ORB-SLAM2
 
+
+## 3. 下载数据集
+
+- TUM
+
+  - 下载链接: https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download
+
+  - 不需要全部下载, 只需下载如图所示的即可
+
+  ![TUM1](/Screenshot/TUM1.png)
+
+  ![TUM2](/Screenshot/TUM2.png)
+
+- EuRoC
+
+  - 下载链接: https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets
+
+  ![EuRoC](/Screenshot/EuRoC.png)
+
+- KITTI
+
+  Official download link: https://www.cvlibs.net/datasets/kitti/eval_odometry.php
+      
+BaiduYun download link: https://pan.baidu.com/s/1oXqNR_yd4MkgfABDa9FGSw?pwd=lsdb Extraction code：lsdb
+
+
 **This document provides an overview of the testing, evaluation, and modifications related to ORB-SLAM2.**
 
 本文档概述了与ORB-SLAM2相关的测试, 评估和修改事宜.
