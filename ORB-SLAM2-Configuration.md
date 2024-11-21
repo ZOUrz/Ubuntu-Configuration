@@ -62,7 +62,7 @@ This document provides a detailed tutorial on ORB-SLAM2, including the processes
  
   - 但是国内去官网下载的话, 速度非常慢, 这里我提供了百度网盘的下载地址
       
-    - 百度网盘下载链接: https://pan.baidu.com/s/1oXqNR_yd4MkgfABDa9FGSw?pwd=lsdb Extraction code：lsdb
+    - 百度网盘下载链接: https://pan.baidu.com/s/1oXqNR_yd4MkgfABDa9FGSw?pwd=lsdb 提取码：lsdb
 
 
 **This document provides an overview of the testing, evaluation, and modifications related to ORB-SLAM2.**
