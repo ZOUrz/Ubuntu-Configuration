@@ -244,26 +244,19 @@ sudo apt-get install git
   ![CLionFont](Screenshot/7_2_CLionFont.png)
 
 
-## 8. Install CLion and Pycharm (安装CLion和Pycharm)
+## 8. 安装 Pycharm 专业版
 
-### (1) CLion for C++ (CLion用于C++)
+- Pycharm 是用于 Pycharm 代码的编写
 
-Reference link: https://blog.csdn.net/xiaowenshen/article/details/118761466
+- 参考链接: https://blog.csdn.net/weixin_39450145/article/details/130022227
 
-### (2) Pycharm for Python (Pycharm用于Python)
+- **Note:** 为了避免安装报错, 选择安装 **Pycharm 专业版 2024.1**
 
-Reference link: https://blog.csdn.net/weixin_39450145/article/details/130022227
+- 如果没有按照参考链接的方法生成桌面快捷方式, 可以按如下方式生成:
 
-### (3) Set shortcut (设置快捷方式)
+  - Tools --> Desktop Entry (Taskbar Shortcut)
 
-- Tools --> Create Command-line Launcher (Desktop Shortcut)
-
-- 工具 --> 创建桌面条目 (桌面快捷方式)
-
-- Tools --> Desktop Entry (Taskbar Shortcut)
-
-- 工具 --> 创建命令行启动器 (任务栏快捷方式)
-
+- 学生认证的方式跟 CLion 是一样的, 认证后登录账号即可激活
 
 
 ## 9. Install Nivida Driver (安装英伟达显卡驱动)
