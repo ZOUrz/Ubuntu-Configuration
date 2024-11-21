@@ -215,6 +215,26 @@ sudo apt-get install git
   ```
 
 
+## 7. 安装 CLion
+
+- CLion 是用于 C++ 代码的编写
+
+- 参考链接: https://blog.csdn.net/xiaowenshen/article/details/118761466
+
+- 如果没有按照参考链接的方法生成桌面快捷方式, 可以按如下方式生成:
+
+  - Tools --> Create Command-line Launcher (Desktop Shortcut)
+ 
+- 学生认证:
+
+  - 参考链接: https://blog.csdn.net/weixin_74009895/article/details/140642484
+ 
+  - 如果不是学生的话, 也可以选择去淘宝购买激活码
+ 
+- **Note:** 如果下载最新版的 CLion(如 2024.3 ), 会由于 `GLIBC` 版本太低而报错, 比如 CLion 2024.3 版本需要 `GLIBC 2.28`, 而 Ubuntu 18.04 默认使用的是 `GLIBC 2.27`, 因此需要下载旧版本的 CLion, 亲测 **CLion 2024.1** 版本的可以用(也可以升级 `GLIBC`)
+
+   ![CLionVersion](Screenshot/7_1_CLionVersion.png)
+
 
 ## 8. Install CLion and Pycharm (安装CLion和Pycharm)
 
