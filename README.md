@@ -272,105 +272,106 @@ sudo apt-get install cmake
 
 ## 10. 安装 CUDA 11.3 和 CUDNN 8.2.1
 
-- ### 安装 CUDA 11.3
+- 参考链接: https://blog.csdn.net/BIT_HXZ/article/details/127604530
+
+- ### 10.1 安装 CUDA 11.3
 
   - Nvidia 官网的 CUDA 版本列表: https://developer.nvidia.com/cuda-toolkit-archive
  
-  - 进入 11.3 版本的页面, 按如图所示进行选择
+  - 进入 11.3 版本的页面, 按如图所示进行选择:
+ 
+    ![CUDA11-3](/Screenshot/10_1_CUDA11-3.png)
+  
+  - 运行下载命令进行下载
+ 
+    ```
+    wget https://developer.download.nvidia.com/compute/cuda/11.3.0/local_installers/cuda_11.3.0_465.19.01_linux.run
+    ```
 
-wget https://developer.download.nvidia.com/compute/cuda/11.3.0/local_installers/cuda_11.3.0_465.19.01_linux.run
-sudo sh cuda_11.3.0_465.19.01_linux.run
+  - 到下载目录运行安装命令
 
-Download link: https://developer.nvidia.com/cuda-10.2-download-archive
+    ```
+    sudo sh cuda_11.3.0_465.19.01_linux.run
+    ```
 
-- Select as shown in the figure
+  - 在安装过程中, 按如图所示进行选择
+ 
+    ![CUDAInstall1](/Screenshot/10_2_CUDAInstall.png)
 
-- 按如图所示进行选择
+    ![CUDAInstall2](/Screenshot/10_3_CUDAInstall.png)
 
+    ![CUDAInstall3](/Screenshot/10_4_CUDAInstall.png)
+  
+  - 将 CUDA 配置到环境变量
+ 
+    - 终端输入:
+ 
+      ```
+      gedit ~/.bashrc
+      ```
 
-![CUDA1](/Screenshot/CUDA1.png)
+    - 在文件末尾添加以下语句:
+   
+      ```
+      export CUDA_HOME=$CUDA_HOME:/usr/local/cuda-11.3
+      export PATH=/usr/local/cuda-11.3/bin:$PATH
+      export LD_LIBRARY_PATH=/usr/local/cuda-11.3/lib64:$LD_LIBRARY_PATH
+      ```
+    
+    -  使更改的环境配置生效
 
+      ```
+      source ~/.bashrc
+      ```
 
-- Run the download command to download
+  - 测试 CUDA
+ 
+    - 在终端输入以下语句:
+   
+      ```
+      cd /usr/local/cuda/samples/1_Utilities/deviceQuery #由自己电脑目录决定
+      sudo make
+      sudo ./deviceQuery
+      ```
 
-- 运行下载命令进行下载
+      ![TestCUDA](/Screenshot/10_5_TestCUDA.png)
+ 
+  
+- ### 10.2 安装 CUDNN 8.2.1 
 
-```
-wget https://developer.download.nvidia.com/compute/cuda/10.2/Prod/local_installers/cuda_10.2.89_440.33.01_linux.run
-```
+  - 官网下载链接: https://developer.nvidia.com/rdp/cudnn-archive
 
-- Run the installation command
+  - **Note:** 需要登录 Nvidia 账号
+ 
+  - 选择 `Download cuDNN v8.2.1 (June 7th, 2021), for CUDA 11.x`
+ 
+  - 然后选择 `cuDNN Library for Linux (x86_64)`, 点击即可下载
+ 
+  - 进入下载的目录, 终端输入:
 
-- 运行安装命令
+    ```
+    tar -xvf cudnn-11.3-linux-x64-v8.2.1.32.tgz -C ~/work/ProgramFiles/
+    ```
+    
+  - 进入解压后的文件夹内, 终端输入:
 
-```
-sudo sh cuda_10.2.89_440.33.01_linux.run
-```
+    ```
+    sudo cp include/* -R /usr/local/cuda/include/
+    sudo cp lib64/libcudnn* /usr/local/cuda/lib64/
+    sudo chmod a+r /usr/local/cuda/include/cudnn.h 
+    sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
+    ```
 
-- Select as shown in the figure
+  - 测试 CUDNN
 
-- 按如图所示进行选择
+    - 在终端输入:
 
+      ```
+      cat /usr/local/cuda/include/cudnn_version.h | grep CUDNN_MAJOR -A 2
+      ```
 
-![CUDA4](/Screenshot/CUDA4.png)
+      ![TestCUDNN](/Screenshot/10_6_TestCUDNN.png)
 
-![CUDA2](/Screenshot/CUDA2.png)
-
-![CUDA3](/Screenshot/CUDA3.png)
-
-
-- Configure CUDA into the environment variables
-
-- 将CUDA配置到环境变量
-
-```
-gedit ~/.bashrc
-```
-
-- Add the following statements at the end of the file
-
-- 在文件末尾添加以下语句
-
-```
-export CUDA_HOME=$CUDA_HOME:/usr/local/cuda-10.2
-export PATH=$PATH:/usr/local/cuda-10.2/bin
-export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-```
-
-- Apply the changes to the environment configuration
-
--  使更改的环境配置生效
-
-```
-source ~/.bashrc
-```
-
-### (2) Install CUDNN 8.2.2 
-
-Download link: https://developer.nvidia.com/rdp/cudnn-archive
-
-- Download "cuDNN Library for Linux (x86)"
-
-- tar -xvf cudnn-11.3-linux-x64-v8.2.1.32.tgz -C ~/work/ProgramFiles/
-
-- 进入解压后的文件夹内
-
-```
-sudo cp include/* -R /usr/local/cuda/include/
-sudo cp lib64/libcudnn* /usr/local/cuda/lib64/
-sudo chmod a+r /usr/local/cuda/include/cudnn.h 
-sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
-```
-
-```
-cat /usr/local/cuda/include/cudnn_version.h | grep CUDNN_MAJOR -A 2
-```
-
-Reference link 1: https://blog.csdn.net/mao_hui_fei/article/details/121140152
-
-Reference link 2: https://blog.csdn.net/coolsmartboy/article/details/120532547
-
-Reference link 3: https://blog.csdn.net/BIT_HXZ/article/details/127604530
 
 ## 11. Install libtorch (安装libtorch)
 
