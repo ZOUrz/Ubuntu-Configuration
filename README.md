@@ -136,7 +136,7 @@ This repository serves as a reference for reinstalling and configuring deep lear
   - 解压缩:
 
   ```
-  tar -zxvf Clash.for.Windows-0.20.39-x64-linux.tar.gz
+ tar -zxvf Clash.for.Windows-0.20.39-x64-linux.tar.gz -C ~/work/ProgramFiles/
   ```
 
 - 启动客户端
