@@ -383,7 +383,60 @@ Reference link: https://blog.csdn.net/weixin_43742643/article/details/114156298
 
 **Here, I downloaded version 1.8.1 of libtorch.**
 
-这里我下载的是1.8.1版本的libtorch
+这里我下载的是1.8.1版本的libtorch, 选择如图所示的链接进行下载
+
+**Note:** 我提供的下载链接里, 所有版本的 Libtorc 都是已经编译好的, 解压后就可以使用
+
+解压后的文件夹改名成 `libtorch-1.8.1-cu113` (不然太长了..), 然后放在你想保存的位置
+
+测试 Libtorch 和 CUDA 是否可以调用
+
+编写 libtorch_test.cpp 文件
+
+
+```c++
+#include <iostream>
+#include <torch/torch.h>
+#include <torch/script.h>
+
+int main() {
+    std::cout << "检查CDUA是否可用：" << torch::cuda::is_available() << std::endl;
+    std::cout << "检查cudnn是否可用：" << torch::cuda::cudnn_is_available() << std::endl;
+    std::clock_t s, e;
+    s = clock();
+    torch::Tensor cuda_output;
+    for (int i=0;i<1;i++) {
+        cuda_output = torch::randn({ 5, 4 }, torch::device(torch::kCUDA));
+    }
+    std::cout << cuda_output << std::endl;
+    e = clock();
+    std::cout << "use time: " << (e - s) << " 微秒" << std::endl;
+    return 0;
+}
+
+```
+
+配置 CMakeLists.txt 文件
+
+```cmake
+cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
+project(libtorch_test)
+
+set(CMAKE_CXX_STANDARD 17)
+
+list(APPEND CMAKE_PREFIX_PATH "/home/zourz/Thirdparty/libtorch-1.8.1-cu113")
+
+add_executable(libtorch_test libtorch_test.cpp)
+
+find_package(Torch REQUIRED)
+target_link_libraries(libtorch_test "${TORCH_LIBRARIES}")
+
+```
+
+测试运行
+
+- 打印出CUDAFloatype{5,4}，那么意味着这个张量是在显卡内存中分配的
+
 
 ![TestLibtorch](/Screenshot/TestLibtorch.png)
 
