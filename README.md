@@ -270,11 +270,13 @@ sudo apt-get install cmake
 
 
 
-## 10. Install CUDA 10.2 and CUDNN 8.2.2 (安装CUDA10.2和CUDNN8.2.2)
+## 10. 安装 CUDA 11.3 和 CUDNN 8.2.1
 
-### (1) Install CUDA 10.2
+- ### 安装 CUDA 11.3
 
-进入英伟达的cuda版本列表: https://developer.nvidia.com/cuda-toolkit-archive
+  - Nvidia 官网的 CUDA 版本列表: https://developer.nvidia.com/cuda-toolkit-archive
+ 
+  - 进入 11.3 版本的页面, 按如图所示进行选择
 
 wget https://developer.download.nvidia.com/compute/cuda/11.3.0/local_installers/cuda_11.3.0_465.19.01_linux.run
 sudo sh cuda_11.3.0_465.19.01_linux.run
