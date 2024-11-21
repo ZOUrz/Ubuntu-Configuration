@@ -14,7 +14,7 @@ This repository serves as a reference for reinstalling and configuring deep lear
 
 - 点击如图所示的文件即可进行下载
 
-  ![Ubuntu18.04](/Screenshot/1_1_iso.png)
+  ![Ubuntu18.04](/Screenshot/01_1_iso.png)
 
 - 由于我的电脑只有一个 256GB 的固态硬盘, 另外一块硬盘是 4TB 的机械硬盘, 因此将 Ubuntu 系统装在固态硬盘中
 
@@ -40,7 +40,7 @@ This repository serves as a reference for reinstalling and configuring deep lear
   ls -l /dev/disk/by-uuid
   ```
 
-  ![uuid](/Screenshot/2_1_uuid.png)
+  ![uuid](/Screenshot/02_1_uuid.png)
 
 - 复制硬盘的 uuid，然后修改 fstab 文件
 
@@ -50,7 +50,7 @@ This repository serves as a reference for reinstalling and configuring deep lear
 
 - 在文件最后添加如下图所示内容
 
-  ![fstab](/Screenshot/2_2_fstab.png)
+  ![fstab](/Screenshot/02_2_fstab.png)
 
   - 参数说明:
 
@@ -111,7 +111,7 @@ This repository serves as a reference for reinstalling and configuring deep lear
   sudo chown zourz:zourz ~/work/
   ```
 
-  ![chown](Screenshot/2_3_chown.png)
+  ![chown](Screenshot/02_3_chown.png)
   
 
 ## 3. 安装百度网盘
@@ -120,7 +120,7 @@ This repository serves as a reference for reinstalling and configuring deep lear
 
 - 下载 Linux 版本的 `deb 格式`
 
-![BaiduNetdisk](Screenshot/3_1_BaiduNetdisk.png)
+![BaiduNetdisk](Screenshot/03_1_BaiduNetdisk.png)
 
 - **夸克网盘不支持 Linux 系统!!**
 
@@ -135,7 +135,7 @@ This repository serves as a reference for reinstalling and configuring deep lear
 
   - 下载 Clash.for.Windows-0.20.39-x64-linux.tar.gz  
 
-  ![Download Clash](/Screenshot/4_1_DownloadClash.png)
+  ![Download Clash](/Screenshot/04_1_DownloadClash.png)
 
   - 解压缩
 
@@ -149,7 +149,7 @@ This repository serves as a reference for reinstalling and configuring deep lear
     ./cfw
     ```
 
-    ![ClashClient](/Screenshot/4_2_ClashClient.png)
+    ![ClashClient](/Screenshot/04_2_ClashClient.png)
 
 
 - 导入节点并设置代理
@@ -160,23 +160,23 @@ This repository serves as a reference for reinstalling and configuring deep lear
 
   - 进入后注册登录(最好使用手机热点), 然后购买套餐后便可在主页一键复制 Clash 订阅
 
-    ![CuteCloud](/Screenshot/4_3_CuteCloud.png)
+    ![CuteCloud](/Screenshot/04_3_CuteCloud.png)
 
   - 回到 Clash 客户端, 点击 `Profiles`, 复制订阅链接到输入框中, 点击 `Download` 下载节点
 
-    ![ImportNodes](/Screenshot/4_4_ImportNodes.png)
+    ![ImportNodes](/Screenshot/04_4_ImportNodes.png)
 
   - 注意这里的端口号是 `7890`
 
-    ![Port](/Screenshot/4_5_Port.png)
+    ![Port](/Screenshot/04_5_Port.png)
 
   - 然后在 Firefox 浏览器上设置代理
 
-    ![SetProxy](/Screenshot/4_6_SetProxy.png)
+    ![SetProxy](/Screenshot/04_6_SetProxy.png)
 
   - 确定后便大功告成! Enjoy!
 
-    ![Google](/Screenshot/4_7_Google.png)
+    ![Google](/Screenshot/04_7_Google.png)
 
 
 ## 5. 安装 Git, gcc 和 CMake
@@ -195,15 +195,15 @@ sudo apt-get install cmake
 
 - 现在下载需要提供邮箱
 
-  ![DowanloadAnaconda_1](/Screenshot/6_1_DownloadAnaconda_1.png)
+  ![DowanloadAnaconda_1](/Screenshot/06_1_DownloadAnaconda_1.png)
 
 - 下载 x86 版本
 
-  ![DowanloadAnaconda_2](/Screenshot/6_2_DownloadAnaconda_2.png)
+  ![DowanloadAnaconda_2](/Screenshot/06_2_DownloadAnaconda_2.png)
 
   - 可以通过在终端输入 `uname -m` 来查询自己电脑的架构
  
-    ![x86_64](Screenshot/6_3_x86_64.png)
+    ![x86_64](Screenshot/06_3_x86_64.png)
 
 - 然后根据参考链接进行安装即可
 
@@ -238,13 +238,13 @@ sudo apt-get install cmake
  
 - **Note:** 如果下载最新版的 CLion(如 2024.3 ), 会由于 `GLIBC` 版本太低而报错, 比如 CLion 2024.3 版本需要 `GLIBC 2.28`, 而 Ubuntu 18.04 默认使用的是 `GLIBC 2.27`, 因此需要下载旧版本的 CLion, 亲测 **CLion 2024.1** 版本的可以用(也可以升级 `GLIBC`)
 
-   ![CLionVersion](Screenshot/7_1_CLionVersion.png)
+   ![CLionVersion](Screenshot/07_1_CLionVersion.png)
 
 - 设置字体
 
   - CLion 默认的字体很小, 可以在设置中自定义字体, 打开 File -> Settings -> Editor -> Font -> Size 即可调整字体大小
  
-    ![CLionFont](Screenshot/7_2_CLionFont.png)
+    ![CLionFont](Screenshot/07_2_CLionFont.png)
 
 
 ## 8. 安装 Pycharm 专业版
@@ -266,7 +266,7 @@ sudo apt-get install cmake
 
 - 参考链接: https://blog.csdn.net/coolsmartboy/article/details/120532547
 
-  ![NvidiaDriver](/Screenshot/9_1_NvidiaDriver.png)
+  ![NvidiaDriver](/Screenshot/09_1_NvidiaDriver.png)
 
 
 
