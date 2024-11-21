@@ -14,7 +14,7 @@ This repository serves as a reference for reinstalling and configuring deep lear
 
 - 点击如图所示的文件即可进行下载
 
-  ![Ubuntu18.04](/Screenshot/01_1_iso.png)
+  ![Ubuntu18.04](/Screenshot/01_1_iso.png){width=300px}
 
 - 由于我的电脑只有一个 256GB 的固态硬盘, 另外一块硬盘是 4TB 的机械硬盘, 因此将 Ubuntu 系统装在固态硬盘中
 
