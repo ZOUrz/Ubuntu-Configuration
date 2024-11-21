@@ -374,3 +374,8 @@ Reference link: https://blog.csdn.net/weixin_43742643/article/details/114156298
 这里我下载的是1.8.1版本的libtorch
 
 ![TestLibtorch](/Screenshot/TestLibtorch.png)
+
+
+
+https://blog.csdn.net/qq_25749749/article/details/143408256
+
