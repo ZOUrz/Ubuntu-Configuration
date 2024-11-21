@@ -102,7 +102,7 @@ This repository serves as a reference for reinstalling and configuring deep lear
   - 查询磁盘挂载点当前权限
 
   ```
-  ls -ld /home//zourz/work
+  ls -ld /home/zourz/work
   ```
 
   - 更改磁盘所属用户
