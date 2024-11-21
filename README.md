@@ -179,10 +179,13 @@ This repository serves as a reference for reinstalling and configuring deep lear
     ![Google](/Screenshot/4_7_Google.png)
 
 
-## 5. 安装 Git
+## 5. 安装 Git, gcc 和 CMake
 
 ```
+sudo apt update
 sudo apt-get install git
+sudo apt-get install build-essential 
+sudo apt-get install cmake
 ```
 
 
