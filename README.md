@@ -231,6 +231,8 @@ sudo apt-get install git
  
   - 如果不是学生的话, 也可以选择去淘宝购买激活码
  
+  - 点击 Help -> Register 进行登录激活
+ 
 - **Note:** 如果下载最新版的 CLion(如 2024.3 ), 会由于 `GLIBC` 版本太低而报错, 比如 CLion 2024.3 版本需要 `GLIBC 2.28`, 而 Ubuntu 18.04 默认使用的是 `GLIBC 2.27`, 因此需要下载旧版本的 CLion, 亲测 **CLion 2024.1** 版本的可以用(也可以升级 `GLIBC`)
 
    ![CLionVersion](Screenshot/7_1_CLionVersion.png)
