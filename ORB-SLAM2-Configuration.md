@@ -1,74 +1,68 @@
-**This project aims to provide the author with a reference record to ensure that critical steps are not overlooked.**
+# ORB-SLAM2 Configuration
 
-本项目旨在为作者提供一份参考记录, 以确保关键步骤不被遗漏
+This document provides a detailed tutorial on ORB-SLAM2, including the processes of installation, compilation, dataset execution, and evaluation. It serves both as a personal memo and as a reference for beginners.
 
-# ORB-SLAM2
-
-
-## 6. Install ORB-SLAM2 (安装ORB-SLAM2)
-
-- Refer to the blog link to download and install various prerequisite libraries, including Pangolin, OpenCV, Eigen3, DBoW2, g2o, and ROS
-
-- 参考链接的博客, 下载安装各种前置库, Pangolin, OpenCV, Eigen3, DBoW2, g2o, ROS
-
-- Reference link: https://blog.csdn.net/weixin_43013761/article/details/123093639
-
-- Then install and compile ORB-SLAM2**
-
-- 然后安装编译ORB-SLAM2
-
-### (1) Note: During the installation of ROS, some options may differ from the reference link. Please refer to the selections shown in the image below.
-
-- **注: 安装ROS时, 有几个选项跟参考的链接不一样, 参考下图所选的即可**
+本文档提供了 ORB-SLAM2 的详细教程, 包括安装, 编译, 跑数据集以及评估的流程, 既是个人备忘录, 也可以为初学者提供一定参考
 
 
-![ROS1](/Screenshot/ROS1.png)
+## 1. 安装编译 ORB-SLAM2
 
-![ROS2](/Screenshot/ROS2.png)
+- 参考以下链接, 下载并安装各种前置库, Pangolin, OpenCV, Eigen3, DBoW2, g2o, ROS
 
-![ROS3](/Screenshot/ROS3.png)
+  - 参考链接: https://blog.csdn.net/weixin_43013761/article/details/123093639
+
+- 然后安装编译 ORB-SLAM2
+
+- **Note 1:** 安装 ROS 时, 有几个选项跟参考的链接不一样, 参考下图所选的即可
+
+  ![ROS1](/Screenshot/ROS1.png)
+  
+  ![ROS2](/Screenshot/ROS2.png)
+  
+  ![ROS3](/Screenshot/ROS3.png)
+
+- **Note 2:** 在安装 rosdpe 时, 不要使用参考链接的方式进行安装, 应当使用如下方式进行安装:
+
+  - 在终端输入:
+
+    ```
+    wget http://fishros.com/install -O fishros && . fishros
+    ```
+
+    ![ROSdepc](/Screenshot/ROSdepc.png)
+
+  - 然后输入:
+
+    ```
+    rosdepc update
+    ```
 
 
-### (2) When installing rosdep, do not follow the method in the reference link! You should use the following method for installation:
+## 2. 下载数据集
 
-- **在安装rosdpe时, 不要使用参考链接的方式进行安装!!!, 应当使用如下方式进行安装:**
-
-```
-wget http://fishros.com/install -O fishros && . fishros
-```
-
-
-![ROSdepc](/Screenshot/ROSdepc.png)
-
-
-```
-rosdepc update
-```
-
-
-## 3. 下载数据集
-
-- TUM
+- ## 2.1 TUM
 
   - 下载链接: https://cvg.cit.tum.de/data/datasets/rgbd-dataset/download
 
   - 不需要全部下载, 只需下载如图所示的即可
 
-  ![TUM1](/Screenshot/TUM1.png)
+    ![TUM1](/Screenshot/TUM1.png)
+  
+    ![TUM2](/Screenshot/TUM2.png)
 
-  ![TUM2](/Screenshot/TUM2.png)
-
-- EuRoC
+- ## 2.2 EuRoC
 
   - 下载链接: https://projects.asl.ethz.ch/datasets/doku.php?id=kmavvisualinertialdatasets
 
-  ![EuRoC](/Screenshot/EuRoC.png)
+    ![EuRoC](/Screenshot/EuRoC.png)
 
-- KITTI
+- ## 2.3 KITTI
 
-  Official download link: https://www.cvlibs.net/datasets/kitti/eval_odometry.php
+  - 官网下载链接: https://www.cvlibs.net/datasets/kitti/eval_odometry.php
+ 
+  - 但是国内去官网下载的话, 速度非常慢, 这里我提供了百度网盘的下载地址
       
-BaiduYun download link: https://pan.baidu.com/s/1oXqNR_yd4MkgfABDa9FGSw?pwd=lsdb Extraction code：lsdb
+    - 百度网盘下载链接: https://pan.baidu.com/s/1oXqNR_yd4MkgfABDa9FGSw?pwd=lsdb Extraction code：lsdb
 
 
 **This document provides an overview of the testing, evaluation, and modifications related to ORB-SLAM2.**
