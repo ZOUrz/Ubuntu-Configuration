@@ -14,7 +14,7 @@ This repository serves as a reference for reinstalling and configuring deep lear
 
 - 点击如图所示的文件即可进行下载
 
-  ![Ubuntu18.04](/Screenshot/Ubuntu18.04iso.png)
+  ![Ubuntu18.04](/Screenshot/1_1_iso.png)
 
 - 由于我的电脑只有一个 256GB 的固态硬盘, 另外一块硬盘是 4TB 的机械硬盘, 因此将 Ubuntu 系统装在固态硬盘中
 
@@ -40,7 +40,7 @@ This repository serves as a reference for reinstalling and configuring deep lear
   ls -l /dev/disk/by-uuid
   ```
 
-  ![uuid]
+  ![uuid](/Screenshot/2_1_uuid.png)
 
 - 复制硬盘的 uuid，然后修改 fstab 文件
 
@@ -50,7 +50,7 @@ This repository serves as a reference for reinstalling and configuring deep lear
 
 - 在文件最后添加如下图所示内容
 
-  ![fstab]
+  ![fstab](/Screenshot/2_2_fstab.png)
 
   - 参数说明:
 
@@ -111,12 +111,16 @@ This repository serves as a reference for reinstalling and configuring deep lear
   sudo chown zourz:zourz ~/work/
   ```
 
-  ![chown]
+  ![chown](Screenshot/2_3_chown.png)
   
 
 ## 3. 安装百度网盘
 
 - 参考链接: https://blog.csdn.net/suiqianjushi/article/details/123824801
+
+- 下载 Linux 版本的 `deb 格式`
+
+![BaiduNetdisk](Screenshot/3_1_BaiduNetdisk.png)
 
 - **夸克网盘不支持 Linux 系统!!**
 
