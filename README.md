@@ -179,8 +179,7 @@ This repository serves as a reference for reinstalling and configuring deep lear
     ![Google](/Screenshot/4_7_Google.png)
 
 
-
-## 5. Install Git (安装Git)
+## 5. 安装Git
 
 ```
 sudo apt-get install git
@@ -188,45 +187,6 @@ sudo apt-get install git
 
 
 
-## 6. Install ORB-SLAM2 (安装ORB-SLAM2)
-
-- Refer to the blog link to download and install various prerequisite libraries, including Pangolin, OpenCV, Eigen3, DBoW2, g2o, and ROS
-
-- 参考链接的博客, 下载安装各种前置库, Pangolin, OpenCV, Eigen3, DBoW2, g2o, ROS
-
-- Reference link: https://blog.csdn.net/weixin_43013761/article/details/123093639
-
-- Then install and compile ORB-SLAM2**
-
-- 然后安装编译ORB-SLAM2
-
-### (1) Note: During the installation of ROS, some options may differ from the reference link. Please refer to the selections shown in the image below.
-
-- **注: 安装ROS时, 有几个选项跟参考的链接不一样, 参考下图所选的即可**
-
-
-![ROS1](/Screenshot/ROS1.png)
-
-![ROS2](/Screenshot/ROS2.png)
-
-![ROS3](/Screenshot/ROS3.png)
-
-
-### (2) When installing rosdep, do not follow the method in the reference link! You should use the following method for installation:
-
-- **在安装rosdpe时, 不要使用参考链接的方式进行安装!!!, 应当使用如下方式进行安装:**
-
-```
-wget http://fishros.com/install -O fishros && . fishros
-```
-
-
-![ROSdepc](/Screenshot/ROSdepc.png)
-
-
-```
-rosdepc update
-```
 
 
 
