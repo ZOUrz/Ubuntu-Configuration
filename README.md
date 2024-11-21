@@ -28,13 +28,13 @@ This repository serves as a reference for reinstalling and configuring deep lear
 
 
 
-## 2. 挂载机械硬盘
+## 2. 挂载硬盘
 
 - 参考链接 1: https://blog.csdn.net/u011895157/article/details/130559749
 
 - 参考链接 2: https://blog.csdn.net/qq_36357820/article/details/78421242
 
-- 获取机械硬盘的 uuid
+- 获取硬盘的 uuid
 
   ```
   ls -l /dev/disk/by-uuid
@@ -42,7 +42,7 @@ This repository serves as a reference for reinstalling and configuring deep lear
 
   ![uuid]
 
-- 复制机械硬盘的 uuid，然后修改 fstab 文件
+- 复制硬盘的 uuid，然后修改 fstab 文件
 
   ```
   sudo gedit /etc/fstab 
@@ -52,51 +52,70 @@ This repository serves as a reference for reinstalling and configuring deep lear
 
   ![fstab]
 
-- 参数说明:
+  - 参数说明:
 
-  - 第一列: 实际分区名, 卷标( Lable )或 UUID
+    - 第一列: 实际分区名, 卷标( Lable )或 UUID
+  
+      - SATA磁盘示例: /dev/hda1, /dev/hda2
+      - SCSI磁盘示例：/dev/sda, /dev/sdb。
+      - 使用标签时示例: LABEL=/
+  
+    - 第二列: 挂载点
+  
+      - 必须是已存在的目录, 建议挂载目录权限设置为 777，以便兼容
+  
+    - 第三列: 文件系统类型
+  
+      - 常见类型: ext2, ext3 等
+      - 使用 auto 时, 系统自动检测文件系统类型, 通常用于可移动设备
+  
+    - 第四列: 挂载选项
+  
+      - auto: 系统自动挂载
+      - defaults: 默认挂载选项( rw, suid, dev, exec, auto, nouser, async)
+      - noauto: 不自动挂载
+      - ro: 只读挂载
+      - rw: 可读可写挂载
+      - nouser: 只有超级用户可以挂载
+      - user: 任何用户可以挂载
+      - **Note:** 光驱和软驱需装有介质才能挂载，通常为 noauto。
+  
+    - 第五列: dump 备份设置
+  
+      - 1: 允许 dump 备份
+      - 0: 不进行备份
+      
+    - 第六列: fsck 磁盘检查顺序
+  
+      - 0: 不检查
+      - 1: 根分区
+      - 2: 其他分区, 数字越小, 越先检查, 如果两个分区相同, 系统会同时检查
 
-    - SATA磁盘示例: /dev/hda1, /dev/hda2
-    - SCSI磁盘示例：/dev/sda, /dev/sdb。
-    - 使用标签时示例: LABEL=/
+- 重启系统
 
-  - 第二列: 挂载点
+  ```
+  sudo reboot
+  ```
 
-    - 必须是已存在的目录, 建议挂载目录权限设置为777，以便兼容
+- 设置硬盘权限
 
-  - 第三列: 文件系统类型
+  - 查询磁盘挂载点当前权限
 
-    - 常见类型: ext2, ext3等
-    - 使用 auto 时, 系统自动检测文件系统类型, 通常用于可移动设备
+  ```
+  ls -ld /home//zourz/work
+  ```
 
-  - 第四列: 挂载选项
+  - 更改磁盘所属用户
+ 
+  ```
+  sudo chown zourz:zourz ~/work/
+  ```
 
-    - auto: 系统自动挂载
-    - defaults: 默认挂载选项( rw, suid, dev, exec, auto, nouser, async)
-    - noauto: 不自动挂载
-    - ro: 只读挂载
-    - rw: 可读可写挂载
-    - nouser: 只有超级用户可以挂载
-    - user: 任何用户可以挂载
-    - **Note:** 光驱和软驱需装有介质才能挂载，通常为noauto。
-
-  - 第五列: dump 备份设置
-
-    - 1: 允许 dump 备份
-    - 0: 不进行备份
-    
-  - 第六列: fsck 磁盘检查顺序
-
-    - 0: 不检查
-    - 1: 根分区
-    - 2: 其他分区, 数字越小, 越先检查, 如果两个分区相同, 系统会同时检查
+  ![chown]
+  
   
 
-
-
-
-
-## 3. Download datasets (下载数据集)
+## 3. 下载数据集
 
 ### TUM
 
