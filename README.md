@@ -186,21 +186,33 @@ sudo apt-get install git
 ```
 
 
-## 6. 安装Anaconda
+## 6. 安装 Anaconda
 
 - 参考链接: https://blog.csdn.net/qq_64671439/article/details/135293643
 
-- 现在下载需要
+- 现在下载需要提供邮箱
 
-### (1) 给Anaconda换源:
+  ![DowanloadAnaconda_1](/Screenshot/6_1_DownloadAnaconda_1.png)
 
-```
-conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
-conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
-conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/
-conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/pytorch/
-conda config --set show_channel_urls yes
-```
+- 下载 x86 版本
+
+  ![DowanloadAnaconda_2](/Screenshot/6_2_DownloadAnaconda_2.png)
+
+  - 可以通过在终端输入 `uname -m` 来查询自己电脑的架构
+ 
+    ![x86_64](Screenshot/6_3_x86_64.png)
+
+- 然后根据参考链接进行安装即可
+
+- 安装完成后需要给 Anaconda 进行换源
+
+  ```
+  conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+  conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
+  conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/conda-forge/
+  conda config --add channels https://mirrors.ustc.edu.cn/anaconda/cloud/pytorch/
+  conda config --set show_channel_urls yes
+  ```
 
 
 
