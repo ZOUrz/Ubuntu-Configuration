@@ -15,7 +15,7 @@ else()
 endif()
 ```
 
-### src/SuperPoint.cc
+### CMakeLists.txt
 
 ```cmake
 # 引入 CheckCXXCompilerFlag 模块, 用于检查编译器是否支持特定的 C++ Flag
@@ -33,21 +33,24 @@ else()
 endif()
 ```
 
-/home/zourz/work/Code/SLAM/SuperPoint_SLAM-master/Thirdparty/DBoW3/src/Vocabulary.h, 302行
+### Thirdparty/DBoW3/src/Vocabulary.h
+
 ```c++
 void toStream(  std::ostream &str, bool compressed=true) const;
 ```
 
-/home/zourz/work/Code/SLAM/SuperPoint_SLAM-master/Thirdparty/DBoW3/src/Vocabulary.h, 303行
 ```c++
 void fromStream(  std::istream &str );
 ```
 
-/home/zourz/work/Code/SLAM/SuperPoint_SLAM-master/Thirdparty/DBoW3/src/Vocabulary.h, 438行
 ```c++
 void load_fromtxt(const std::string &filename);
 ```
 
+把在 Vocabulary.cc 对应的函数改一下
+
+
+### src/SuperPoint.cc
 
 ```c++
 desc = torch::grid_sampler(desc, grid, 0, 0, true);
@@ -55,4 +58,8 @@ desc = torch::grid_sampler(desc, grid, 0, 0, true);
 
 ```c++
 auto fkpts = torch::from_blob(kpt_mat.data, {static_cast<int64_t>(keypoints.size()), 2}, torch::kFloat);
+```
+
+```
+auto desc = torch::grid_sampler(mDesc, grid, 0, 0, true); 
 ```
