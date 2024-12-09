@@ -60,6 +60,27 @@ desc = torch::grid_sampler(desc, grid, 0, 0, true);
 auto fkpts = torch::from_blob(kpt_mat.data, {static_cast<int64_t>(keypoints.size()), 2}, torch::kFloat);
 ```
 
-```
+```c++
 auto desc = torch::grid_sampler(mDesc, grid, 0, 0, true); 
+```
+
+
+### include/LoopClosing.h
+
+```c++
+int mnFullBAIdx;
+```
+
+
+### Examples/Monocular/mono_kitti.cc
+
+```c++
+        std::chrono::steady_clock::time_point t1 = std::chrono::steady_clock::now();
+
+        // Pass the image to the SLAM system
+        SLAM.TrackMonocular(im,tframe);
+        
+        std::chrono::steady_clock::time_point t2 = std::chrono::steady_clock::now();
+        
+        double ttrack= std::chrono::duration_cast<std::chrono::duration<double> >(t2 - t1).count();
 ```
