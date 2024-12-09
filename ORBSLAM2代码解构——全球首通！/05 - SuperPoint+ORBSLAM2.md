@@ -33,6 +33,11 @@ else()
 endif()
 ```
 
+/home/zourz/work/Code/SLAM/SuperPoint_SLAM-master/Thirdparty/DBoW3/src/Vocabulary.h, 302行
+```c++
+void toStream(  std::ostream &str, bool compressed=true) const;
+```
+
 ```c++
 desc = torch::grid_sampler(desc, grid, 0, 0, true);
 ```
