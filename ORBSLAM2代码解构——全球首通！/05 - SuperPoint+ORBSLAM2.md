@@ -38,6 +38,17 @@ endif()
 void toStream(  std::ostream &str, bool compressed=true) const;
 ```
 
+/home/zourz/work/Code/SLAM/SuperPoint_SLAM-master/Thirdparty/DBoW3/src/Vocabulary.h, 303行
+```c++
+void fromStream(  std::istream &str );
+```
+
+/home/zourz/work/Code/SLAM/SuperPoint_SLAM-master/Thirdparty/DBoW3/src/Vocabulary.h, 438行
+```c++
+void load_fromtxt(const std::string &filename);
+```
+
+
 ```c++
 desc = torch::grid_sampler(desc, grid, 0, 0, true);
 ```
