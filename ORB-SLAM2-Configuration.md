@@ -141,6 +141,8 @@ MESSAGE("Build type: " ${CMAKE_BUILD_TYPE})
 #include <opencv/cv.h>
 ```
 
+./Examples_old/Stereo/stereo_kitti_old ./Vocabulary/ORBvoc.txt ./Examples_old/Stereo/KITTI00-02.yaml ~/work/Dataset/SLAM/KITTI/data_odometry_gray/dataset/sequences/00
+
 
 
 
