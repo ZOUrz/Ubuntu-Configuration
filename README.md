@@ -1,5 +1,7 @@
 # Ubuntu Configuration
 
+
+
 这份文档旨在为初学者提供一份从零开始重新安装和配置 Ubuntu 深度学习环境的参考 (同时也作为我自己的一个学习记录，方便以后在需要时不用再回忆或在重新网上查找资料  :joy: :joy: :joy: :joy: :joy:)
 
 ## 1. 重装 Ubuntu18.04 系统
@@ -446,3 +448,17 @@ sudo apt-get install cmake
     - 打印出 CUDAFloatype{5,4}, 那么意味着这个张量是在显存中分配的
   
       ![TestLibtorch](/Screenshot/11_2_TestLibtorch.png)
+
+
+## 12. 将 Anaconda 中的虚拟环境迁移到机械硬盘
+
+- 之前将 Anaconda 安装到了固态盘, 随着学习时间的的增加, 创建的虚拟环境越来越多, 导致固态盘的空间吃紧
+     
+-  因此需要将 Anaconda 的虚拟环境目录改到机械硬盘上, 以后每次安装虚拟环境也是直接装在机械盘
+  
+  -  "Ctrl + Alt + T " 打开终端, 输入:
+
+ 
+
+
+      
