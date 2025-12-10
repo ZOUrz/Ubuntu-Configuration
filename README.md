@@ -445,4 +445,4 @@ sudo apt-get install cmake
 
     - 打印出 CUDAFloatype{5,4}, 那么意味着这个张量是在显存中分配的
   
-      ![TestLibtorch](/Screenshot/TestLibtorch.png)
+      ![TestLibtorch](/Screenshot/11_2_TestLibtorch.png)
