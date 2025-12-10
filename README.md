@@ -463,8 +463,8 @@ sudo apt-get install cmake
      ```
     - 可见是在机械硬盘, 接着在终端输入
  
-      ```
-      mkdir -p ~/work/envs
-      ```
+   ```
+   mkdir -p ~/work/envs
+   ```
 
       
