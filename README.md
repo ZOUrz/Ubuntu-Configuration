@@ -1,10 +1,6 @@
 # Ubuntu Configuration
 
-This repository serves as a reference for reinstalling and configuring deep learning environments on Ubuntu from scratch, providing both personal documentation and a guide for beginners.
-
-这个仓库作为一份参考, 旨在从头开始重新安装和配置 Ubuntu 上的深度学习环境, 既是个人记录文档, 也是初学者的指南
-
-
+这份文档旨在为初学者提供一份从零开始重新安装和配置 Ubuntu 深度学习环境的参考指南（同时也作为我个人的记录，以便日后在需要时无需再耗费时间回忆或在网上查找资料）:stuck_out_tongue_winking_eye:
 
 ## 1. 重装 Ubuntu18.04 系统
 
