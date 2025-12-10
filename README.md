@@ -245,7 +245,7 @@ sudo apt-get install cmake
 
 ## 8. 安装 Pycharm 专业版
 
-- Pycharm 是用于 Pycharm 代码的编写
+- Pycharm 是用于 Python 代码的编写
 
 - 参考链接: https://blog.csdn.net/weixin_39450145/article/details/130022227
 
