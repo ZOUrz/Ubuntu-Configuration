@@ -458,14 +458,14 @@ sudo apt-get install cmake
 
     -  按照之前的配置流程, 我这台主机的机械硬盘挂载点是 `/home/zourz/work`, "Ctrl + Alt + T " 打开终端, 依次输入:
 
-      ```
-      df -h ~/work
-      mkdir -p ~/work/envs
-      ```
+        ```
+        df -h ~/work
+        mkdir -p ~/work/envs
+        ```
 
       - 这里的-p即--parents的缩写, 如果路径中的父目录不存在, 则自动创建, 不报错
 
-         ![Mkdir](/Screenshot/12_1_Mkdir.png)
+        ![Mkdir](/Screenshot/12_1_Mkdir.png)
  
      - 编辑 Conda 配置, 让后续安装的新环境自动安装在所选的目录
  
