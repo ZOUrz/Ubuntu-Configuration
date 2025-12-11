@@ -457,16 +457,39 @@ sudo apt-get install cmake
 -  因此需要将 Anaconda 的虚拟环境目录改到机械硬盘上, 以后每次安装虚拟环境也是直接装在机械盘
 
     -  按照之前的配置流程, 我这台主机的机械硬盘挂载点是 `/home/zourz/work`, "Ctrl + Alt + T " 打开终端, 依次输入:
- 
-     ```
-    df -h ~/work
-    mkdir -p ~/work/envs
-     
-     ```
-    - 可见是在机械硬盘, 接着在终端输入
- 
-   ```
-   mkdir -p ~/work/envs
-   ```
 
+      ```
+      df -h ~/work
+      mkdir -p ~/work/envs
+      ```
+
+      - 这里的-p即--parents的缩写, 如果路径中的父目录不存在, 则自动创建, 不报错
+
+    - 图
+ 
+    - 编辑 Conda 配置, 让后续安装的新环境自动安装在所选的目录
+ 
+      ```
+      nano ~/.condarc
+      ```
+    - 图
+
+    - 在文件中添加如下内容(**注:** 必须些绝对路径), "Ctrl + O"(写出), 然后底部会显示文件名，直接按 "Enter" 确认保存(或输入新文件名), 再"Ctrl + X"(退出)
+ 
+      ```
+      envs_dirs:
+        - /home/zourz/work/envs
+        - /home/zourz/anaconda3/envs
+      ```
+    - 图
+ 
+    - 验证修改是否生效, 在终端输入
+ 
+      ```
+      conda info
+      ```
+
+    - 图
+ 
+      
       
