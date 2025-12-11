@@ -446,7 +446,7 @@ sudo apt-get install cmake
       ```
 
     - 打印出 CUDAFloatype{5,4}, 那么意味着这个张量是在显存中分配的
-  
+    
       ![TestLibtorch](/Screenshot/11_2_TestLibtorch.png)
 
 
@@ -465,9 +465,9 @@ sudo apt-get install cmake
 
       - 这里的-p即--parents的缩写, 如果路径中的父目录不存在, 则自动创建, 不报错
 
-    - 图
+         ![Mkdir](/Screenshot/12_1_Mkdir.png)
  
-    - 编辑 Conda 配置, 让后续安装的新环境自动安装在所选的目录
+     - 编辑 Conda 配置, 让后续安装的新环境自动安装在所选的目录
  
       ```
       nano ~/.condarc
