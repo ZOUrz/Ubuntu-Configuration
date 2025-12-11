@@ -28,7 +28,6 @@
   - 参考链接: https://www.cnblogs.com/booturbo/p/13967033.html
 
 
-
 ## 2. 挂载硬盘
 
 - 参考链接 1: https://blog.csdn.net/u011895157/article/details/130559749
@@ -56,13 +55,13 @@
   - 参数说明:
 
     - 第一列: 实际分区名, 卷标( Lable )或 UUID
-  
+
       - SATA磁盘示例: /dev/hda1, /dev/hda2
       - SCSI磁盘示例：/dev/sda, /dev/sdb。
       - 使用标签时示例: LABEL=/
   
     - 第二列: 挂载点
-  
+
       - 必须是已存在的目录, 建议挂载目录权限设置为 777，以便兼容
   
     - 第三列: 文件系统类型
@@ -102,17 +101,17 @@
 
   - 查询磁盘挂载点当前权限
 
-  ```
-  ls -ld /home/zourz/work
-  ```
+    ```
+    ls -ld /home/zourz/work
+    ```
 
   - 更改磁盘所属用户
  
-  ```
-  sudo chown zourz:zourz ~/work/
-  ```
+    ```
+    sudo chown zourz:zourz ~/work/
+    ```
 
-  ![chown](Screenshot/02_3_chown.png)
+    ![chown](Screenshot/02_3_chown.png)
   
 
 ## 3. 安装百度网盘
@@ -121,7 +120,7 @@
 
 - 下载 Linux 版本的 `deb 格式`
 
-![BaiduNetdisk](Screenshot/03_1_BaiduNetdisk.png)
+  ![BaiduNetdisk](Screenshot/03_1_BaiduNetdisk.png)
 
 - **夸克网盘不支持 Linux 系统!!**
 
@@ -136,7 +135,7 @@
 
   - 下载 Clash.for.Windows-0.20.39-x64-linux.tar.gz  
 
-  ![Download Clash](/Screenshot/04_1_DownloadClash.png)
+    ![Download Clash](/Screenshot/04_1_DownloadClash.png)
 
   - 解压缩
 
@@ -151,7 +150,6 @@
     ```
 
     ![ClashClient](/Screenshot/04_2_ClashClient.png)
-
 
 - 导入节点并设置代理
 
@@ -182,12 +180,12 @@
 
 ## 5. 安装 Git, gcc 和 CMake
 
-```
-sudo apt update
-sudo apt-get install git
-sudo apt-get install build-essential 
-sudo apt-get install cmake
-```
+  ```
+  sudo apt update
+  sudo apt-get install git
+  sudo apt-get install build-essential 
+  sudo apt-get install cmake
+  ```
 
 
 ## 6. 安装 Anaconda
@@ -457,42 +455,43 @@ sudo apt-get install cmake
 
 - 之前将 Anaconda 安装到了固态盘, 随着学习时间的的增加, 创建的虚拟环境越来越多, 导致固态盘的空间吃紧
      
--  因此需要将 Anaconda 的虚拟环境目录改到机械硬盘上, 以后每次安装虚拟环境也是直接装在机械盘
+- 因此需要将 Anaconda 的虚拟环境目录改到机械硬盘上, 以后每次安装虚拟环境也是直接装在机械盘
 
-    -  按照之前的配置流程, 我这台主机的机械硬盘挂载点是 `/home/zourz/work`, "Ctrl + Alt + T " 打开终端, 依次输入:
+- 按照之前的配置流程, 我这台主机的机械硬盘挂载点是 `/home/zourz/work`, "Ctrl + Alt + T " 打开终端, 依次输入:
 
-        ```
-        df -h ~/work
-        mkdir -p ~/work/envs
-        ```
+  ```
+  df -h ~/work
+  mkdir -p ~/work/envs
+  ```
 
-      - 这里的-p即--parents的缩写, 如果路径中的父目录不存在, 则自动创建, 不报错
+  - 这里的-p即--parents的缩写, 如果路径中的父目录不存在, 则自动创建, 不报错
 
-        ![Mkdir](/Screenshot/12_1_Mkdir.png)
+  ![Mkdir](/Screenshot/12_1_Mkdir.png)
  
-     - 编辑 Conda 配置, 让后续安装的新环境自动安装在所选的目录
+- 编辑 Conda 配置, 让后续安装的新环境自动安装在所选的目录, 在终端输入:
  
-      ```
-      nano ~/.condarc
-      ```
-    - 图
+  ```
+  nano ~/.condarc
+  ```
 
-    - 在文件中添加如下内容(**注:** 必须写绝对路径), "Ctrl + O"(写出), 然后底部会显示文件名，直接按 "Enter" 确认保存(或输入新文件名), 再"Ctrl + X"(退出)
+- 在文件中添加如下内容(**注:** 必须写绝对路径), "Ctrl + O"(写出), 然后底部会显示文件名，直接按 "Enter" 确认保存(或输入新文件名), 再"Ctrl + X"(退出)
  
-      ```
-      envs_dirs:
-        - /home/zourz/work/envs
-        - /home/zourz/anaconda3/envs
-      ```
-    - 图
+  ```
+  envs_dirs:
+    - /home/zourz/work/envs
+    - /home/zourz/anaconda3/envs
+  ```
+  ![NanoConda](/Screenshot/12_2_NanoConda.png)
  
-    - 验证修改是否生效, 在终端输入
+ - 验证修改是否生效, 在终端输入:
  
-      ```
-      conda info
-      ```
+  ```
+  conda info
+  ```
 
-    - 图
+  ![CondaInfo](/Screenshot/12_3_CondaInfo.png)
+
+
  
       
       
