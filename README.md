@@ -456,10 +456,12 @@ sudo apt-get install cmake
      
 -  因此需要将 Anaconda 的虚拟环境目录改到机械硬盘上, 以后每次安装虚拟环境也是直接装在机械盘
 
-    -  按照之前的配置流程, 我这台主机的机械硬盘挂载点是 `/home/zourz/work`, 先检查一下, "Ctrl + Alt + T " 打开终端, 输入:
+    -  按照之前的配置流程, 我这台主机的机械硬盘挂载点是 `/home/zourz/work`, "Ctrl + Alt + T " 打开终端, 依次输入:
  
      ```
     df -h ~/work
+    mkdir -p ~/work/envs
+     
      ```
     - 可见是在机械硬盘, 接着在终端输入
  
